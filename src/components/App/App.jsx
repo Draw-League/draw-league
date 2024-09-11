@@ -28,6 +28,7 @@ import AddEvent from '../AddEvent/AddEvent';
 import AddRef from '../AddRef/AddRef';
 import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
+import ProJudge from '../ProJudge/ProJudge';
 
 import './App.css';
 
@@ -117,6 +118,13 @@ function App() {
             exact
             path="/proref">
             <ProRef />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProJudge else shows LoginPage
+            exact
+            path="/projudge">
+            <ProJudge />
           </ProtectedRoute>
 
           <ProtectedRoute
