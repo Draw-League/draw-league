@@ -1,18 +1,19 @@
 import React from 'react';
+import './ProWinners.css';
 
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function AboutPage() {
+function ProWinners() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <p>This the projector winners podium</p>
       </div>
     </div>
   );
 }
 
-export default AboutPage;
+export default ProWinners;
