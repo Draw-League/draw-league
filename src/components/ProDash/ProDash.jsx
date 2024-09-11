@@ -1,19 +1,19 @@
 import React from 'react';
-import './ProJudge.css';
+import './ProDash.css';
 
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function ProJudge() {
+function ProDash() {
   return (
     <div className="container">
       <div>
-        <p>This the projector judge page</p>
+        <p>This the projector dashboard</p>
       </div>
     </div>
   );
 }
 
-export default ProJudge;
+export default ProDash;
