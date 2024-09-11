@@ -58,6 +58,13 @@ function App() {
             <Rules />
           </Route>
 
+          <Route
+            // Not protected, shows Contact at all times (logged in or not)
+            exact
+            path="/join"
+          >
+            <Join />
+          </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
