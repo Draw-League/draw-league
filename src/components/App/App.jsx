@@ -33,6 +33,8 @@ import ProDash from '../ProDash/ProDash';
 import ProWinners from '../ProWinners/ProWinners';
 import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
+import JudgeGallery from '../JudgeGallery/JudgeGallery';
+import JudgeScore from '../JudgeScore/JudgeScore';
 
 import './App.css';
 
@@ -62,24 +64,38 @@ function App() {
           </Route>
 
           <Route
-            // Not protected, shows Contact at all times (logged in or not)
+            // Not protected, shows rules at all times (logged in or not)
             exact
             path="/rules">
             <Rules />
           </Route>
 
           <Route
-            // Not protected, shows Contact at all times (logged in or not)
+            // Not protected, shows Join at all times (logged in or not)
             exact
             path="/join">
             <Join />
           </Route>
 
           <Route
-            // Not protected, shows Contact at all times (logged in or not)
+            // Not protected, shows Drawing at all times (logged in or not)
             exact
             path="/drawing">
             <Drawing />
+          </Route>
+
+          <Route
+            // Not protected, shows JudgeGallery at all times (logged in or not)
+            exact
+            path="/judgegallery">
+            <JudgeGallery />
+          </Route>
+
+          <Route
+            // Not protected, shows JudgeScore at all times (logged in or not)
+            exact
+            path="/judgescore">
+            <JudgeScore />
           </Route>
 
           <ProtectedRoute
@@ -125,7 +141,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+            // logged in shows ProDash else shows LoginPage
             exact
             path="/prodash">
             <ProDash />
@@ -139,14 +155,14 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+            // logged in shows ProWinners else shows LoginPage
             exact
             path="/prowinners">
             <ProWinners />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+            // logged in shows ProBest else shows LoginPage
             exact
             path="/probest">
             <ProBest />
