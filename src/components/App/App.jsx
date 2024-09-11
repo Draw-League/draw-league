@@ -27,7 +27,7 @@ import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
 import AddRef from '../AddRef/AddRef';
 import ProRules from '../ProRules/ProRules';
-
+import ProRef from '../ProRef/ProRef';
 
 import './App.css';
 
@@ -78,38 +78,45 @@ function App() {
           </Route>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows RefDash else shows LoginPage
             exact
             path="/refdash">
             <RefDash />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows AdminDash else shows LoginPage
             exact
             path="/admindash">
             <AdminDash />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows AddEvent else shows LoginPage
             exact
             path="/addevent">
             <AddEvent />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows ProRules else shows LoginPage
             exact
             path="/prorules">
             <ProRules />
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            // logged in shows ProRef else shows LoginPage
+            exact
+            path="/proref">
+            <ProRef />
           </ProtectedRoute>
 
           <ProtectedRoute
