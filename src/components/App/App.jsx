@@ -26,6 +26,8 @@ import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
 import AddRef from '../AddRef/AddRef';
+import ProRules from '../ProRules/ProRules';
+
 
 import './App.css';
 
@@ -101,6 +103,13 @@ function App() {
             exact
             path="/addref">
             <AddRef />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/prorules">
+            <ProRules />
           </ProtectedRoute>
 
           <ProtectedRoute

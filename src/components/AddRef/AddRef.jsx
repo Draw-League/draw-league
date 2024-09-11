@@ -10,7 +10,7 @@ function AddRef() {
   return (
     <div className="container">
       <div>
-        <p>This the admin dashboard</p>
+        <p>This the add a ref page</p>
       </div>
     </div>
   );

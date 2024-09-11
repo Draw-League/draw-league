@@ -1,19 +1,19 @@
 import React from 'react';
-import './AddEvent.css';
+import './ProRules.css';
 
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function AddEvent() {
+function ProRules() {
   return (
     <div className="container">
       <div>
-        <p>This the add an event page</p>
+        <p>This the projector rules page</p>
       </div>
     </div>
   );
 }
 
-export default AddEvent;
+export default ProRules;
