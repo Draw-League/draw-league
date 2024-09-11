@@ -30,6 +30,8 @@ import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
 import ProDash from '../ProDash/ProDash';
+import ProWinners from '../ProWinners/ProWinners';
+import ProBest from '../ProBest/ProBest';
 
 
 import './App.css';
@@ -141,6 +143,13 @@ function App() {
             exact
             path="/prowinners">
             <ProWinners />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProJudge else shows LoginPage
+            exact
+            path="/probest">
+            <ProBest />
           </ProtectedRoute>
 
           <ProtectedRoute
