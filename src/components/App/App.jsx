@@ -24,6 +24,8 @@ import Join from '../Join/Join';
 import Drawing from '../Drawing/Drawing';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
+import AddEvent from '../AddEvent/AddEvent';
+import AddRef from '../AddRef/AddRef';
 
 import './App.css';
 
@@ -85,6 +87,20 @@ function App() {
             exact
             path="/admindash">
             <AdminDash />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/addevent">
+            <AddEvent />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/addref">
+            <AddRef />
           </ProtectedRoute>
 
           <ProtectedRoute
