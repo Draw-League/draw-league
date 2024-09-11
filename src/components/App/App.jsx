@@ -20,7 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Rules from '../Rules/Rules';
-
+import Join from '../Join/Join';
+import Drawing from '../Drawing/Drawing';
 
 import './App.css';
 
@@ -41,30 +42,35 @@ function App() {
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
 
-          
+
           <Route
             // Not protected, shows Contact at all times (logged in or not)
             exact
-            path="/contact"
-          >
+            path="/contact">
             <Contact />
           </Route>
 
           <Route
             // Not protected, shows Contact at all times (logged in or not)
             exact
-            path="/rules"
-          >
+            path="/rules">
             <Rules />
           </Route>
 
           <Route
             // Not protected, shows Contact at all times (logged in or not)
             exact
-            path="/join"
-          >
+            path="/join">
             <Join />
           </Route>
+
+          <Route
+            // Not protected, shows Contact at all times (logged in or not)
+            exact
+            path="/drawing">
+            <Drawing />
+          </Route>
+
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
