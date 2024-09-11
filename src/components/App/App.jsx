@@ -137,6 +137,13 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows ProJudge else shows LoginPage
+            exact
+            path="/prowinners">
+            <ProWinners />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
