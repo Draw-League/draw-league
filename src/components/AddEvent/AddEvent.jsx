@@ -11,6 +11,16 @@ function AddEvent() {
     <div className="container">
       <div>
         <p>This the add an event page</p>
+        <h3>Event Details</h3> 
+        <form>
+          <input type="text" placeholder="Date"></input>
+          <input type="text" placeholder="Time"></input>
+          <input type="text" placeholder="Location"></input>
+          <input type="text" placeholder="Theme"></input>
+          <input type="text" placeholder="Prompt 1"></input>
+          <input type="text" placeholder="Prompt 2"></input>
+          <input type="text" placeholder="Prompt 3"></input>      
+        </form>
       </div>
     </div>
   );

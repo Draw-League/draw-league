@@ -211,6 +211,14 @@ function App() {
             }
           </Route>
 
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/user"
+          >
+            <UserPage />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/home"
