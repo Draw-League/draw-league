@@ -19,7 +19,7 @@ CREATE TABLE "user" (
  "id" SERIAL PRIMARY KEY,
  "username" VARCHAR (80) UNIQUE NOT NULL,
  "password" VARCHAR (1000) NOT NULL,
- "user_role" VARCHAR (50) NOT NULL,
+ "user_role" VARCHAR (50),
  "ref_job" VARCHAR ,
  "ref_fact" VARCHAR ,
  "ref_img" VARCHAR ,
