@@ -11,6 +11,7 @@ function JudgeGallery() {
     <div className="container">
       <div>
         <p>This the judge's gallery for scoring</p>
+        <p>This will get</p>
       </div>
     </div>
   );

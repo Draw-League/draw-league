@@ -11,6 +11,7 @@ function AddRef() {
     <div className="container">
       <div>
         <p>This the add a ref page</p>
+        <p>It will need to get, post, and put</p>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ function Rules() {
     <div className="container">
       <div>
         <p>This is where the rules go</p>
+        <p>Hard Code</p>
       </div>
     </div>
   );

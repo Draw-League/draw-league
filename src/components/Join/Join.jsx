@@ -11,6 +11,7 @@ function Join() {
     <div className="container">
       <div>
         <p>This is where teams join the game</p>
+        <p>This will post</p>
       </div>
     </div>
   );

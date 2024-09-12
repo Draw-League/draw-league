@@ -11,6 +11,8 @@ function RefDash() {
     <div className="container">
       <div>
         <p>This is the ref dashboard</p>
+        <p>This will get, post, and put</p>
+
       </div>
     </div>
   );

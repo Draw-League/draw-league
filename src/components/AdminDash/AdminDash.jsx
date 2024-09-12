@@ -11,6 +11,7 @@ function AdminDash() {
     <div className="container">
       <div>
         <p>This the admin dashboard</p>
+        <p>It will get </p>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ function Contact() {
     <div className="container">
       <div>
         <p>This lists the email for contact purposes!</p>
+        <p>No calls to the server. Only hardcoded info</p>
       </div>
     </div>
   );

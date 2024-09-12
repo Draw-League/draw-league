@@ -6,6 +6,7 @@ function JudgeScore() {
     <div className="container">
       <div>
         <p>This the judge's modal where the drawing is scored</p>
+        <p>This will get, post, and maybe put?</p>
       </div>
     </div>
   );
