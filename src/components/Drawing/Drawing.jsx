@@ -11,6 +11,7 @@ function Drawing() {
     <div className="container">
       <div>
         <p>This where teams upload their drawing</p>
+        <p>This will get and post</p>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ function ProRules() {
     <div className="container">
       <div>
         <p>This the projector rules page</p>
+        <p>No routes, just hard code</p>
       </div>
     </div>
   );

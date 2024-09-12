@@ -11,6 +11,7 @@ function ProLeaderboard() {
     <div className="container">
       <div>
         <p>This the projector leaderboard</p>
+        <p>This will get</p>
       </div>
     </div>
   );
