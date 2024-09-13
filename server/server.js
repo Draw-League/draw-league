@@ -14,7 +14,7 @@ const judgeRouter = require('./routes/judge.router');
 const teamsRouter = require('./routes/teams.router');
 const eventRouter = require('./routes/event.router');
 const adminRouter = require('./routes/admin.router');
-const imageRouter = require('./routes/image.router');
+const drawingsRouter = require('./routes/image.router');
 
 // Express Middleware
 app.use(express.json());
@@ -33,7 +33,9 @@ app.use('/api/user', userRouter);
 app.use('/api/judge', judgeRouter);
 app.use('/api/teams', teamsRouter);
 app.use('/api/admin', adminRouter);
-app.use('/api/judge', eventRouter);
+app.use('/api/event', eventRouter);
+app.use('/api/drawings', drawingsRouter);
+
 
 
 // Listen Server & Port
