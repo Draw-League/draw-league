@@ -6,12 +6,14 @@ const PORT = process.env.PORT || 5001;
 // Middleware Includes
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
-const teamsRouter = require('./routes/teams.router');
-const eventRouter = require('./routes/event.router');
+
 
 // Route Includes
 const userRouter = require('./routes/user.router');
 const judgeRouter = require('./routes/judge.router');
+const teamsRouter = require('./routes/teams.router');
+const eventRouter = require('./routes/event.router');
+const adminRouter = require('./routes/admin.router')
 
 // Express Middleware
 app.use(express.json());
