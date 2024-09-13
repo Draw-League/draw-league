@@ -10,15 +10,30 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
-import AboutPage from '../AboutPage/AboutPage';
+import {Cloudinary} from "@cloudinary/url-gen";
+import Contact from '../Contact/Contact';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Rules from '../Rules/Rules';
+import Join from '../Join/Join';
+import Drawing from '../Drawing/Drawing';
+import RefDash from '../RefDash/RefDash';
+import AdminDash from '../AdminDash/AdminDash';
+import AddEvent from '../AddEvent/AddEvent';
+import AddRef from '../AddRef/AddRef';
+import ProRules from '../ProRules/ProRules';
+import ProRef from '../ProRef/ProRef';
+import ProJudge from '../ProJudge/ProJudge';
+import ProDash from '../ProDash/ProDash';
+import ProWinners from '../ProWinners/ProWinners';
+import ProBest from '../ProBest/ProBest';
+import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
+import JudgeGallery from '../JudgeGallery/JudgeGallery';
+import JudgeScore from '../JudgeScore/JudgeScore';
 
 import './App.css';
 
@@ -34,30 +49,129 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
 
-          {/* Visiting localhost:5173/about will show the about page. */}
+
           <Route
-            // shows AboutPage at all times (logged in or not)
+            // Not protected, shows Contact at all times (logged in or not)
             exact
-            path="/about"
-          >
-            <AboutPage />
+            path="/contact">
+            <Contact />
           </Route>
 
-          {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:5173/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:5173/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+          <Route
+            // Not protected, shows rules at all times (logged in or not)
             exact
-            path="/user"
-          >
-            <UserPage />
+            path="/rules">
+            <Rules />
+          </Route>
+
+          <Route
+            // Not protected, shows Join at all times (logged in or not)
+            exact
+            path="/join">
+            <Join />
+          </Route>
+
+          <Route
+            // Not protected, shows Drawing at all times (logged in or not)
+            exact
+            path="/drawing">
+            <Drawing />
+          </Route>
+
+          <Route
+            // Not protected, shows JudgeGallery at all times (logged in or not)
+            exact
+            path="/judgegallery">
+            <JudgeGallery />
+          </Route>
+
+          <Route
+            // Not protected, shows JudgeScore at all times (logged in or not)
+            exact
+            path="/judgescore">
+            <JudgeScore />
+          </Route>
+
+          <ProtectedRoute
+            // logged in shows RefDash else shows LoginPage
+            exact
+            path="/refdash">
+            <RefDash />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AdminDash else shows LoginPage
+            exact
+            path="/admindash">
+            <AdminDash />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AddEvent else shows LoginPage
+            exact
+            path="/addevent">
+            <AddEvent />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AddRef else shows LoginPage
+            exact
+            path="/addref">
+            <AddRef />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProRules else shows LoginPage
+            exact
+            path="/prorules">
+            <ProRules />
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            // logged in shows ProRef else shows LoginPage
+            exact
+            path="/proref">
+            <ProRef />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProDash else shows LoginPage
+            exact
+            path="/prodash">
+            <ProDash />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProJudge else shows LoginPage
+            exact
+            path="/projudge">
+            <ProJudge />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners">
+            <ProWinners />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProBest else shows LoginPage
+            exact
+            path="/probest">
+            <ProBest />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProLeaderboard else shows LoginPage
+            exact
+            path="/proleaderboard">
+            <ProLeaderboard />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -96,6 +210,14 @@ function App() {
             }
           </Route>
 
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/user"
+          >
+            <UserPage />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/home"
@@ -115,7 +237,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+       
       </div>
     </Router>
   );
