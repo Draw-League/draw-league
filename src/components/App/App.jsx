@@ -72,7 +72,7 @@ function App() {
           <Route
             // Not protected, shows Join at all times (logged in or not)
             exact
-            path="/join">
+            path="/join-game">
             <Join />
           </Route>
 
