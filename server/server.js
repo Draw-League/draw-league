@@ -14,7 +14,7 @@ const judgeRouter = require('./routes/judge.router');
 const teamsRouter = require('./routes/teams.router');
 const eventRouter = require('./routes/event.router');
 const adminRouter = require('./routes/admin.router');
-const drawingsRouter = require('./routes/image.router');
+const drawingsRouter = require('./routes/drawings.router');
 
 // Express Middleware
 app.use(express.json());

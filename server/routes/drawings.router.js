@@ -1,5 +1,5 @@
-import axios from 'axios';
 
+const axios = require('axios')
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
