@@ -1,0 +1,14 @@
+.join-game{
+    background-color: #FF734F;
+    width: 100%;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.small-logo{
+    width: 400px;
+}
