@@ -7,8 +7,81 @@
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
+    justify-content: flex-start;
 }
 
 .small-logo{
     width: 400px;
+}
+
+.join-game-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.join-game-title{
+    background-color: #C3DD00;
+    color: black;
+    height: 60px;
+    width: 280px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    box-shadow: 3px 6px black;
+    margin: 0 auto;
+}
+
+.join-game-subtitle{
+    color: black;
+    padding: 0;
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: left;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.join-game-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: black;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.join-game-form input{
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 3px 6px black;
+    height: 50px;
+    width: 360px;
+    outline: 0;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.join-game-form button{
+    background-color: #C3DD00;
+    height: 60px;
+    width: 155px;
+    border: 3px solid black;
+    box-shadow: 3px 6px black;
+    color: black;
+    align-self: flex-end;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.join-game-form input::placeholder{
+    font-weight: 700;
+    color: black;
 }
