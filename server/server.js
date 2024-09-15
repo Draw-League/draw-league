@@ -7,8 +7,14 @@ const PORT = process.env.PORT || 5001;
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
+
 // Route Includes
 const userRouter = require('./routes/user.router');
+const judgeRouter = require('./routes/judge.router');
+const teamsRouter = require('./routes/teams.router');
+const eventRouter = require('./routes/event.router');
+const adminRouter = require('./routes/admin.router');
+const drawingsRouter = require('./routes/image.router');
 
 // Express Middleware
 app.use(express.json());
@@ -23,7 +29,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
+app.use('/api/judges', judgeRouter);
+app.use('/api/teams', teamsRouter);
+app.use('/api/admins', adminRouter);
+app.use('/api/events', eventRouter);
+app.use('/api/drawings', drawingsRouter);
+
+
 
 // Listen Server & Port
 app.listen(PORT, () => {
