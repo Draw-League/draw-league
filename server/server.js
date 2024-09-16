@@ -29,11 +29,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/api/user', userRouter);
-app.use('/api/judge', judgeRouter);
+app.use('/api/users', userRouter);
+app.use('/api/judges', judgeRouter);
 app.use('/api/teams', teamsRouter);
-app.use('/api/admin', adminRouter);
-app.use('/api/event', eventRouter);
+app.use('/api/admins', adminRouter);
+app.use('/api/events', eventRouter);
 app.use('/api/drawings', drawingsRouter);
 
 

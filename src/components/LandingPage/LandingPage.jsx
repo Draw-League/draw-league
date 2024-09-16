@@ -18,9 +18,9 @@ function LandingPage() {
       <header className="landing-header">
       <nav>
         <ul className="nav-menu">
-          <li><button className="nav-button" onClick={() => navigation('/how-to-play')}>HOW TO PLAY</button></li>
+          <li><button className="nav-button" onClick={() => navigation('/rules')}>HOW TO PLAY</button></li>
           <li><button className="nav-button" onClick={() => navigation('/join-game')}>JOIN A GAME</button></li>
-          <li><button className="nav-button" onClick={() => navigation('/contact-us')}>CONTACT US</button></li>
+          <li><button className="nav-button" onClick={() => navigation('/contact')}>CONTACT US</button></li>
         </ul>
       </nav>
       </header>
