@@ -29,6 +29,8 @@ router.get('/:id', (req, res) => {
   /**
    * POST route template
    */
+
+  //Make sure to use rejectUnauthenticated once front end reducer and axios call are posting to the route.
   router.post('/create-event', async (req, res) => {
     // POST route code here
     const connection = await pool.connect();
@@ -88,7 +90,7 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
   }
   finally {
-    connection.release();
+    await connection.release();
   }
 });
   
