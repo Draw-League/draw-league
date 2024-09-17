@@ -7,9 +7,11 @@
     font-size: 30px;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
-    cursor: pointer;
+    cursor: pointer; 
 }
-
+.nav-button:hover {
+  background-color: #d9e602;
+}
 .nav-menu {
   list-style-type: none;
   padding: 0;
