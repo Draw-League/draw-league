@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
       judgeKnow: req.body.judgeKnow,
       judgeImg: req.body.judgeImg,
       judgeCode: '4321', //will eventually be populated by serverside code generator function
-      createdBy: 1
+      createdBy: 1  //will be from req.user.id but hardcoded for testing
     }
     const queryTextEvent = `
                         INSERT INTO event (theme, prompt_one, prompt_two, 
