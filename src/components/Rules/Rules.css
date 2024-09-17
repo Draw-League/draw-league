@@ -20,33 +20,6 @@
     padding: 20px;
   }
   
-  .nav-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-    white-space: nowrap;
-  }
-  
-  .main-logo {
-    position: absolute;
-    top: 10px;  
-    left: 10px; 
-    width: 150px;
-    height: auto;
-  }
-  
-
-.back-main {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
   .page-title {
     background-color: #c3dd00;
     color: #000000;

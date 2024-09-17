@@ -1,8 +1,8 @@
 import React from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { useHistory } from 'react-router-dom';
+
 import './Rules.css';
-import logo from './drawleague.png';
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -10,11 +10,6 @@ import logo from './drawleague.png';
 // or even care what the redux state is'
 
 function Rules() {
-  const history = useHistory();
-
-  const navigation = (path) => {
-    history.push(path);
-  };
 
   return (
     <div className="main-container">
