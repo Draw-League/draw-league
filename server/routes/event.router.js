@@ -5,17 +5,20 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     // GET route code here
+    const eventId = req.params.id;
    const queryText = `
-      // querytext goes here
-      `
+                        SELECT *
+                        FROM event
+                        WHERE id = ${eventId};
+                      `;
     pool.query(queryText)
     .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log(`GET ERROR MESSAGE HERE:`, err);
+      console.log(`EVENT GET ERROR MESSAGE HERE:`, err);
       res.sendStatus(500)
     })
     
@@ -32,7 +35,7 @@ router.get('/', (req, res) => {
     pool.query( queryText)
     .then(() => res.sendStatus(201))
     .catch((err) => {
-      console.log('POST ERROR MESSAGE HERE: ', err);
+      console.log('EVENT POST ERROR MESSAGE HERE: ', err);
       res.sendStatus(500);
     });
   
@@ -52,7 +55,7 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log(`PUT ERROR MESSAGE HERE:`, err);
+      console.log(`EVENT PUT ERROR MESSAGE HERE:`, err);
       res.sendStatus(500)
     })
     });
@@ -60,7 +63,7 @@ router.get('/', (req, res) => {
     /**
    * DELETE route template
    */
-  router.delete('/id', (req, res) => {
+  router.delete('/:id', (req, res) => {
       // PUT route code here
       const { id } = req.params;
       const sqlText = `
@@ -72,7 +75,7 @@ router.get('/', (req, res) => {
               res.sendStatus(201);
           })
           .catch((error) => {
-              console.log(`Error DELETE`, error);
+              console.log(`Event Error DELETE`, error);
               res.sendStatus(500); 
           })
     });

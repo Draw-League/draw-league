@@ -9,20 +9,20 @@ button {
     background: none;
     border: none;
     color:white;
-    font-size: 20px;
+    font-size: 30px;
 }
 
-nav {
-    font-family: 'Inter', sans-serif;
-    font-weight: bold; 
-  }
-
-header {
-    padding: 20px;
+.container {
+    text-align: center;
 }
 
 .contact-info {
-    color: white;
+    color: #ebe5e5;
+    text-align: left;
+    display: inline-block;
+    max-width: 820px;
+    font-size: 30px;
+    padding: 180px;
 }
 
 .contactus-title {
@@ -35,11 +35,11 @@ header {
     display: inline-block;
 }
 
-main {
-font-size: 20px;
+p {
+    margin: 4.5px 0;
 }
 
-.info {
-    padding: 100px;
+.email {
+    margin-top: 35px;
 }
   

@@ -23,7 +23,9 @@ CREATE TABLE "user" (
  "ref_job" VARCHAR ,
  "ref_fact" VARCHAR ,
  "ref_img" VARCHAR ,
- "created_at" TIMESTAMP NOT NULL DEFAULT NOW()
+ "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+ "full_name" VARCHAR.
+ "art_medium" VARCHAR
  );
  
  CREATE TABLE "event" (
