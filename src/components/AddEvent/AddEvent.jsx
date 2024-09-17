@@ -10,9 +10,9 @@ import GenerateRandomString from '../CodeGenerator/CodeGenerator';
 
 function AddEvent() {
   
-  function handleSubmit() {
+  
     GenerateRandomString();
-  }
+  
   return (
     <div className="container">
       <div>
