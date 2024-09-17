@@ -12,7 +12,7 @@ function Nav() {
   return (
     <div className="nav-container">
 
-      <img src={logo} className='nav-logo' />
+      <img src={logo} className='nav-logo' onClick={() => navigation('/home')} />
 
         <ul className="nav-menu">
           <li><button className="nav-button" onClick={() => navigation('/rules')}>HOW TO PLAY</button></li>
