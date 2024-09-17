@@ -20,7 +20,7 @@ function Contact() {
         <p>Are you instrested in running a game at your local pub?</p>
         <br></br>
 
-        <p>Please contact us here</p>
+        <p>Please contact us here!</p>
 	      <br></br>
         <p className='email'>hello@drawleague.app</p>
         <InstagramIcon className='instaicon'></InstagramIcon>
