@@ -1,6 +1,8 @@
 import React from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 import './Rules.css';
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -8,7 +10,11 @@ import './Rules.css';
 // or even care what the redux state is'
 
 function Rules() {
+
   return (
+    <div className="main-container">
+      
+
     <div className="rules-container">
       <div className="page-title">HOW TO PLAY</div>
 
@@ -71,6 +77,7 @@ function Rules() {
               <li>SCORING IS 0-100, 300 POINTS TOTAL</li>
               <li>THE 3 TEAMS WITH THE HIGHEST SCORES WIN</li>
             </ul>
+            </div>
           </div>
         </div>
       </div>
