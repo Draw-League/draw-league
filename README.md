@@ -1,4 +1,4 @@
-# Prime Solo Project - Starting Repo
+# Prime Client - DRAW LEAGUE
 
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 

@@ -36,7 +36,34 @@ app.use('/api/admins', adminRouter);
 app.use('/api/events', eventRouter);
 app.use('/api/drawings', drawingsRouter);
 
+const cors = require('cors');
+app.use(cors())
+const http = require('http');
 
+const ioPORT = process.env.ioPORT || 5002;
+
+const server = http.createServer(app);
+const io = require("socket.io")(server, {
+    
+  });
+
+
+  io.on('connection', (socket) => {
+    console.log('', socket.id);
+  
+    socket.on('', () => {
+      console.log('',)
+    });
+
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+  });
+
+});
+
+  io.listen(ioPORT, () => {
+  console.log('Listening on ioPORT:', ioPORT);
+});
 
 
 
