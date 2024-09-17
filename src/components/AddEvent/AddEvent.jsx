@@ -1,5 +1,7 @@
 import React from 'react';
 import './AddEvent.css';
+import '../CodeGenerator/CodeGenerator';
+import GenerateRandomString from '../CodeGenerator/CodeGenerator';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -7,6 +9,10 @@ import './AddEvent.css';
 // or even care what the redux state is'
 
 function AddEvent() {
+  
+  function handleSubmit() {
+    GenerateRandomString();
+  }
   return (
     <div className="container">
       <div>
