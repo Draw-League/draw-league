@@ -22,7 +22,7 @@ function Contact() {
 
         <p>Please contact us here!</p>
 	      <br></br>
-        <p className='email'>hello@drawleague.app!</p>
+        <p className='email'>hello@drawleague.app</p>
         <InstagramIcon className='instaicon'></InstagramIcon>
 
         </div>
