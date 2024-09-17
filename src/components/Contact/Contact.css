@@ -2,44 +2,33 @@ html,body {
     height: 100%;
 }
 
-button {
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold; 
-    background: none;
-    border: none;
-    color:white;
-    font-size: 20px;
-}
-
-nav {
-    font-family: 'Inter', sans-serif;
-    font-weight: bold; 
-  }
-
-header {
-    padding: 20px;
+.container {
+    text-align: center;
 }
 
 .contact-info {
-    color: white;
-}
-
-.contactus-title {
-    border: 3px solid black;
-    background: #ebe5e5;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-top: 8px;
-    padding-bottom: 8px; 
-    display: inline-block;
-}
-
-main {
-font-size: 20px;
+    color: #ebe5e5;
+    text-align: left;
+    display: inline-block; 
+    max-width: 810px;      
+    font-size: 30px;
+    padding-top: 175px;
 }
 
 .info {
     padding: 100px;
 }
-  
+
+.instaicon {
+    padding-top: 10px;
+    font-size: 42px !important;
+    color: black !important;
+}
+
+p {
+    margin: 4.5px 0;
+}
+
+.email {
+    padding-top: 30px !important;
+}
