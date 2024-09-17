@@ -45,6 +45,10 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 

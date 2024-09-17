@@ -1,13 +1,13 @@
 .join-game{
-    background-color: #FF734F;
+    background-color:#007bff;
     width: 100%;
     margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    justify-content: flex-start;
+    
+    justify-content: center;
 }
 
 .small-logo{
@@ -37,7 +37,7 @@
 }
 
 .join-game-subtitle{
-    color: black;
+    color:white;
     padding: 0;
     margin: 0;
     font-size: 32px;
@@ -83,5 +83,5 @@
 
 .join-game-form input::placeholder{
     font-weight: 700;
-    color: black;
+    color:#d1d0ce;
 }
