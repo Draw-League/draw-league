@@ -227,11 +227,11 @@ canvas {
         align-items: center;
         background-color: #fff;
         width: 100%;
-        max-width: 270px;
-        aspect-ratio: 9 / 16;
+        max-width: 300px;
+        aspect-ratio: 10 / 16;
         box-shadow: 6px 6px #000;
-        min-height: 480px;
-        min-width: 270px;
+        min-height: 500px;
+        min-width: 300px;
         margin-bottom: 20px;
     }
     
@@ -262,9 +262,9 @@ canvas {
 
     .action-button {
         display: inline-block;
-        width: 30%;
+        width: 40%;
         padding: 10px;
-        font-size: 14px; 
+        font-size: 20px; 
         white-space: normal;
         text-align: center;
         cursor: pointer;

@@ -91,7 +91,6 @@ function Drawing({ teamName, gameCode, theme, prompt }) {
 
         <div className="right-panel">
           <button className="action-button" onClick={handleSnapClick}>SNAP</button>
-          <button className="action-button" onClick={() => setPhoto(null)}>RETAKE</button>
           <button className="action-button" onClick={submitPhoto}>SUBMIT</button>
         </div>
       </div>
