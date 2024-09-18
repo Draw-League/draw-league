@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
@@ -34,6 +34,7 @@ import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
+
 
 import './App.css';
 import { io } from "socket.io-client";
@@ -136,7 +137,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows AddRef else shows LoginPage
+          // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
