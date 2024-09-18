@@ -1,6 +1,6 @@
 import React from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-
+import Nav from '../Nav/Nav.jsx'
 import './Rules.css';
 
 
@@ -12,9 +12,12 @@ import './Rules.css';
 function Rules() {
 
   return (
-    <div className="main-container">
-      
+  <div>
+    <div className="main-container">\
+    
+     <Nav />
 
+  
     <div className="rules-container">
       <div className="page-title">HOW TO PLAY</div>
 
@@ -81,6 +84,7 @@ function Rules() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
