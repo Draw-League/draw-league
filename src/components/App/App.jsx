@@ -35,6 +35,7 @@ import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
 
+
 import './App.css';
 
 function App() {
@@ -119,7 +120,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows AddRef else shows LoginPage
+          // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />

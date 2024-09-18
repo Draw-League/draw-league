@@ -1,13 +1,13 @@
 .join-game{
-    background-color: #FF734F;
+    background-color:#007bff;
     width: 100%;
     margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    justify-content: flex-start;
+    
+    justify-content: center;
 }
 
 .small-logo{
@@ -21,23 +21,10 @@
     align-items: center;
 }
 
-.join-game-title{
-    background-color: #C3DD00;
-    color: black;
-    height: 60px;
-    width: 280px;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid black;
-    box-shadow: 3px 6px black;
-    margin: 0 auto;
-}
+
 
 .join-game-subtitle{
-    color: black;
+    color:white;
     padding: 0;
     margin: 0;
     font-size: 32px;
@@ -59,7 +46,7 @@
 .join-game-form input{
     background-color: white;
     border: 3px solid black;
-    box-shadow: 3px 6px black;
+    
     height: 50px;
     width: 360px;
     outline: 0;
@@ -73,7 +60,7 @@
     height: 60px;
     width: 155px;
     border: 3px solid black;
-    box-shadow: 3px 6px black;
+    
     color: black;
     align-self: flex-end;
     margin-top: 20px;
@@ -83,5 +70,5 @@
 
 .join-game-form input::placeholder{
     font-weight: 700;
-    color: black;
+    color:#d1d0ce;
 }
