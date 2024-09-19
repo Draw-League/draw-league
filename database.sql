@@ -26,7 +26,7 @@ CREATE TABLE "user" (
  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
  "full_name" VARCHAR.
  "art_medium" VARCHAR,
- "phone_number" VARCHAR
+
  );
  
  CREATE TABLE "event" (
