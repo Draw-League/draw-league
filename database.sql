@@ -19,7 +19,7 @@ CREATE TABLE "user" (
  "id" SERIAL PRIMARY KEY,
  "username" VARCHAR (80) UNIQUE NOT NULL,
  "password" VARCHAR (1000) NOT NULL,
- "user_role" VARCHAR (50) NOT NULL DEFAULT "ref",
+ "user_role" VARCHAR (50) NOT NULL DEFAULT 'ref',
  "ref_job" VARCHAR ,
  "ref_fact" VARCHAR ,
  "ref_img" VARCHAR ,
@@ -93,3 +93,8 @@ VALUES ('Pencil Pushers', 1);
 
 INSERT INTO "drawing" (team_id, drawing_url, score, round)
 VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',85, 1);
+
+ALTER TABLE "user" ADD COLUMN "full_name" VARCHAR;
+ALTER TABLE "user" ADD COLUMN "art_medium" VARCHAR;
+ALTER TABLE "user" ADD COLUMN "phone_number" VARCHAR;
+ALTER TABLE "drawing" ADD COLUMN "event_id" INT REFERENCES "event";
