@@ -9,6 +9,7 @@ export default defineConfig(() => {
         server: {
             proxy: {
                 "/api":'http://localhost:5001',
+                "/socket.io":'http://localhost:5001',
             }
         },
         plugins: [react()],
