@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
@@ -35,21 +35,39 @@ import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
 
+
 import './App.css';
+import { io } from "socket.io-client";
 
 function App() {
   const dispatch = useDispatch();
+  const [socket, setSocket] = useState();
 
   const user = useSelector(store => store.user);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    initializeSockets();
   }, [dispatch]);
 
+  const initializeSockets = () => {
+    if(!socket) {
+        let appSocket = io();
+        setSocket(appSocket);
+        // client-side
+        appSocket.on("connect", () => {
+            console.log(socket.id);
+        });
+        
+        appSocket.on("disconnect", () => {
+            console.log(socket.id)
+        });
+    }
+}
   return (
     <Router>
       <div>
-        
+       
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
@@ -119,7 +137,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows AddRef else shows LoginPage
+          // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
@@ -167,12 +185,11 @@ function App() {
             <ProBest />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          <Route
             // logged in shows ProLeaderboard else shows LoginPage
             exact
-            path="/proleaderboard">
-            <ProLeaderboard />
-          </ProtectedRoute>
+            path="/proleaderboard"
+            render={(props) => (<ProLeaderboard socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
@@ -237,7 +254,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-       
       </div>
     </Router>
   );

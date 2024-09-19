@@ -2,40 +2,9 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #007bff;
+  background-color: #0071ff;
   font-weight: bold; 
   font-family: 'Inter', sans-serif;
-}
-
-.nav-button {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold; 
-  background: none;
-  border: none;
-  color:white;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.landing-header {
-  padding: 20px;
-}
-
-.nav-menu {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 200px;
-  white-space: nowrap;
 }
 
 .landing-main {
@@ -44,16 +13,23 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  justify-content: space-between;
 }
 
 .main-subtitle {
-  color: white;
-  font-size: 20px;
+  color: #ebe5e5;
+  font-size: 35px;
 }
 
 .main-logo {
-  width: 900px;
+  width: 950px;
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-top: 80px;
+}
+
+.instaicon {
+  font-size: 50px !important;
+  color: black !important;
 }

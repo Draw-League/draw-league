@@ -1,45 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import logo from '../LandingPage/drawleague.png';
 
 function Nav() {
-  const user = useSelector((store) => store.user);
+  const history = useHistory();
 
+  const navigation = (path) => {
+    history.push(path);
+  };
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
-      <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        )}
+    <div className="nav-container">
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
+      <img src={logo} className='nav-logo' onClick={() => navigation('/home')} />
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-            <LogOutButton className="navLink" />
-          </>
-        )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-      </div>
+        <ul className="nav-menu">
+          <li><button className="nav-button" onClick={() => navigation('/rules')}>HOW TO PLAY</button></li>
+          <li><button className="nav-button" onClick={() => navigation('/join-game')}>JOIN A GAME</button></li>
+          <li><button className="nav-button" onClick={() => navigation('/contact')}>CONTACT US</button></li>
+      
+          
+        </ul>
+      
     </div>
   );
 }
