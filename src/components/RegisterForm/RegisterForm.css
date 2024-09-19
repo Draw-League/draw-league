@@ -1,0 +1,19 @@
+.role-button {
+    border: 3px solid black;
+    background: #ebe5e5;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer; 
+}
+.role-button:hover {
+  background-color: #d9e602;
+}
+
+.role-button:focus { 
+    background-color: #d9e602;
+ }

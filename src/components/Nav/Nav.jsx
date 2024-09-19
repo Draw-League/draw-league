@@ -18,6 +18,8 @@ function Nav() {
           <li><button className="nav-button" onClick={() => navigation('/rules')}>HOW TO PLAY</button></li>
           <li><button className="nav-button" onClick={() => navigation('/join-game')}>JOIN A GAME</button></li>
           <li><button className="nav-button" onClick={() => navigation('/contact')}>CONTACT US</button></li>
+      
+          
         </ul>
       
     </div>
