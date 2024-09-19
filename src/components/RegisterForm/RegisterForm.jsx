@@ -157,10 +157,10 @@ function RegisterForm() {
       )}
 
 <div>
-        <label htmlFor="phoneNum">
+        <label htmlFor="refImg">
           <input
             type="text"
-            name="phoneNum"
+            name="refImg"
             value={refImg}
             placeholder='REF IMG'
             onChange={(event) => setRefImg(event.target.value)}
