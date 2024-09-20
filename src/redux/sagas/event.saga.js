@@ -2,11 +2,12 @@
 import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
-function* createEvent() {
+function* createEvent(action) {
     try {
-      const response = yield axios.post('/api/events/create-event');
-      console.log('response.data', response.data);
-      yield put({ type: 'SET_EVENT', payload: response.data });
+       yield axios.post('/api/events/create-event', action.payload);
+       console.log('action.payload', action.payload);
+       yield put({ type: 'SET_EVENT', payload: action.payload });
+
     }
     catch(error) {
       console.log('Error creating event:', error);
