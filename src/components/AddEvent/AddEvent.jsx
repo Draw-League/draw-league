@@ -1,7 +1,7 @@
 import React from 'react';
 import './AddEvent.css';
-import '../CodeGenerator/CodeGenerator';
-import GenerateRandomString from '../CodeGenerator/CodeGenerator';
+
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -11,7 +11,7 @@ import GenerateRandomString from '../CodeGenerator/CodeGenerator';
 function AddEvent() {
   
   
-    GenerateRandomString();
+
   
   return (
     <div className="container">

@@ -4,6 +4,31 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const { theme } = require('@cloudinary/url-gen/actions/effect');
 const router = express.Router();
 
+
+const codeGenerator = () => {
+
+  let codeLength = 4;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789';
+  let codes = {
+      eventCode: '',
+      judgeCode: ''
+  };
+  
+  const charactersLength = characters.length;
+  
+  for (let i = 0; i < codeLength; i++) {
+      const eventIndex = Math.floor(Math.random() * charactersLength);
+      const judgeIndex = Math.floor(Math.random() * charactersLength);
+      {
+      codes.eventCode += characters[eventIndex];
+      codes.judgeCode += characters[judgeIndex];
+      }
+  }
+  
+  return codes;
+  
+  }
+
 /**
  * GET route template
  */
@@ -29,8 +54,12 @@ router.get('/:id', (req, res) => {
   /**
    * POST route template
    */
+
+  //Make sure to use rejectUnauthenticated once front end reducer and axios call are posting to the route.
   router.post('/create-event', async (req, res) => {
     // POST route code here
+    //codeGenerator();
+    console.log('code generator', codeGenerator().judgeCode);
     const connection = await pool.connect();
   try{
     const eventCreate = {
@@ -39,7 +68,7 @@ router.get('/:id', (req, res) => {
       promptTwo: req.body.promptTwo,
       promptThree: req.body.promptThree,
       eventDate: req.body.eventDate,
-      eventCode: '1234', //will eventually be populated by serverside code generator function
+      eventCode: codeGenerator().eventCode,
       locationName: req.body.locationName,
       locationAddress: req.body.locationAddress,
       judgeName: req.body.judgeName,
@@ -47,8 +76,8 @@ router.get('/:id', (req, res) => {
       judgeLike: req.body.judgeLike,
       judgeKnow: req.body.judgeKnow,
       judgeImg: req.body.judgeImg,
-      judgeCode: '4321', //will eventually be populated by serverside code generator function
-      createdBy: 1  //will be from req.user.id but hardcoded for testing
+      judgeCode: codeGenerator().judgeCode, 
+      createdBy: req.user.id  
     }
     const queryTextEvent = `
                         INSERT INTO event (theme, prompt_one, prompt_two, 
@@ -88,7 +117,7 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
   }
   finally {
-    connection.release();
+    await connection.release();
   }
 });
   
