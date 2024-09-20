@@ -15,6 +15,8 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
+  // ADD FORM VALIDATION 
+
   const registerUser = (event) => {
     event.preventDefault();
 
@@ -38,6 +40,7 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
+
     <div className='register-form'>
     <form className="formPanel" onSubmit={registerUser}>
       <h2>Register User</h2>
@@ -50,6 +53,7 @@ function RegisterForm() {
               Select a role:
               <br />
         <button
+          id='adminButton'
           type="button"
           className={`role-button ${userRole === 'admin' ? 'selected' : ''}`}
           onClick={() => setUserRole('admin')}
@@ -57,6 +61,7 @@ function RegisterForm() {
           ADMIN
         </button>
         <button
+          id= 'refButton'
           type="button"
           className={`role-button ${userRole === 'ref' ? 'selected' : ''}`}
           onClick={() => setUserRole('ref')}
@@ -84,6 +89,8 @@ function RegisterForm() {
             name="password"
             value={password}
             placeholder='PASSWORD'
+            minLength={6}
+            maxLength={12}
             required
             onChange={(event) => setPassword(event.target.value)}
           />
@@ -170,10 +177,14 @@ function RegisterForm() {
       </div>
 
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn" type="submit" name="submit" value="Register"/>
       </div>
+      
     </form>
-    </div>
+    
+    </div> 
+   
+
   );
 }
 

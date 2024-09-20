@@ -1,3 +1,8 @@
+html,
+body,
+#react-root {
+  height: 100%;
+}
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
@@ -31,39 +36,27 @@ Button
   }
   
   .btn:hover {
-    background-color: #830d00;
+    background-color: #d9e602;
     text-decoration: none;
-  }
-  /* --------------------------------------------------------------------------------
-ALERTS
--------------------------------------------------------------------------------- */
-  .alert {
-    box-sizing: border-box;
-    padding: 15px 10px;
-    margin: 15px 0;
-    border: 2px solid #e01616;
-    background-color: #efefef;
-    border-radius: 3px;
-    color: #e01616;
-    font-size: 0.8rem;
   }
 
   /* --------------------------------------------------------------------------------
 FormPanels
 -------------------------------------------------------------------------------- */
-  .formPanel {
-    box-sizing: border-box;
-    width: 400px;
-    max-width: 100%;
-    padding: 2rem;
-    margin: 0 auto 1rem;
-    background-color: #6c69693f;
-    box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-    text-align: center;
-  }
+.formPanel {
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  margin: 0 auto 1rem;
+  text-align: center;
   
-  input {
-    padding: auto;
-    margin: auto;
-    margin-bottom: 10px;
-  }
+}
+
+input {
+  padding: auto;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 200px;
+
+}
