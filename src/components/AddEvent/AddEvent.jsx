@@ -45,7 +45,6 @@ function AddEvent() {
             value={newEvent.theme}
             onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
           />
-          {console.log('new event.theme', newEvent.theme)}
           <input
             type="text"
             placeholder="Prompt One"
