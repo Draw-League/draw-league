@@ -1,0 +1,44 @@
+.ref-title{
+    background-color: #C3DD00;
+    width: 20rem;
+    font-size: 45pt;
+}
+.ref-info{
+    box-shadow: 10px 10px black;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    
+}
+.ref-image{ 
+    background-color: #fff;
+    height: 20rem;
+    width: 20rem;
+    
+}
+.ref-name{
+    background-color: #C3DD00;
+    height: 2rem;
+    width: 20rem;
+    text-align: center;
+    font-size: 1.5rem;
+    
+}
+.ref-facts{
+    background-color: white;
+    height: 10rem;
+    width: 20rem;
+    
+}
+.ref-social-media{
+    margin: .5rem;
+    text-align: left;
+}
+.rn-style{
+    text-align: center;
+}
+.ref-style{
+    text-align: left;
+}
+

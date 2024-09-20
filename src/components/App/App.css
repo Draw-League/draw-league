@@ -1,3 +1,8 @@
+html,
+body,
+#react-root {
+  height: 100%;
+}
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
@@ -31,7 +36,27 @@ Button
   }
   
   .btn:hover {
-    background-color: #830d00;
+    background-color: #d9e602;
     text-decoration: none;
   }
+
+  /* --------------------------------------------------------------------------------
+FormPanels
+-------------------------------------------------------------------------------- */
+.formPanel {
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  margin: 0 auto 1rem;
+  text-align: center;
   
+}
+
+input {
+  padding: auto;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 200px;
+
+}
