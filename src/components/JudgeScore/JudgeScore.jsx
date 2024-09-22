@@ -1,31 +1,29 @@
 import React from "react";
 import "./JudgeScore.css";
-import { useParams } from "react-router-dom";
-
-function JudgeScore() {
-  const { drawingid } = useParams();
-  const [score, setScore] = React.useState(70);
+import Slider from '@mui/material/Slider';
+function JudgeScore({submission,gonext,goprevious,index}) {
+  const [score, setScore] = React.useState(submission.score ||70);
 
   const changeScore = (event, newValue) => {
     setScore(newValue);
   };
 
-  const [isFavorite, setisFavorite] = React.useState(false);
+  const [isFavorite, setisFavorite] = React.useState( submission.favorite_drawing ||false);
   return (
     <div className="container judge-score">
       <div className="judge-score-nav">
-        <button className="judge-button-gray">PREVIOUS</button>
-        <button className="judge-button-gray">NEXT</button>
+        <button onClick={goprevious} className="judge-button-gray"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>PREVIOUS</button>
+        <button onClick={gonext} className="judge-button-gray judge-button-next">NEXT <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg></button>
       </div>
       <div className="judge-score-content">
         <div className="submission-drawing score-drawing">
-          <img src={"https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} alt="" />
+          <img src={submission.drawing_url} alt="" />
         </div>
         <div className="judge-score-right">
           <div className="judge-score-details">
-            <span>Prompt 1</span>
-            <span>#3</span>
-            <span>Team Name</span>
+            <span>Prompt {submission.round}</span>
+            <span>#{index}</span>
+            <span>Team {submission.team_id}</span>
           </div>
           <div className="judge-score-actions">
             <Slider
@@ -34,6 +32,8 @@ function JudgeScore() {
               valueLabelDisplay="auto"
               sx={{
                 color: "white",
+                width:"90%",
+                margin:"0 auto"
               }}
             />
             <div className="judge-score-buttons">
