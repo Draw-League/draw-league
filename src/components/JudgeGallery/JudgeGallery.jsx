@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./JudgeGallery.css";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Slider from '@mui/material/Slider';
+import Slider from "@mui/material/Slider";
+import JudgeScore from "../JudgeScore/JudgeScore";
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -27,6 +28,7 @@ function JudgeGallery() {
   const submissions = [
     {
       team_id: 0,
+      id: 0,
       drawing_url:
         "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       favorite_drawing: false,
@@ -36,6 +38,7 @@ function JudgeGallery() {
     },
     {
       team_id: 1,
+      id: 1,
       drawing_url:
         "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       favorite_drawing: true,
@@ -45,6 +48,7 @@ function JudgeGallery() {
     },
     {
       team_id: 0,
+      id: 2,
       drawing_url:
         "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       favorite_drawing: false,
@@ -54,6 +58,7 @@ function JudgeGallery() {
     },
     {
       team_id: 0,
+      id: 3,
       drawing_url:
         "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       favorite_drawing: false,
@@ -62,6 +67,8 @@ function JudgeGallery() {
       created_at: "2024-09-15 10:36:45.300527",
     },
   ];
+  const [showoverview, setshowoverview] = useState(false);
+  const [currentsubmission, setcurrentsubmission] = useState(submissions[0]);
   return (
     <div className="container judge-view">
       <div className="judge-left">
@@ -112,17 +119,58 @@ function JudgeGallery() {
               onChange={changeScore}
               valueLabelDisplay="auto"
               sx={{
-                color:"white"
+                color: "white",
               }}
             />
           </div>
         </div>
       </div>
-      <div className="judge-right">
-        {submissions.map((x, i) => (
-          <Submission submission={x} index={i} />
-        ))}
-      </div>
+      {showoverview ? (
+        <JudgeScore
+          submission={currentsubmission}
+          key={currentsubmission.id}
+          gonext={() =>
+            setcurrentsubmission(
+              submissions.findIndex((x) => x.id === currentsubmission.id) +
+                1 ===
+                submissions.length
+                ? submissions[0]
+                : submissions[
+                    submissions.findIndex(
+                      (x) => x.id === currentsubmission.id
+                    ) + 1
+                  ]
+            )
+          }
+          goprevious={() =>
+            setcurrentsubmission(
+              submissions.findIndex((x) => x.id === currentsubmission.id) -
+                1 ===
+                -1
+                ? submissions[0]
+                : submissions[
+                    submissions.findIndex(
+                      (x) => x.id === currentsubmission.id
+                    ) - 1
+                  ]
+            )
+          }
+          index={submissions.findIndex((x) => x.id === currentsubmission.id)}
+        />
+      ) : (
+        <div className="judge-right">
+          {submissions.map((x, i) => (
+            <Submission
+              submission={x}
+              index={i}
+              showoverview={() => {
+                setcurrentsubmission(x);
+                setshowoverview(true);
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -153,9 +201,9 @@ function JudgeOption({ text, value, onchange }) {
   );
 }
 
-function Submission({ submission, index }) {
+function Submission({ submission, index, showoverview }) {
   return (
-    <div className="judge-submission">
+    <div className="judge-submission" onClick={showoverview}>
       <div className="submission-title">
         <span>#{index}</span>
         <span>Prompt {submission.round}</span>
