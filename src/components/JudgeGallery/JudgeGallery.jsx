@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./JudgeGallery.css";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Slider from '@mui/material/Slider';
+
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -15,6 +17,12 @@ function JudgeGallery() {
     notscored: false,
     favorites: false,
   });
+
+  const [score, setScore] = React.useState([20, 37]);
+
+  const changeScore = (event, newValue) => {
+    setScore(newValue);
+  };
 
   const submissions = [
     {
@@ -94,10 +102,24 @@ function JudgeGallery() {
             }
             text="Favorites"
           />
+          <div className="judge-score-range">
+            <div className="range-details">
+              <span>Scored</span>
+              <span>{`${score[0]} - ${score[1]}`}</span>
+            </div>
+            <Slider
+              value={score}
+              onChange={changeScore}
+              valueLabelDisplay="auto"
+              sx={{
+                color:"white"
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="judge-right">
-        {submissions.map((x,i) => (
+        {submissions.map((x, i) => (
           <Submission submission={x} index={i} />
         ))}
       </div>
