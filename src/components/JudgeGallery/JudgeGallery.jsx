@@ -4,6 +4,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slider from "@mui/material/Slider";
 import JudgeScore from "../JudgeScore/JudgeScore";
+import { useHistory } from "react-router-dom";
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -11,6 +12,7 @@ import JudgeScore from "../JudgeScore/JudgeScore";
 // or even care what the redux state is'
 
 function JudgeGallery() {
+  const history = useHistory();
   // filter options for the submissions
   const [showoptions, setshowoptions] = useState({
     promptone: false,
@@ -217,7 +219,13 @@ function JudgeGallery() {
   return (
     <div className="judge-view">
       <div className="judge-left">
-        <h1 className="judge-view-title">JUDGE DASHBOARD</h1>
+        <button
+          className="judge-view-title"
+          onClick={() => window.location.reload()}
+        >
+          JUDGE DASHBOARD
+        </button>
+
         <div className="judge-options">
           <JudgeOption
             value={showoptions.promptone}
@@ -283,10 +291,10 @@ function JudgeGallery() {
                 filteredSubmissions.length
                 ? filteredSubmissions[0]
                 : filteredSubmissions[
-                    filteredSubmissions.findIndex(
-                      (x) => x.id === currentsubmission.id
-                    ) + 1
-                  ]
+                filteredSubmissions.findIndex(
+                  (x) => x.id === currentsubmission.id
+                ) + 1
+                ]
             )
           }
           goprevious={() =>
@@ -298,10 +306,10 @@ function JudgeGallery() {
                 -1
                 ? filteredSubmissions[0]
                 : filteredSubmissions[
-                    filteredSubmissions.findIndex(
-                      (x) => x.id === currentsubmission.id
-                    ) - 1
-                  ]
+                filteredSubmissions.findIndex(
+                  (x) => x.id === currentsubmission.id
+                ) - 1
+                ]
             )
           }
           index={filteredSubmissions.findIndex(
