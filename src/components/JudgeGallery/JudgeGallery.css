@@ -1,35 +1,41 @@
-.judge-view{
-    width: 100vw;
+.judge-view {
+    width: 100%;
     display: flex;
     gap: 30px;
     flex-direction: row;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 50px;
 }
 
-.judge-left{
+.judge-left {
     width: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding-left: 40px;
     height: 100%;
+    position: fixed;
+    top: 50px;
 }
 
-.judge-options{
+.judge-options {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.judge-right{
-    width: calc(100% - 370px);
+.judge-right {
+    width: calc(100% - 600px);
     height: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 30px;
+    margin-left: 550px;
 }
 
-.judge-view-title{
+.judge-view-title {
     background-color: #C3DD00;
     color: black;
     height: 60px;
@@ -44,7 +50,7 @@
     margin: 0 auto;
 }
 
-.judge-submission{
+.judge-submission {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -58,33 +64,45 @@
     justify-content: space-between;
 }
 
-.submission-drawing{
+.submission-drawing {
     width: 100%;
     height: 70%;
     background-color: white;
     border: 1px solid black;
 }
 
-.submission-drawing img{
+.submission-drawing img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-.submission-title{
+.submission-title {
     display: flex;
     justify-content: space-between;
 }
 
-.submission-details{
+.submission-details {
     display: flex;
     justify-content: space-between;
 }
 
-.submission-team{
+.submission-team {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
+}
+
+.no-submissions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    width: calc(100% - 600px);
+    margin-left: 550px;
 }

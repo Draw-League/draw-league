@@ -11,20 +11,23 @@ import JudgeScore from "../JudgeScore/JudgeScore";
 // or even care what the redux state is'
 
 function JudgeGallery() {
+  // filter options for the submissions
   const [showoptions, setshowoptions] = useState({
-    promptone: true,
-    prompttwo: true,
-    promptthree: true,
+    promptone: false,
+    prompttwo: false,
+    promptthree: false,
     notscored: false,
     favorites: false,
   });
 
+  // score range for the submissions
   const [score, setScore] = React.useState([0, 100]);
 
   const changeScore = (event, newValue) => {
     setScore(newValue);
   };
 
+  // sample submissions - this will be replaced with the actual submissions from the saga
   const submissions = [
     {
       team_id: 0,
@@ -66,7 +69,6 @@ function JudgeGallery() {
       round: 1,
       created_at: "2024-09-15 10:36:45.300527",
     },
-    // Additional 10 submissions:
     {
       team_id: 2,
       id: 4,
@@ -158,39 +160,62 @@ function JudgeGallery() {
       created_at: "2024-09-19 16:00:00.000000",
     },
   ];
+
+  // hold the filtered submissions
   const [filteredSubmissions, setfilteredsubmissions] = useState(submissions);
+
+  // logic to filter the submissions based on the filter options
   const getfilteredsubmissions = () => {
+    // we first filter the submissions based on the active rounds
     const activerounds = [
       showoptions.promptone ? 1 : -1,
       showoptions.prompttwo ? 2 : -1,
       showoptions.promptthree ? 3 : -1,
     ];
-console.log(activerounds)
     const roundsSubmissions = submissions.filter((x) =>
       activerounds.includes(x.round)
     );
+
+    // then we filter the submissions based on whether they have been scored or not
     const notscoredsubmissions = roundsSubmissions.filter((x) =>
       showoptions.notscored ? x.score === 0 : x.score !== 0
     );
+
+    // then we filter the submissions based on the favorite drawing
     const favoriteSubmissions = notscoredsubmissions.filter(
       (x) => x.favorite_drawing === showoptions.favorites
     );
+
+    // then we filter the submissions based on the score range
     const scorerangesubmissions = favoriteSubmissions.filter(
       (x) => x.score >= score[0] && x.score <= score[1]
     );
 
+    // return the filtered submissions
     return scorerangesubmissions;
   };
 
+  // this useEffect will run whenever the filter options, score range or submissions change
   useEffect(() => {
-    setfilteredsubmissions(getfilteredsubmissions());
-  }, [showoptions, score]);
-  console.log(filteredSubmissions);
-  console.log(showoptions);
+    // first we check if any of the filter options are active or the score range is not the default
+    if (
+      !Object.values(showoptions).every((value) => value === false) ||
+      score[0] !== 0 ||
+      score[1] !== 100
+    ) {
+      setfilteredsubmissions(getfilteredsubmissions());
+    } else {
+      setfilteredsubmissions(submissions);
+    }
+  }, [showoptions, score, submissions]);
+
   const [showoverview, setshowoverview] = useState(false);
-  const [currentsubmission, setcurrentsubmission] = useState(submissions[0]);
+  const [currentsubmission, setcurrentsubmission] = useState(
+    filteredSubmissions[0]
+  );
+
   return (
-    <div className="container judge-view">
+    <div className="judge-view">
       <div className="judge-left">
         <h1 className="judge-view-title">JUDGE DASHBOARD</h1>
         <div className="judge-options">
@@ -295,6 +320,9 @@ console.log(activerounds)
               }}
             />
           ))}
+          {filteredSubmissions.length === 0 && (
+            <div className="no-submissions">No Submissions</div>
+          )}
         </div>
       )}
     </div>

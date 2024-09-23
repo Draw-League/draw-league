@@ -1,19 +1,66 @@
 import React from "react";
 import "./JudgeScore.css";
-import Slider from '@mui/material/Slider';
-function JudgeScore({submission,gonext,goprevious,index}) {
-  const [score, setScore] = React.useState(submission.score ||70);
+import Slider from "@mui/material/Slider";
+
+function JudgeScore({ submission, gonext, goprevious, index }) {
+  const [score, setScore] = React.useState(submission.score || 70);
 
   const changeScore = (event, newValue) => {
     setScore(newValue);
   };
 
-  const [isFavorite, setisFavorite] = React.useState( submission.favorite_drawing ||false);
+  const [isFavorite, setisFavorite] = React.useState(
+    submission.favorite_drawing || false
+  );
+
+  const scoreSubmission = () => {
+    // update score
+    console.log("Score: ", score);
+  };
+
   return (
-    <div className="container judge-score">
+    <div className="judge-score">
       <div className="judge-score-nav">
-        <button onClick={goprevious} className="judge-button-gray"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>PREVIOUS</button>
-        <button onClick={gonext} className="judge-button-gray judge-button-next">NEXT <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg></button>
+        <button onClick={goprevious} className="judge-button-gray">
+          {" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-move-left"
+          >
+            <path d="M6 8L2 12L6 16" />
+            <path d="M2 12H22" />
+          </svg>
+          PREVIOUS
+        </button>
+        <button
+          onClick={gonext}
+          className="judge-button-gray judge-button-next"
+        >
+          NEXT{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-move-right"
+          >
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </button>
       </div>
       <div className="judge-score-content">
         <div className="submission-drawing score-drawing">
@@ -32,12 +79,15 @@ function JudgeScore({submission,gonext,goprevious,index}) {
               valueLabelDisplay="auto"
               sx={{
                 color: "white",
-                width:"90%",
-                margin:"0 auto"
+                width: "90%",
+                margin: "0 auto",
               }}
             />
             <div className="judge-score-buttons">
-              <button className="judge-button-favorite">
+              <button
+                className="judge-button-favorite"
+                onClick={() => setisFavorite(!isFavorite)}
+              >
                 {isFavorite ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +119,12 @@ function JudgeScore({submission,gonext,goprevious,index}) {
                 )}{" "}
                 Favorite
               </button>
-              <button className="judge-button-gray">SCORE IT!</button>
+              <button
+                onClick={() => scoreSubmission()}
+                className="judge-button-gray"
+              >
+                SCORE IT!
+              </button>
             </div>
           </div>
         </div>
