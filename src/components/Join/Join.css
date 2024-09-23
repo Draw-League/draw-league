@@ -72,3 +72,16 @@
     font-weight: 700;
     color:#d1d0ce;
 }
+
+.judge-score-range{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.range-details{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}

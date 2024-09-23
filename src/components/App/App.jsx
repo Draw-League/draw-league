@@ -111,7 +111,7 @@ function App() {
           <Route
             // Not protected, shows JudgeScore at all times (logged in or not)
             exact
-            path="/judgescore">
+            path="/judgescore/:drawingid">
             <JudgeScore />
           </Route>
 
