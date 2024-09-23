@@ -9,11 +9,52 @@ import './ProRef.css';
 function ProRef() {
   return (
     <div className="container">
-      <div>
-        <p>This the projector ref page</p>
-        <p>This will get</p>
+      <div className='ref-tite'>
+      <h2 className='ref-title'> REFEREE</h2>
       </div>
+
+      <div className='ref-info'>
+      <div className='ref-image'>
+        <p>Ref Image</p>
+      </div>
+
+      <div className='ref-name'>
+       <p>Ref Name</p>
+      </div>
+
+      <div className='ref-facts'>
+        <p className='ref-style'>occupation</p>
+        <p className='ref-style'>art medium</p>
+        <p className='ref-style'>fun fact</p>
+      </div>
+      </div>
+      <div className='ref-social-media'>
+        <p> @instagram/social media handle </p>
+      </div>
+
+      <div className='ref-info'>
+      <div className='ref-image'>
+        <p>Ref Image</p>
+      </div>
+
+      <div className='ref-name'>
+       <p>Ref Name</p>
+      </div>
+
+      <div className='ref-facts'>
+        <p className='ref-style'>occupation</p>
+        <p className='ref-style'>art medium</p>
+        <p className='ref-style'>fun fact</p>
+      </div>
+      </div>
+      <div className='ref-social-media'>
+        <p> @instagram/social media handle </p>
+      </div>
+    
     </div>
+
+    
+    
   );
 }
 
