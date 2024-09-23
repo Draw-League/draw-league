@@ -4,6 +4,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slider from "@mui/material/Slider";
 import JudgeScore from "../JudgeScore/JudgeScore";
+import { useHistory } from "react-router-dom";
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -11,6 +12,7 @@ import JudgeScore from "../JudgeScore/JudgeScore";
 // or even care what the redux state is'
 
 function JudgeGallery() {
+  const history = useHistory();
   // filter options for the submissions
   const [showoptions, setshowoptions] = useState({
     promptone: false,
@@ -166,48 +168,29 @@ function JudgeGallery() {
 
   // logic to filter the submissions based on the filter options
   const getfilteredsubmissions = () => {
-    // we first filter the submissions based on the active rounds
-    const activerounds = [
-      showoptions.promptone ? 1 : -1,
-      showoptions.prompttwo ? 2 : -1,
-      showoptions.promptthree ? 3 : -1,
-    ];
-    const roundsSubmissions = submissions.filter((x) =>
-      activerounds.includes(x.round)
-    );
-
-    // then we filter the submissions based on whether they have been scored or not
-    const notscoredsubmissions = roundsSubmissions.filter((x) =>
-      showoptions.notscored ? x.score === 0 : x.score !== 0
-    );
-
-    // then we filter the submissions based on the favorite drawing
-    const favoriteSubmissions = notscoredsubmissions.filter(
-      (x) => x.favorite_drawing === showoptions.favorites
-    );
-
-    // then we filter the submissions based on the score range
-    const scorerangesubmissions = favoriteSubmissions.filter(
+    let filtered = submissions;
+    const activerounds = [];
+    if (showoptions.promptone) activerounds.push(1);
+    if (showoptions.prompttwo) activerounds.push(2);
+    if (showoptions.promptthree) activerounds.push(3);
+    if (activerounds.length > 0) {
+      filtered = filtered.filter((x) => activerounds.includes(x.round));
+    }
+    if (showoptions.favorites) {
+      filtered = filtered.filter((x) => x.favorite_drawing);
+    }
+    if (showoptions.notscored) {
+      filtered = filtered.filter((x) => x.score === 0);
+    }
+    filtered = filtered.filter(
       (x) => x.score >= score[0] && x.score <= score[1]
     );
-
-    // return the filtered submissions
-    return scorerangesubmissions;
+    return filtered;
   };
 
-  // this useEffect will run whenever the filter options, score range or submissions change
   useEffect(() => {
-    // first we check if any of the filter options are active or the score range is not the default
-    if (
-      !Object.values(showoptions).every((value) => value === false) ||
-      score[0] !== 0 ||
-      score[1] !== 100
-    ) {
-      setfilteredsubmissions(getfilteredsubmissions());
-    } else {
-      setfilteredsubmissions(submissions);
-    }
-  }, [showoptions, score, submissions]);
+    setfilteredsubmissions(getfilteredsubmissions());
+  }, [showoptions, score]);
 
   const [showoverview, setshowoverview] = useState(false);
   const [currentsubmission, setcurrentsubmission] = useState(
@@ -217,7 +200,13 @@ function JudgeGallery() {
   return (
     <div className="judge-view">
       <div className="judge-left">
-        <h1 className="judge-view-title">JUDGE DASHBOARD</h1>
+        <button
+          className="judge-view-title"
+          onClick={() => window.location.reload()}
+        >
+          JUDGE DASHBOARD
+        </button>
+
         <div className="judge-options">
           <JudgeOption
             value={showoptions.promptone}
@@ -263,6 +252,8 @@ function JudgeGallery() {
               value={score}
               onChange={changeScore}
               valueLabelDisplay="auto"
+              min={0}
+              max={100}
               sx={{
                 color: "white",
               }}
@@ -283,10 +274,10 @@ function JudgeGallery() {
                 filteredSubmissions.length
                 ? filteredSubmissions[0]
                 : filteredSubmissions[
-                    filteredSubmissions.findIndex(
-                      (x) => x.id === currentsubmission.id
-                    ) + 1
-                  ]
+                filteredSubmissions.findIndex(
+                  (x) => x.id === currentsubmission.id
+                ) + 1
+                ]
             )
           }
           goprevious={() =>
@@ -298,10 +289,10 @@ function JudgeGallery() {
                 -1
                 ? filteredSubmissions[0]
                 : filteredSubmissions[
-                    filteredSubmissions.findIndex(
-                      (x) => x.id === currentsubmission.id
-                    ) - 1
-                  ]
+                filteredSubmissions.findIndex(
+                  (x) => x.id === currentsubmission.id
+                ) - 1
+                ]
             )
           }
           index={filteredSubmissions.findIndex(

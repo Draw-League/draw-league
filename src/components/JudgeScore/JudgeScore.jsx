@@ -33,7 +33,7 @@ function JudgeScore({ submission, gonext, goprevious, index }) {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-move-left"
+            className="lucide lucide-move-left"
           >
             <path d="M6 8L2 12L6 16" />
             <path d="M2 12H22" />
@@ -55,7 +55,7 @@ function JudgeScore({ submission, gonext, goprevious, index }) {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-move-right"
+            className="lucide lucide-move-right"
           >
             <path d="M18 8L22 12L18 16" />
             <path d="M2 12H22" />
