@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./JudgeGallery.css";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -13,13 +13,13 @@ import JudgeScore from "../JudgeScore/JudgeScore";
 function JudgeGallery() {
   const [showoptions, setshowoptions] = useState({
     promptone: true,
-    prompttwo: false,
-    promptthree: false,
+    prompttwo: true,
+    promptthree: true,
     notscored: false,
     favorites: false,
   });
 
-  const [score, setScore] = React.useState([20, 37]);
+  const [score, setScore] = React.useState([0, 100]);
 
   const changeScore = (event, newValue) => {
     setScore(newValue);
@@ -66,7 +66,127 @@ function JudgeGallery() {
       round: 1,
       created_at: "2024-09-15 10:36:45.300527",
     },
+    // Additional 10 submissions:
+    {
+      team_id: 2,
+      id: 4,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: true,
+      score: 30,
+      round: 2,
+      created_at: "2024-09-16 11:00:00.000000",
+    },
+    {
+      team_id: 1,
+      id: 5,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: false,
+      score: 60,
+      round: 1,
+      created_at: "2024-09-16 11:10:00.000000",
+    },
+    {
+      team_id: 2,
+      id: 6,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: true,
+      score: 80,
+      round: 2,
+      created_at: "2024-09-17 12:30:00.000000",
+    },
+    {
+      team_id: 0,
+      id: 7,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: false,
+      score: 45,
+      round: 1,
+      created_at: "2024-09-17 13:45:00.000000",
+    },
+    {
+      team_id: 1,
+      id: 8,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: false,
+      score: 50,
+      round: 3,
+      created_at: "2024-09-18 08:00:00.000000",
+    },
+    {
+      team_id: 3,
+      id: 9,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: true,
+      score: 70,
+      round: 2,
+      created_at: "2024-09-18 09:15:00.000000",
+    },
+    {
+      team_id: 2,
+      id: 10,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: false,
+      score: 55,
+      round: 3,
+      created_at: "2024-09-18 10:20:00.000000",
+    },
+    {
+      team_id: 3,
+      id: 11,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: true,
+      score: 25,
+      round: 1,
+      created_at: "2024-09-19 14:45:00.000000",
+    },
+    {
+      team_id: 0,
+      id: 12,
+      drawing_url:
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      favorite_drawing: false,
+      score: 75,
+      round: 1,
+      created_at: "2024-09-19 16:00:00.000000",
+    },
   ];
+  const [filteredSubmissions, setfilteredsubmissions] = useState(submissions);
+  const getfilteredsubmissions = () => {
+    const activerounds = [
+      showoptions.promptone ? 1 : -1,
+      showoptions.prompttwo ? 2 : -1,
+      showoptions.promptthree ? 3 : -1,
+    ];
+console.log(activerounds)
+    const roundsSubmissions = submissions.filter((x) =>
+      activerounds.includes(x.round)
+    );
+    const notscoredsubmissions = roundsSubmissions.filter((x) =>
+      showoptions.notscored ? x.score === 0 : x.score !== 0
+    );
+    const favoriteSubmissions = notscoredsubmissions.filter(
+      (x) => x.favorite_drawing === showoptions.favorites
+    );
+    const scorerangesubmissions = favoriteSubmissions.filter(
+      (x) => x.score >= score[0] && x.score <= score[1]
+    );
+
+    return scorerangesubmissions;
+  };
+
+  useEffect(() => {
+    setfilteredsubmissions(getfilteredsubmissions());
+  }, [showoptions, score]);
+  console.log(filteredSubmissions);
+  console.log(showoptions);
   const [showoverview, setshowoverview] = useState(false);
   const [currentsubmission, setcurrentsubmission] = useState(submissions[0]);
   return (
@@ -76,37 +196,37 @@ function JudgeGallery() {
         <div className="judge-options">
           <JudgeOption
             value={showoptions.promptone}
-            onchange={(value) =>
-              setshowoptions({ ...showoptions, promptone: value })
-            }
+            onchange={(value) => {
+              setshowoptions({ ...showoptions, promptone: value });
+            }}
             text="Prompt 1"
           />
           <JudgeOption
-            value={showoptions.promptwo}
-            onchange={(value) =>
-              setshowoptions({ ...showoptions, promptwo: value })
-            }
+            value={showoptions.prompttwo}
+            onchange={(value) => {
+              setshowoptions({ ...showoptions, prompttwo: value });
+            }}
             text="Prompt 2"
           />
           <JudgeOption
-            value={showoptions.prompthree}
-            onchange={(value) =>
-              setshowoptions({ ...showoptions, prompthree: value })
-            }
+            value={showoptions.promptthree}
+            onchange={(value) => {
+              setshowoptions({ ...showoptions, promptthree: value });
+            }}
             text="Prompt 3"
           />
           <JudgeOption
             value={showoptions.notscored}
-            onchange={(value) =>
-              setshowoptions({ ...showoptions, notscored: value })
-            }
+            onchange={(value) => {
+              setshowoptions({ ...showoptions, notscored: value });
+            }}
             text="Not Scored"
           />
           <JudgeOption
             value={showoptions.favorites}
-            onchange={(value) =>
-              setshowoptions({ ...showoptions, favorites: value })
-            }
+            onchange={(value) => {
+              setshowoptions({ ...showoptions, favorites: value });
+            }}
             text="Favorites"
           />
           <div className="judge-score-range">
@@ -131,12 +251,14 @@ function JudgeGallery() {
           key={currentsubmission.id}
           gonext={() =>
             setcurrentsubmission(
-              submissions.findIndex((x) => x.id === currentsubmission.id) +
+              filteredSubmissions.findIndex(
+                (x) => x.id === currentsubmission.id
+              ) +
                 1 ===
-                submissions.length
-                ? submissions[0]
-                : submissions[
-                    submissions.findIndex(
+                filteredSubmissions.length
+                ? filteredSubmissions[0]
+                : filteredSubmissions[
+                    filteredSubmissions.findIndex(
                       (x) => x.id === currentsubmission.id
                     ) + 1
                   ]
@@ -144,22 +266,26 @@ function JudgeGallery() {
           }
           goprevious={() =>
             setcurrentsubmission(
-              submissions.findIndex((x) => x.id === currentsubmission.id) -
+              filteredSubmissions.findIndex(
+                (x) => x.id === currentsubmission.id
+              ) -
                 1 ===
                 -1
-                ? submissions[0]
-                : submissions[
-                    submissions.findIndex(
+                ? filteredSubmissions[0]
+                : filteredSubmissions[
+                    filteredSubmissions.findIndex(
                       (x) => x.id === currentsubmission.id
                     ) - 1
                   ]
             )
           }
-          index={submissions.findIndex((x) => x.id === currentsubmission.id)}
+          index={filteredSubmissions.findIndex(
+            (x) => x.id === currentsubmission.id
+          )}
         />
       ) : (
         <div className="judge-right">
-          {submissions.map((x, i) => (
+          {filteredSubmissions.map((x, i) => (
             <Submission
               submission={x}
               index={i}
@@ -192,7 +318,7 @@ function JudgeOption({ text, value, onchange }) {
             color: "#C3DD00",
           }}
           color="succes"
-          value={value}
+          checked={value}
           onChange={(e) => onchange(e.target.checked)}
         />
       }
