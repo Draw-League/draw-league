@@ -13,7 +13,7 @@ function Rules() {
 
   return (
   <div>
-    <div className="main-container">\
+    <div className="main-container">
     
      <Nav />
 
