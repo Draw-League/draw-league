@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './ProRef.css';
@@ -11,48 +11,41 @@ import './ProRef.css';
 
 function ProRef() {
   const dispatch = useDispatch();
-  const {id} = useParams();
-  // const refDetails = useSelector(store => store.);
+  const { id } = useParams();
+  const refDetails = useSelector(store => store.projectionReducer);
   const history = useHistory();
 
   useEffect(() => {
-    dispatch({ type: "INSERT SAGA DISPATCH HERE", payload: id });
+    dispatch({ type: "FETCH_REFS", payload: id });
   }, [id, dispatch]);
 
 
   return (
-
-    
-    <div className="container">
-      {/* {refDetails.map(ref => {})} */}
+<div className="container">
       <div className='ref-tite'>
-      <h2 className='ref-title'> REFEREE</h2>
+        <h2 className='ref-title'> REFEREE</h2>
       </div>
+      <section className="ref-info">
+        {refDetails.map((ref) => (
+            <div key={ref.id}> {/* Add a unique key for each ref */}
+              <div className='ref-image'>
+               <p> {ref.ref_img}</p>
+              </div>
 
-      <div className='ref-info'>
-      <div className='ref-image'>
-        <p>Ref Image</p>
-      </div>
+              <div className='ref-name'>
+                <p>{ref.full_name}</p>
+              </div>
 
-      <div className='ref-name'>
-       <p>Ref Name</p>
-      </div>
-
-      <div className='ref-facts'>
-        <p className='ref-style'>occupation</p>
-        <p className='ref-style'>art medium</p>
-        <p className='ref-style'>fun fact</p>
-      </div>
-      </div>
-      <div className='ref-social-media'>
-        <p> @instagram/social media handle </p>
-      </div>
-
-      
+              <div className='ref-facts'>
+                <p className='ref-style'>{ref.ref_job}</p>
+                <p className='ref-style'>{ref.fact}</p>
+                <p className='ref-style'>{ref.art_medium}</p>
+              </div>
+            </div>
+          ))
+        }
+      </section>
     </div>
-
-    
-    
   );
 }
 
