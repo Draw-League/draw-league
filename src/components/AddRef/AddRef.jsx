@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import './AddRef.css';
+import { useDispatch } from 'react-redux';
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -7,6 +9,28 @@ import './AddRef.css';
 // or even care what the redux state is'
 
 function AddRef() {
+    const [newRef, setNewRef] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        occupation: '',
+        artMedium: '',
+        funFact: '',
+    //  REF IMAGE
+      });
+    
+      const dispatch = useDispatch();
+    
+      const createRef = (event) => {
+        event.preventDefault();
+    
+        dispatch({
+          type: 'ADD_REF',
+          payload: newRef, // Send the entire newRef object
+        });
+      };
+
+
   return (
     <div className="container">
       <div className='add-ref-form'>
@@ -15,9 +39,10 @@ function AddRef() {
                     <input className='add-new-input'
                         type="text"
                         name="name"
-                        placeholder='NAME'
+                        placeholder='FULL NAME'
                         required
-                        // value={INSERT VALUE NAME}
+                        value={newRef.fullName}
+                        onChange={(event) => setNewRef({ ...newRef, fullName: event.target.value })}
                     />
                 </label>
                 <br />
@@ -27,8 +52,8 @@ function AddRef() {
                         name="email"
                         placeholder='EMAIL'
                         required
-                        // value={INSERT VALUE NAME}
-                    />
+                        value={newRef.email}
+                        onChange={(event) => setNewRef({ ...newRef, email: event.target.value })}                    />
                 </label>
                 <br />
                 <label htmlFor="phone">
@@ -37,7 +62,8 @@ function AddRef() {
                         name="phone"
                         placeholder='PHONE #'
                         required
-                        // value={INSERT VALUE NAME}
+                        value={newRef.phone}
+                        onChange={(event) => setNewRef({ ...newRef, phone: event.target.value })}
                     />
                 </label>
                 <br />
@@ -47,7 +73,8 @@ function AddRef() {
                         name="occupation"
                         placeholder='OCCUPATION'
                         required
-                        // value={INSERT VALUE NAME}
+                        value={newRef.occupation}
+                        onChange={(event) => setNewRef({ ...newRef, occupation: event.target.value })}
                     />
                 </label>
                 <br />
@@ -57,7 +84,8 @@ function AddRef() {
                         name="artMedium"
                         placeholder='ART MEDIUM'
                         required
-                        // value={INSERT VALUE NAME}
+                        value={newRef.artMedium}
+                        onChange={(event) => setNewRef({ ...newRef, artMedium: event.target.value })}
                     />
                 </label>
                 <br />
@@ -67,7 +95,8 @@ function AddRef() {
                         name="funFact"
                         placeholder='FUN FACT'
                         required
-                        // value={INSERT VALUE NAME}
+                        value={newRef.funFact}
+                        onChange={(event) => setNewRef({ ...newRef, funFact: event.target.value })}
                     />
                 </label>
         <div>

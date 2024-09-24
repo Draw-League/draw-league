@@ -10,12 +10,21 @@ import {useSelector} from 'react-redux';
 // or even care what the redux state is'
 
 function AdminDash() {
+
+  const user = useSelector((store) => store.user);
+
   return (
     <div className="container">
       <AdminNav />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div>
         <p>This the admin dashboard</p>
-        <p>It will get </p>
+       
       </div>
       <div className="container">
       <h2>Welcome, {user.full_name}!</h2>
