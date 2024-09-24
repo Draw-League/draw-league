@@ -4,13 +4,13 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 function* fetchRefs(action) {
     try {
-       yield axios.post('/api/projections/ref-intro', action.payload);
+      const refResponse= yield axios.get(`/api/projections/ref-intro/:id/${ action.payload}`);
        console.log('action.payload', action.payload);
-       yield put({ type: 'SET_REF', payload: action.payload });
+       yield put({ type: 'SET_REF', payload: refResponse.data});
 
     }
     catch(error) {
-      console.log('Error fetchRegs Saga:', error);
+      console.log('Error fetchRefs Saga:', error);
     }
   }
 

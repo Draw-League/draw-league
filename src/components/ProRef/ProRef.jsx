@@ -10,14 +10,14 @@ import './ProRef.css';
 // or even care what the redux state is'
 
 function ProRef() {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const refDetails = useSelector(store => store.projectionReducer);
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const { id } = useParams();
+  // const refDetails = useSelector(store => store.projectionReducer);
+  // const history = useHistory(); 
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_REFS", payload: id });
-  }, [id, dispatch]);
+  // useEffect(() => {
+  //   dispatch({ type: "FETCH_REFS", payload: id });
+  // }, [id, dispatch]);
 
 
   return (
@@ -26,8 +26,8 @@ function ProRef() {
         <h2 className='ref-title'> REFEREE</h2>
       </div>
       <section className="ref-info">
-        {refDetails.map((ref) => (
-            <div key={ref.id}> {/* Add a unique key for each ref */}
+        {/* {refDetails.map((ref) => (  */}
+            <div key={ref.id}> 
               <div className='ref-image'>
                <p> {ref.ref_img}</p>
               </div>
@@ -42,8 +42,8 @@ function ProRef() {
                 <p className='ref-style'>{ref.art_medium}</p>
               </div>
             </div>
-          ))
-        }
+          {/* ))
+        } */}
       </section>
     </div>
   );
