@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import './ProTimer.css';
 
 const Timer = () => {
   const [time, setTime] = useState(900000);
