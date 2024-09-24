@@ -73,7 +73,7 @@ function AddRef() {
         <div>
         {/* UPLOAD REF IMAGE BUTTON AND PREVIEW GOES HERE */}
         </div>
-      <button>ADD REF SUBMIT BUTTON</button>
+      <button className='btn_desktop'>ADD REF SUBMIT BUTTON</button>
       </div>
 
       <div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
 import { useDispatch } from 'react-redux';
+import AdminNav from '../AdminNav/AdminNav';
 
 function AddEvent() {
   const [newEvent, setNewEvent] = useState({
@@ -28,15 +29,16 @@ function AddEvent() {
 
     dispatch({
       type: 'ADD_EVENT',
-      payload: newEvent, // Send the entire newEvent object
+      payload: newEvent
     });
   };
 
   return (
     <div className="container">
-      <div>
-        <p>This is the add an event page</p>
-        <h3>Event Details</h3>
+      <div className='container'>
+        <AdminNav />
+      </div>
+      <div className='container'> 
         <form onSubmit={createEvent}>
           <input
             type="text"
@@ -122,7 +124,9 @@ function AddEvent() {
             value={newEvent.judgeImg}
             onChange={(event) => setNewEvent({ ...newEvent, judgeImg: event.target.value })}
           />
-          <button type="submit" className="btn_desktop">Add Event</button>
+          <div>
+            <button type="submit" className="btn_desktop">ADD EVENT</button>
+          </div>
         </form>
       </div>
     </div>
