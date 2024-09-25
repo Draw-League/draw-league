@@ -30,6 +30,7 @@ const Timer = () => {
           if (prevTime <= 0) {
             clearInterval(intervalRef.current);
             setIsActive(false);
+            setTime(900000);
             return 0;
           }
           return prevTime - 10;
