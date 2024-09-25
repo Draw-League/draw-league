@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/submissions', (req, res) => {
   const queryText = `
-    SELECT drawing.id, drawing.drawing_url, drawing.score, drawing.round, team.team_name, team.event_id
+    SELECT drawing.id, drawing.drawing_url, drawing.score, drawing.round, drawing.favorite_drawing, team.team_name, team.event_id
     FROM drawing
     JOIN team ON drawing.team_id = team.id
     ORDER BY drawing.created_at DESC;
