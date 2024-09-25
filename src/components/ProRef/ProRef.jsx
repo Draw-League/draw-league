@@ -22,27 +22,28 @@ function ProRef() {
 
   return (
 <div className="container">
-      <div className='ref-tite'>
-        <h2 className='ref-title'> REFEREE</h2>
+      <div className='ref-title'>
+        <h2 className='ref-title-style'> REFEREE</h2>
       </div>
       <section className="ref-info">
-        {/* {refs.map((ref) => (  */}
-            <div key={ref.id}> 
+        {/* {refDetails.map((ref) => (  */}
+            {/* <div key={ref.id}>  */}
               <div className='ref-image'>
-               <img src={ref.ref_img}></img>
+               {/* <p> {ref.ref_img}</p> */}
               </div>
 
               <div className='ref-name'>
-                <p>{ref.full_name}</p>
+                {/* <p>{ref.full_name}</p> */}
               </div>
 
               <div className='ref-facts'>
-                <p className='ref-style'>{ref.ref_job}</p>
+                {/* <p className='ref-style'>{ref.ref_job}</p>
                 <p className='ref-style'>{ref.fact}</p>
-                <p className='ref-style'>{ref.art_medium}</p>
+                <p className='ref-style'>{ref.art_medium}</p> */}
               </div>
-            </div>
-           {/* ))}  */}
+            {/* </div> */}
+          {/* ))
+        } */}
       </section>
     </div>
   );
