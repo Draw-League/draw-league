@@ -12,12 +12,11 @@ import './ProRef.css';
 function ProRef() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  // const refDetails = useSelector(store => store.projectionReducer);
+  const ref = useSelector(store => store.projectionReducer);
   // const history = useHistory(); 
-  const ref = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch({ type: "FETCH_USER", payload: id });
+    dispatch({ type: "FETCH_REF", payload: id });
   }, [id, dispatch]);
 
 
