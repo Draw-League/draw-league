@@ -1,16 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import './Drawing.css';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import './Drawing.css';
 import logo from '../LandingPage/drawleague.png';
 
-function Drawing({ teamName, gameCode, theme, prompt }) {
+function Drawing() {
+  const location = useLocation();
+  const { teamName, gameCode, eventId, teamId } = location.state;
+  
+  const [theme, setTheme] = useState('');
+  const [prompt, setPrompt] = useState('');
   const [photo, setPhoto] = useState(null);
-  const fileInputRef = React.createRef();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const fileInputRef = React.createRef();
 
   useEffect(() => {
-    console.log("Photo state has been updated:", photo);
-  }, [photo]); 
+    const fetchEventDetails = async () => {
+      try {
+        const response = await axios.get(`/api/events/${eventId}`);
+        const eventData = response.data[0];
+        setTheme(eventData.theme);
+        setPrompt(eventData.prompt_one);
+      } catch (error) {
+        console.error('Error fetching event details:', error);
+      }
+    };
+
+    fetchEventDetails();
+  }, [eventId]);
 
   const handlePhotoChange = (event) => {
     const file = event.target.files[0];
@@ -24,27 +41,20 @@ function Drawing({ teamName, gameCode, theme, prompt }) {
   };
 
   const submitPhoto = () => {
-    console.log("Cloud Name:", import.meta.env.VITE_CLOUD_NAME);
-    console.log("Preset Name:", import.meta.env.VITE_PRESET_NAME);
-  
     if (photo) {
       const formData = new FormData();
       formData.append('file', photo);
       formData.append('upload_preset', import.meta.env.VITE_PRESET_NAME);
-  
+
       axios.post(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME}/image/upload`, formData)
         .then(response => {
           const drawing_url = response.data.secure_url;
-          console.log('Photo submitted to Cloudinary:', drawing_url);
-  
           return axios.post('/api/drawings', {
-            team_id: 1,
-            event_id: 1,
+            team_id: teamId,
             drawing_url: drawing_url
           });
         })
         .then(() => {
-          console.log('Data successfully sent to backend.');
           setIsSubmitted(true);
         })
         .catch(err => {
@@ -55,7 +65,7 @@ function Drawing({ teamName, gameCode, theme, prompt }) {
       alert('Please take a photo before submitting.');
     }
   };
-  
+
   const closePopupAndRefresh = () => {
     console.log("Popup closed, refreshing the page...");
     window.location.reload();
