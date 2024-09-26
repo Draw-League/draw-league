@@ -24,7 +24,7 @@ CREATE TABLE "user" (
  "ref_fact" VARCHAR ,
  "ref_img" VARCHAR ,
  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
- "full_name" VARCHAR.
+ "full_name" VARCHAR,
  "art_medium" VARCHAR,
 
  );

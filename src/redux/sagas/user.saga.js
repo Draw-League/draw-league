@@ -24,8 +24,19 @@ function* fetchUser() {
   }
 }
 
+function* registerUser(action) {
+  try {
+    yield axios.post('/api/user/register', action.payload);
+    yield put({ type: 'REGISTRATION_SUCCESS' });
+  } catch (error) {
+    console.log('User registration failed', error);
+    yield put({ type: 'REGISTRATION_FAILED', payload: error.message });
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('REGISTER', registerUser); 
 }
 
 export default userSaga;
