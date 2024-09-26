@@ -18,15 +18,17 @@
 .judge-info {
     box-shadow: 10px 10px black;
     color: black;
-    background: #C3DD00;
     height: auto;
     width: auto;
-    margin: 10px;
     border: 4px solid #000000;
+    
 
 }
 .name-info{
     float: left;
+    align-items: center;
+  
+    
 }
 
 .judge-image {
