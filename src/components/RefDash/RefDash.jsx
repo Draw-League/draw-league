@@ -10,9 +10,9 @@ function RefDash() {
   return (
     <div className="container">
       <div>
-        <p>This is the ref dashboard</p>
-        <p>This will get, post, and put</p>
-
+        {/* <p>This is the ref dashboard</p>
+        <p>This will get, post, and put</p> */}
+        <img src="../../documentation/images/Screenshot 2024-09-25 at 10.40.54 AM.png"></img>
       </div>
     </div>
   );

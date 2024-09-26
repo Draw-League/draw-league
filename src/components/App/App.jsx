@@ -47,23 +47,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    initializeSockets();
+    // initializeSockets();
   }, [dispatch]);
 
-  const initializeSockets = () => {
-    if(!socket) {
-        let appSocket = io();
-        setSocket(appSocket);
-        // client-side
-        appSocket.on("connect", () => {
-            console.log(socket.id);
-        });
+//   const initializeSockets = () => {
+//     if(!socket) {
+//         let appSocket = io();
+//         setSocket(appSocket);
+//         // client-side
+//         appSocket.on("connect", () => {
+//             console.log(socket.id);
+//         });
         
-        appSocket.on("disconnect", () => {
-            console.log(socket.id)
-        });
-    }
-}
+//         appSocket.on("disconnect", () => {
+//             console.log(socket.id)
+//         });
+//     }
+// }
   return (
     <Router>
       <div>
