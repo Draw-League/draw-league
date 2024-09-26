@@ -42,7 +42,6 @@ function ProRef() {
 
               <div className='ref-facts'>
               <p className='ref-style'>ref facts</p>
-              <p className='ref-style'>rdufharknfdkjhaouhrtmnchujfajhfja kjguhna vfhbg jhguerhgajdfghs</p>
                 {/* <p className='ref-style'>{ref.ref_job}</p>
                 <p className='ref-style'>{ref.fact}</p>
                 <p className='ref-style'>{ref.art_medium}</p> */}
