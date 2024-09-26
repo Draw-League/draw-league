@@ -51,6 +51,23 @@ router.get('/:id', (req, res) => {
 
 });
 
+router.get('/', (req, res) =>{
+  const queryText = `
+  SELECT event.id, location_name, location_address, event_date, event_code, judge_name, judge_code, full_name
+  FROM event
+  JOIN user_event ON event.id = user_event.event_id
+  JOIN "user" ON "user".id = user_event.user_id
+  `
+  pool.query(queryText)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log(`EVENT GET ERROR MESSAGE HERE:`, err);
+      res.sendStatus(500)
+    })
+});
+
 /**
  * POST route template
  */

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './ProRef.css';
+import axios from 'axios';
 
 
 // This is one of our simplest components
@@ -12,12 +13,14 @@ import './ProRef.css';
 function ProRef() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const ref = useSelector(store => store.projectionReducer);
-  // const history = useHistory(); 
+  const ref = useSelector((store) => store.projectionReducer);
+  const history = useHistory(); 
 
   useEffect(() => {
-    dispatch({ type: "FETCH_REF", payload: id });
+    dispatch({ type: "FETCH_REFS", payload: id });
   }, [id, dispatch]);
+
+ 
 
   return (
 <div className="container">
@@ -36,6 +39,7 @@ function ProRef() {
               </div>
 
               <div className='ref-facts'>
+                <p>ref job</p>
                 <p className='ref-style'>{ref.ref_job}</p>
                 <p className='ref-style'>{ref.fact}</p>
                 <p className='ref-style'>{ref.art_medium}</p>

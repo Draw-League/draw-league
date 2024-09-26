@@ -5,7 +5,7 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 function* fetchRefs(action) {
   console.log("fetching refs", action.payload)
     try {
-      const refResponse= yield axios.get(`/api/projection/ref-intro/${action.payload}`);
+      const refResponse= yield axios.get(`/api/projections/ref-intro/${action.payload}`);
        console.log('action.payload', refResponse.data);
        yield put({ type: 'SET_REF', payload: refResponse.data});
 

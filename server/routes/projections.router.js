@@ -6,8 +6,8 @@ const router = express.Router();
  * GET Refs-intro
  */
 router.get('/ref-intro/:id', (req, res) => {
-    const refId = req.params.id;
-    console.log('GET REF reqparams:', req.params);
+    const refId = req.params;
+    console.log('GET all REF reqparams:', req.params);
     const queryText = `
     SELECT art_medium, ref_img, full_name, ref_job, ref_fact 
 FROM "user"
