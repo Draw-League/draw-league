@@ -47,23 +47,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    initializeSockets();
+    // initializeSockets();
   }, [dispatch]);
 
-  const initializeSockets = () => {
-    if(!socket) {
-        let appSocket = io();
-        setSocket(appSocket);
-        // client-side
-        appSocket.on("connect", () => {
-            console.log(socket.id);
-        });
+//   const initializeSockets = () => {
+//     if(!socket) {
+//         let appSocket = io();
+//         setSocket(appSocket);
+//         // client-side
+//         appSocket.on("connect", () => {
+//             console.log(socket.id);
+//         });
         
-        appSocket.on("disconnect", () => {
-            console.log(socket.id)
-        });
-    }
-}
+//         appSocket.on("disconnect", () => {
+//             console.log(socket.id)
+//         });
+//     }
+// }
   return (
     <Router>
       <div>
@@ -206,7 +206,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/admindash" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -242,7 +242,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/admindash" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

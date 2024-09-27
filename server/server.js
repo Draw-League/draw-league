@@ -15,6 +15,7 @@ const teamsRouter = require('./routes/teams.router');
 const eventRouter = require('./routes/event.router');
 const adminRouter = require('./routes/admin.router');
 const drawingsRouter = require('./routes/drawings.router');
+const projectionsRouter = require ('./routes/projections.router')
 
 // Express Middleware
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use('/api/teams', teamsRouter);
 app.use('/api/admins', adminRouter);
 app.use('/api/events', eventRouter);
 app.use('/api/drawings', drawingsRouter);
+app.use('/api/projections', projectionsRouter)
 
 const cors = require('cors');
 app.use(cors())

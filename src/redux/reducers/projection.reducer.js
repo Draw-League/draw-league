@@ -1,16 +1,12 @@
-
-
-const createEventReducer = (state = {}, action) => {
+const projectionReducer = (state = {}, action) => {
     switch (action.type) {
-      case 'SET_EVENT':
+      case 'SET_REF':
         return action.payload;
       default:
         return state;
     }
   };
   
-
   // user will be on the redux state at:
   // state.user
-  export default createEventReducer;
-  
+  export default projectionReducer;

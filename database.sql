@@ -24,7 +24,7 @@ CREATE TABLE "user" (
  "ref_fact" VARCHAR ,
  "ref_img" VARCHAR ,
  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
- "full_name" VARCHAR.
+ "full_name" VARCHAR,
  "art_medium" VARCHAR,
 
  );
@@ -97,4 +97,3 @@ VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=
 ALTER TABLE "user" ADD COLUMN "full_name" VARCHAR;
 ALTER TABLE "user" ADD COLUMN "art_medium" VARCHAR;
 ALTER TABLE "user" ADD COLUMN "phone_number" VARCHAR;
-ALTER TABLE "drawing" ADD COLUMN "event_id" INT REFERENCES "event";

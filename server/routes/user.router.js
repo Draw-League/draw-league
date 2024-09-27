@@ -27,6 +27,9 @@ router.post('/register', (req, res, next) => {
   const fullName = req.body.fullName;
   const artMedium = req.body.artMedium; 
   const phoneNum = req.body.phoneNum;
+  
+  console.log('Received refImg:', refImg);
+
   const queryText = `INSERT INTO "user" ( username, password, user_role, ref_job, ref_fact, ref_img, full_name, art_medium, phone_number)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 ) RETURNING id`;
   pool
