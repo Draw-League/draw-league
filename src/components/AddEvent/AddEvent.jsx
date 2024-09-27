@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function AddEvent() {
   const [newEvent, setNewEvent] = useState({
@@ -21,14 +22,53 @@ function AddEvent() {
     createdBy: 0,
   });
 
+  const [judgeImgFile, setJudgeImgFile] = useState(null);
   const dispatch = useDispatch();
+  const fileInputRef = React.createRef();
 
-  const createEvent = (event) => {
+  const uploadImage = async () => {
+    if (judgeImgFile) {
+      const formData = new FormData();
+      formData.append('file', judgeImgFile);
+      formData.append('upload_preset', import.meta.env.VITE_PRESET_NAME);
+      try {
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME}/image/upload`,
+          formData
+        );
+        return response.data.secure_url;
+      } catch (err) {
+        console.error('Error uploading image:', err);
+        return null;
+      }
+    }
+    return null;
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setJudgeImgFile(file);
+    }
+  };
+
+  const handleSelectFile = () => {
+    fileInputRef.current.click();
+  };
+
+  const createEvent = async (event) => {
     event.preventDefault();
+
+    const uploadedImgUrl = await uploadImage();
+
+    setNewEvent((prevEvent) => ({
+      ...prevEvent,
+      judgeImg: uploadedImgUrl || '',
+    }));
 
     dispatch({
       type: 'ADD_EVENT',
-      payload: newEvent, // Send the entire newEvent object
+      payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
   };
 
@@ -125,14 +165,34 @@ function AddEvent() {
             value={newEvent.judgeKnow}
             onChange={(event) => setNewEvent({ ...newEvent, judgeKnow: event.target.value })}
           />
-          <br />
+
+          <div className="photo-upload-section">
+            <div className="image-preview">
+              {judgeImgFile ? (
+                <img
+                  src={URL.createObjectURL(judgeImgFile)}
+                  alt="Judge Preview"
+                />
+              ) : (
+                <span>Judge's Image Preview</span>
+              )}
+            </div>
+            <div className="photo-text">
+              <p>Please attach a Judge's picture</p>
+              <button type="button" onClick={handleSelectFile}>
+                UPLOAD
+              </button>
+              <br />
           <input
-            type="text"
-            placeholder="Judge's Picture"
-            name="judgeImg"
-            value={newEvent.judgeImg}
-            onChange={(event) => setNewEvent({ ...newEvent, judgeImg: event.target.value })}
-          />
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleImageChange}
+                style={{ display: 'none' }}
+              />
+            </div>
+          </div>
+
           <br />
           <button type="submit" className="btn_desktop">Add Event</button>
 
