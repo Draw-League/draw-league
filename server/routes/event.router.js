@@ -60,6 +60,7 @@ router.get('/', (req, res) =>{
   `
   pool.query(queryText)
     .then(result => {
+      console.log('Event GET for admin dash', result.rows)
       res.send(result.rows);
     })
     .catch(err => {
