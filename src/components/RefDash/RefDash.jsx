@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RefDash.css';
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import Timer from './ProTimer';
+import logo from './drawleague.png';
 
 function RefDash() {
+  const [theme, setTheme] = useState("???");
+  const [buttonLabel, setButtonLabel] = useState("REVEAL THEME");
+
+  const handleRevealClick = () => {
+    if (buttonLabel === "REVEAL THEME") {
+      setTheme("Fantasy"); 
+      setButtonLabel("REVEAL PROMPT");
+    } else if (buttonLabel === "REVEAL PROMPT") {
+    }
+  };
+
   return (
-    <div className="container">
-      <div>
-        {/* <p>This is the ref dashboard</p>
-        <p>This will get, post, and put</p> */}
-        <img src="../../documentation/images/Screenshot 2024-09-25 at 10.40.54 AM.png"></img>
+    <div className="dashboard-container">
+      <div className="top-portion">
+        <div className="timer-container">
+          <Timer />
+        </div>
+        <div className="theme-container">
+          <span className="theme-label">THEME</span>
+          <div className="theme-display">{theme}</div>
+        </div>
+        <button className="reveal-button" onClick={handleRevealClick}>{buttonLabel}</button>
+      </div>
+     
+      <div className="body-content">
+        <div className='logo-container'>
+          <img src={logo} alt="DRAW LEAGUE LOGO" className="logo-image" />
+        </div>
+
+        <div className="right-content">
+          <div className="prompt-container">
+            <h2>PROMPTS</h2>
+            <div>???</div>
+          </div>
+          <div className="square-containers">
+            <div className="square-box">Leaderboard</div>
+            <div className="square-box">Future ADs</div>
+          </div>
+        </div>
       </div>
     </div>
   );
