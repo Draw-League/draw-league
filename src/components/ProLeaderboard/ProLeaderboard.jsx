@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './ProLeaderboard.css';
-import Timer from './ProTimer';
+
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -33,9 +33,6 @@ function ProLeaderboard({socket}) {
         <p>This the projector leaderboard</p>
         <p>This will get</p>
         <button onClick={sendNextPage}>Emit Socket Event</button>
-      </div>
-      <div>
-        <Timer/>
       </div>
     </div>
   );
