@@ -85,6 +85,7 @@ function AddEvent() {
             value={newEvent.theme}
             onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Prompt One"
@@ -92,6 +93,7 @@ function AddEvent() {
             value={newEvent.promptOne}
             onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Prompt Two"
@@ -99,6 +101,7 @@ function AddEvent() {
             value={newEvent.promptTwo}
             onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Prompt Three"
@@ -106,6 +109,7 @@ function AddEvent() {
             value={newEvent.promptThree}
             onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
           />
+          <br />
           <input
             type="date"
             placeholder="Event Date"
@@ -113,6 +117,7 @@ function AddEvent() {
             value={newEvent.eventDate}
             onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Location Name"
@@ -120,6 +125,7 @@ function AddEvent() {
             value={newEvent.locationName}
             onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Location Address"
@@ -127,6 +133,7 @@ function AddEvent() {
             value={newEvent.locationAddress}
             onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Judge's Name"
@@ -134,6 +141,7 @@ function AddEvent() {
             value={newEvent.judgeName}
             onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Judge's Job"
@@ -141,6 +149,7 @@ function AddEvent() {
             value={newEvent.judgeJob}
             onChange={(event) => setNewEvent({ ...newEvent, judgeJob: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Judge Likes"
@@ -148,6 +157,7 @@ function AddEvent() {
             value={newEvent.judgeLike}
             onChange={(event) => setNewEvent({ ...newEvent, judgeLike: event.target.value })}
           />
+          <br />
           <input
             type="text"
             placeholder="Judge Knows"
@@ -172,7 +182,8 @@ function AddEvent() {
               <button type="button" onClick={handleSelectFile}>
                 UPLOAD
               </button>
-              <input
+              <br />
+          <input
                 type="file"
                 accept="image/*"
                 ref={fileInputRef}
@@ -182,7 +193,10 @@ function AddEvent() {
             </div>
           </div>
 
+          <br />
           <button type="submit" className="btn_desktop">Add Event</button>
+
+          {/* Button should bring admin back to admin dashboard */}
         </form>
       </div>
     </div>

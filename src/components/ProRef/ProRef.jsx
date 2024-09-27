@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './ProRef.css';
+import axios from 'axios';
 
 
 // This is one of our simplest components
@@ -10,15 +11,16 @@ import './ProRef.css';
 // or even care what the redux state is'
 
 function ProRef() {
-  // const dispatch = useDispatch();
-  // const { id } = useParams();
-  // const refDetails = useSelector(store => store.projectionReducer);
-  // const history = useHistory(); 
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const ref = useSelector((store) => store.projectionReducer);
+  const history = useHistory(); 
 
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_REFS", payload: id });
-  // }, [id, dispatch]);
+  useEffect(() => {
+    dispatch({ type: "FETCH_REFS", payload: id });
+  }, [id, dispatch]);
 
+ 
 
   return (
 <div className="container">
@@ -27,7 +29,7 @@ function ProRef() {
       </div>
       <div className="ref-info">
         {/* {refDetails.map((ref) => (  */}
-            {/* <div key={ref.id}>  */}
+            <div key={ref.id}> 
               <div className='ref-image'>
                {/* <p> {ref.ref_img}</p> */}
                <img alt="placeholder image" 
@@ -42,11 +44,11 @@ function ProRef() {
 
               <div className='ref-facts'>
               <p className='ref-style'>ref facts</p>
-                {/* <p className='ref-style'>{ref.ref_job}</p>
+                 <p className='ref-style'>{ref.ref_job}</p>
                 <p className='ref-style'>{ref.fact}</p>
-                <p className='ref-style'>{ref.art_medium}</p> */}
+                <p className='ref-style'>{ref.art_medium}</p>
               </div>
-            {/* </div> */}
+            </div>
           {/* ))
         } */}
        
