@@ -51,6 +51,8 @@ router.get('/:id', (req, res) => {
 
 });
 
+
+// GET route for admin dash
 router.get('/', (req, res) =>{
   const queryText = `
   SELECT event.id, location_name, location_address, event_date, event_code, judge_name, judge_code, full_name
@@ -182,9 +184,10 @@ router.put('/', (req, res) => {
 */
 router.delete('/:id', (req, res) => {
   // PUT route code here
-  const { id } = req.params;
+  const id = req.params;
   const sqlText = `
-      // queryText goes here
+      DELETE FROM events
+      WHERE id=$1
       `;
   pool.query(sqlText, [id])
     .then((result) => {
