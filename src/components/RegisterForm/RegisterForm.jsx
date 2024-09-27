@@ -55,12 +55,7 @@ function RegisterForm() {
   const registerUser = async (event) => {
     event.preventDefault();
   
-    const uploadedUrl = await uploadImage();
-  
-    if (!uploadedUrl) {
-      alert('Image upload failed. Please try again.');
-      return;
-    }
+    const uploadedUrl = userRole === 'ref' && refImg ? await uploadImage() : '';
   
     dispatch({
       type: 'REGISTER',
