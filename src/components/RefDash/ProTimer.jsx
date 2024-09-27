@@ -48,7 +48,7 @@ const Timer = () => {
     <div className="timer-container">
       <h1 className="timer-display">{formatTime(time)}</h1>
       <button className="timer-button" onClick={handleButtonClick}>
-        {isActive ? 'Reset Timer' : 'Start Timer'}
+        {isActive ? 'Reset Timer' : 'START CLOCK'}
       </button>
     </div>
   );
