@@ -19,6 +19,23 @@ router.get('/submissions', (req, res) => {
     });
 });
 
+router.get('/top', (req, res) => {
+  const queryText = `
+    SELECT drawing.id, drawing.drawing_url, drawing.score, drawing.round, drawing.favorite_drawing, team.team_name, team.event_id
+    FROM drawing
+    JOIN team ON drawing.team_id = team.id
+    ORDER BY drawing.score DESC;
+  `;
+  pool.query(queryText)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => {
+      console.log(`Error fetching drawings:`, err);
+      res.sendStatus(500);
+    });
+});
+
 router.post('/', async (req, res) => {
   try {
     const { team_id, drawing_url } = req.body;

@@ -11,12 +11,17 @@ function AdminDash() {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-  // const { id } = useParams();
+
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
+
+  const removeEvent = (id) => {
+    console.log('deleting event with id:', id);
+    dispatch({ type: 'REMOVE_EVENT', payload: id});
+}
 
   return (
     <div className="container">
