@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Join.css';
 import logo from '../LandingPage/drawleague.png';
-import Nav from '../Nav/Nav.jsx';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -51,7 +50,9 @@ function Join() {
 
   return (
     <div className="container join-game">
-      <Nav />
+      <header className="header">
+        <img src={logo} alt="Draw League Logo" className="logo" />
+      </header>
       <div className="join-game-content">
         <p className='join-game-subtitle'>ENTER TEAM NAME & <br /> GAME CODE TO PLAY</p>
         <form className='join-game-form' onSubmit={handleSubmit}>
