@@ -3,8 +3,18 @@ import './AddEvent.css';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
+import Select from 'react-select';
+
+// select Ref hard coded dummy data
+const options = [
+  { value: 'Harry Potter', label: 'Harry Potter' },
+  { value: 'Hermione Granger', label: 'Hermione Granger' },
+  { value: 'Ron', label: 'Weisley' }
+]
+
 
 function AddEvent() {
+
   const [newEvent, setNewEvent] = useState({
     theme: '',
     promptOne: '',
@@ -72,6 +82,12 @@ function AddEvent() {
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
   };
+
+  // deals with select ref
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const handleRefChange = (selectedOptions) => (
+    setSelectedOptions(selectedOptions)
+  );
 
   return (
     <div className="adminnav">
@@ -160,13 +176,20 @@ function AddEvent() {
 
         <div className='staff-detail'>
           {/* NEED TO MAKE A MULTI-SELECT DROPDOWN SELECT */}
-          <input
+          <Select
+            placeholder='SELECT REF'
+            options={options}
+            value={selectedOptions}
+            onChange={handleRefChange}
+            isMulti= {true}
+         />
+          {/* <input
             type="text"
             placeholder="** STILL NEED TO ADD: SELECT REF"
             name="select ref"
             // value={newEvent.judgeName}
             // onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
-          />
+          /> */}
         <br />
         <br />
         <br />   
