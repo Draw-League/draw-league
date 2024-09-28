@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Join.css';
-import logo from '../LandingPage/drawleague.png';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import NavPlayer from '../NavPlayer/NavPlayer';
@@ -49,20 +48,10 @@ function Join() {
     }
   };
 
-  const handleLogoClick = () => {
-    history.push('/home');
-  };
-
   return (
     <div className="container join-game">
-      <header className="header">
-        <img src={logo} alt="Draw League Logo" className="logo-left" onClick={handleLogoClick} />
-        <NavPlayer className="hamburger-right" />
-      </header>
-
+      <NavPlayer />
       <div className="join-game-box">JOIN A GAME</div>
-
-
       <div className="join-game-content">
         <p className='join-game-subtitle'>ENTER TEAM NAME & <br /> GAME CODE TO PLAY</p>
         <form className='join-game-form' onSubmit={handleSubmit}>

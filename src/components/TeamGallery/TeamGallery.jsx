@@ -34,7 +34,6 @@ function TeamGallery() {
   return (
     <div className="container team-gallery">
       <header className="header">
-        <img src={logo} alt="Draw League Logo" className="logo-left" />
         <NavPlayer className="hamburger-right" />
       </header>
 

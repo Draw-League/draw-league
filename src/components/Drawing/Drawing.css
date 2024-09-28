@@ -9,19 +9,6 @@
     position: relative;
 }
 
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-}
-
-.logo {
-    width: 150px;
-}
-
 .tab {
     background-color: #c3dd00;
     padding: 10px;
@@ -45,7 +32,7 @@
 
 .table-box {
     display: flex;
-    width: 300%;
+    width: 100%;
     max-width: 300px;
     margin-bottom: 15px;
 }
@@ -93,11 +80,10 @@
     align-items: center;
     background-color: #fff;
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
+    max-height: 350px;
     aspect-ratio: 10 / 16;
     box-shadow: 6px 6px #000;
-    min-height: 500px;
-    min-width: 300px;
     margin-bottom: 20px;
 }
 
@@ -123,7 +109,7 @@ canvas {
     align-items: center; 
     width: 100%;
     max-width: 400px;
-    gap: 20px;
+    gap: 50px;
 }
 
 

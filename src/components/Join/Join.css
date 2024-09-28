@@ -8,34 +8,11 @@
     align-items: center;
 }
 
-.header {
-    width: 90%;
-    max-width: 400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.logo-left {
-    width: 200px;
-    cursor: pointer;
-}
-
-.hamburger-right {
-    font-size: 50px;
-    cursor: pointer;
-    color: white;
-    padding: 15px;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .join-game-box {
     background-color: #C3DD00;
     height: 50px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     border: 3px solid black;
     color: black;
     font-weight: 700;
@@ -57,11 +34,10 @@
 
 .join-game-subtitle {
     color: white;
-    padding: 0;
-    margin: 0;
-    font-size: 32px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 24px;
     font-weight: 700;
-    text-align: center;
     margin-top: 10px;
 }
 
@@ -69,9 +45,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    color: black;
-    font-size: 32px;
-    font-weight: 700;
     align-items: end;
 }
 
@@ -79,8 +52,8 @@
     background-color: white;
     border: 3px solid black;
     height: 50px;
-    width: 350px;
-    outline: 0;
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
     font-weight: 700;
     font-size: 32px;
@@ -96,11 +69,6 @@
     font-size: 32px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.join-game-form input::placeholder {
-    font-weight: 700;
-    color: #d1d0ce;
 }
 
 .join-game-form button:hover {

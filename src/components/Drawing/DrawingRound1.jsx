@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Drawing.css';
-import logo from '../LandingPage/drawleague.png';
 import NavPlayer from '../NavPlayer/NavPlayer'; 
 
 function DrawingRound1() {
@@ -76,10 +75,8 @@ function DrawingRound1() {
   return (
     <div className="container">
       <header className="header">
-        <img src={logo} alt="Draw League Logo" className="logo-left" />
         <NavPlayer className="hamburger-right" />
       </header>
-
       <div className="main-content">
         <div className="left-panel">
           <div className="table-box">
