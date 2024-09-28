@@ -47,40 +47,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // initializeSockets();
+     initializeSockets();
   }, [dispatch]);
 
-<<<<<<< HEAD
   const initializeSockets = () => {
     if(!socket) {
-        const appSocket = io();
+        let appSocket = io();
         setSocket(appSocket);
         // client-side
         appSocket.on("connect", () => {
-            console.log('socket connected', appSocket.id);
+            console.log(socket.id);
         });
         
         appSocket.on("disconnect", () => {
-            console.log('socket disconnected: ', appSocket.id)
+            console.log(socket.id)
         });
     }
 }
-=======
-//   const initializeSockets = () => {
-//     if(!socket) {
-//         let appSocket = io();
-//         setSocket(appSocket);
-//         // client-side
-//         appSocket.on("connect", () => {
-//             console.log(socket.id);
-//         });
-        
-//         appSocket.on("disconnect", () => {
-//             console.log(socket.id)
-//         });
-//     }
-// }
->>>>>>> main
   return (
     <Router>
       <div>

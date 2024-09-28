@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
-import { useDispatch } from 'react-redux';
-<<<<<<< HEAD
-import AdminNav from '../AdminNav/AdminNav';
-=======
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
+import { useEffect } from 'react';
 
-// select Ref hard coded dummy data
-const options = [
-  { value: 'Harry Potter', label: 'Harry Potter' },
-  { value: 'Hermione Granger', label: 'Hermione Granger' },
-  { value: 'Ron Weasley', label: 'Ron Weasley' }
-]
 
->>>>>>> main
 
 function AddEvent() {
-
+  const refs = useSelector((store) => store.getRefsReducer);
+  
   const [newEvent, setNewEvent] = useState({
     theme: '',
     promptOne: '',
@@ -42,6 +34,16 @@ function AddEvent() {
   const dispatch = useDispatch();
   const fileInputRef = React.createRef();
 
+  //Dispatches Refs saga for ref dropdown
+  useEffect(() => {
+    dispatch({type: 'FETCH_REFS'});
+  }, []);
+
+  //populates ref dropdown
+  const refOptions = refs.map((ref) => ({
+    value: ref.username,  
+    label: ref.full_name  
+  }));
   const uploadImage = async () => {
     if (judgeImgFile) {
       const formData = new FormData();
@@ -84,11 +86,7 @@ function AddEvent() {
 
     dispatch({
       type: 'ADD_EVENT',
-<<<<<<< HEAD
-      payload: newEvent
-=======
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
->>>>>>> main
     });
   };
 
@@ -109,17 +107,10 @@ function AddEvent() {
     <br />
 
     <div className="container">
-<<<<<<< HEAD
-      <div className='container'>
-        <AdminNav />
-      </div>
-      <div className='container'> 
-=======
       
       <div className="new-event-form">
         <h3>Event Details</h3>
 
->>>>>>> main
         <form onSubmit={createEvent}>
         <div className='event-info'>
         <input
@@ -195,7 +186,7 @@ function AddEvent() {
           <Select
           className='ref-select-dropdown'
             placeholder='---SELECT REF---'
-            options={options}
+            options={refOptions}
             value={selectedOptions}
             onChange={handleRefChange}
             isMulti= {true}
@@ -255,17 +246,6 @@ function AddEvent() {
               </button>
               <br />
           <input
-<<<<<<< HEAD
-            type="text"
-            placeholder="Judge's Picture"
-            name="judgeImg"
-            value={newEvent.judgeImg}
-            onChange={(event) => setNewEvent({ ...newEvent, judgeImg: event.target.value })}
-          />
-          <div>
-            <button type="submit" className="btn_desktop">ADD EVENT</button>
-          </div>
-=======
                 type="file"
                 accept="image/*"
                 ref={fileInputRef}
@@ -282,7 +262,6 @@ function AddEvent() {
 
           {/* Button should bring admin back to admin dashboard */}
         
->>>>>>> main
         </form>
       </div>
     </div>

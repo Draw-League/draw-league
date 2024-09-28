@@ -9,15 +9,9 @@ Button
 -------------------------------------------------------------------------------- */
 
 .btn_desktop {
-<<<<<<< HEAD
-    background-color: #C3DD00;
-    height:fit-content;
-    width: fit-content;
-=======
     background-color: #ebe5e5;
     height: auto;
     width: auto;
->>>>>>> main
     border: 3px solid black;
     color: black;
     align-self: flex-end;

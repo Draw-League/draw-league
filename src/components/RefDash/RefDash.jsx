@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './RefDash.css';
-<<<<<<< HEAD
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
+
+import Timer from './ProTimer';
+import logo from './drawleague.png';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -38,21 +40,19 @@ function RefDash({socket}) {
         console.log('socket.id', socket.id);
     }
   }
-  return (
-    <div className="container">
-      <div>
-        <p>This is the ref dashboard</p>
-        <p>This will get, post, and put</p>
+  // return (
+  //   <div className="container">
+  //     <div>
+  //       <p>This is the ref dashboard</p>
+  //       <p>This will get, post, and put</p>
 
         
-        <button onClick={sendBackPage} className='btn_desktop'>Back</button>
-        <button onClick={sendNextPage} className='btn_desktop'>Next</button>
+  //       <button onClick={sendBackPage} className='btn_desktop'>Back</button>
+  //       <button onClick={sendNextPage} className='btn_desktop'>Next</button>
 
-=======
-import Timer from './ProTimer';
-import logo from './drawleague.png';
 
-function RefDash() {
+
+
   const [theme, setTheme] = useState("???");
   const [buttonLabel, setButtonLabel] = useState("REVEAL THEME");
 
@@ -92,7 +92,6 @@ function RefDash() {
             <div className="square-box">Future ADs</div>
           </div>
         </div>
->>>>>>> main
       </div>
     </div>
   );

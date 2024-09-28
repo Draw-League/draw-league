@@ -14,6 +14,23 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+router.get('/all-refs', (req, res) => {
+  const queryText = `
+                      SELECT *
+                      FROM "user" 
+                    `;
+
+pool.query(queryText)
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(err => {
+    console.log(`Error fetching submissions:`, err);
+    res.sendStatus(500);
+  });
+
+})
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
