@@ -57,7 +57,7 @@ function ProLeaderboard({socket}) {
       <div>
         <p>This the projector leaderboard</p>
         <p>This will get</p>
-        <button onClick={sendNextPage}>Emit Socket Event</button>
+        {/* <button onClick={sendNextPage}>Emit Socket Event</button> */}
       </div>
     </div>
   );

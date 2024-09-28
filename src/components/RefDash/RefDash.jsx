@@ -40,15 +40,15 @@ function RefDash({socket}) {
         console.log('socket.id', socket.id);
     }
   }
-  // return (
-  //   <div className="container">
-  //     <div>
-  //       <p>This is the ref dashboard</p>
-  //       <p>This will get, post, and put</p>
+  
+    // <div className="container">
+    //   <div>
+    //     <p>This is the ref dashboard</p>
+    //     <p>This will get, post, and put</p>
 
         
-  //       <button onClick={sendBackPage} className='btn_desktop'>Back</button>
-  //       <button onClick={sendNextPage} className='btn_desktop'>Next</button>
+    //     <button onClick={sendBackPage} className='btn_desktop'>Back</button>
+    //     <button onClick={sendNextPage} className='btn_desktop'>Next</button>
 
 
 
@@ -65,7 +65,10 @@ function RefDash({socket}) {
   };
 
   return (
+    
     <div className="dashboard-container">
+      <button onClick={sendBackPage} className='btn_desktop'>Back</button>
+      <button onClick={sendNextPage} className='btn_desktop'>Next</button>
       <div className="top-portion">
         <div className="timer-container">
           <Timer />
