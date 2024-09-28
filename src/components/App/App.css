@@ -15,9 +15,13 @@ Button
     border: 3px solid black;
     color: black;
     align-self: flex-end;
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 25px;
+    display: inline-block;
+    /* padding: 5px; */
+
+
   }
   
   .btn_sizeMin {

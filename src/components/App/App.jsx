@@ -48,23 +48,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // initializeSockets();
+     initializeSockets();
   }, [dispatch]);
 
-  //   const initializeSockets = () => {
-  //     if(!socket) {
-  //         let appSocket = io();
-  //         setSocket(appSocket);
-  //         // client-side
-  //         appSocket.on("connect", () => {
-  //             console.log(socket.id);
-  //         });
-
-  //         appSocket.on("disconnect", () => {
-  //             console.log(socket.id)
-  //         });
-  //     }
-  // }
+  const initializeSockets = () => {
+    if(!socket) {
+        let appSocket = io();
+        setSocket(appSocket);
+        // client-side
+        appSocket.on("connect", () => {
+            console.log(socket.id);
+        });
+        
+        appSocket.on("disconnect", () => {
+            console.log(socket.id)
+        });
+    }
+}
   return (
     <Router>
       <div>
@@ -118,6 +118,12 @@ function App() {
           </Route>
 
           <Route
+            exact
+            path="/team-gallery">
+            <TeamGallery />
+          </Route>
+
+          <Route
             // Not protected, shows TeamGallery at all times (logged in or not)
             exact
             path="/team-gallery">
@@ -127,9 +133,9 @@ function App() {
           <ProtectedRoute
             // logged in shows RefDash else shows LoginPage
             exact
-            path="/refdash">
-            <RefDash />
-          </ProtectedRoute>
+            path="/refdash"
+            render={(props) => (<RefDash socket={socket} {...props} />)} />
+          {/* </ProtectedRoute> */}
 
           <ProtectedRoute
             // logged in shows AdminDash else shows LoginPage
