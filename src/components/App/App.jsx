@@ -52,15 +52,15 @@ function App() {
 
   const initializeSockets = () => {
     if(!socket) {
-        let appSocket = io();
+        const appSocket = io();
         setSocket(appSocket);
         // client-side
         appSocket.on("connect", () => {
-            console.log(socket.id);
+            console.log('socket connected', appSocket.id);
         });
         
         appSocket.on("disconnect", () => {
-            console.log(socket.id)
+            console.log('socket disconnected: ', appSocket.id)
         });
     }
 }
@@ -115,12 +115,12 @@ function App() {
             <JudgeScore />
           </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows RefDash else shows LoginPage
             exact
-            path="/refdash">
-            <RefDash />
-          </ProtectedRoute>
+            path="/refdash"
+            render={(props) => (<RefDash socket={socket} {...props} />)} />
+          {/* </ProtectedRoute> */}
 
           <ProtectedRoute
             // logged in shows AdminDash else shows LoginPage
