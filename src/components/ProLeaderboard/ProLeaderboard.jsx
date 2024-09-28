@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './ProLeaderboard.css';
-import Timer from './ProTimer';
+
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import RefDash from '../RefDash/RefDash';
 
@@ -57,10 +57,7 @@ function ProLeaderboard({socket}) {
       <div>
         <p>This the projector leaderboard</p>
         <p>This will get</p>
-        {/* <button onClick={sendNextPage}>Emit Socket Event</button> */}
-      </div>
-      <div>
-        <Timer/>
+        <button onClick={sendNextPage}>Emit Socket Event</button>
       </div>
     </div>
   );

@@ -9,7 +9,6 @@
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     cursor: pointer; 
-    box-shadow: 3px 6px black;
     color: black;
     align-self: flex-end;
 }

@@ -1,44 +1,76 @@
-.ref-title{
-    background-color: #C3DD00;
-    width: 20rem;
-    font-size: 45pt;
+
+.ref-title {
+    width: auto;
+    background: #C3DD00;
+    padding: 10px;
+    margin: 20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 4px;
+  
+}
+
+.ref-title-style{
+    font-size: 40pt;
+    text-align: center;
+    margin: 10px;
 }
 .ref-info{
     box-shadow: 10px 10px black;
     color: black;
-    display: flex;
-    flex-direction: column;
-    float: right;
+    width: 35%;
+    height: auto;
+    border: 2px solid #000000;
+    
     
 }
 .ref-image{ 
-    background-color: #fff;
-    height: 20rem;
-    width: 20rem;
+    background-color: #EBE5E5;
+    align-items: center;
+    height: 25rem;
+    width: auto;
+    border: 2px solid #000000;
     
 }
 .ref-name{
     background-color: #C3DD00;
-    height: 2rem;
-    width: 20rem;
     text-align: center;
-    font-size: 1.5rem;
+    height: auto;
+    width: auto;
+    border: 2px solid #000000;
+    padding: .25rem;
     
 }
 .ref-facts{
-    background-color: white;
-    height: 10rem;
-    width: 20rem;
+    background-color: #EBE5E5;
+    height: 30%;
+    width: auto;
+    border: 2px solid #000000;
+    overflow: auto;
     
 }
 .ref-social-media{
-    margin: .5rem;
     text-align: left;
+    height: 10%;
+    /* background-color: #EBE5E5; */
+    width: auto;
+    
 }
-.rn-style{
+.rname-style{
     text-align: center;
+    font-size: 2.5rem;
+    
 }
 .ref-style{
     text-align: left;
+    font-size: 1.5rem;
+}
+
+.ref-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    
+
 }
 
