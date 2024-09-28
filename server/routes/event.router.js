@@ -36,10 +36,17 @@ router.get('/:id', (req, res) => {
   // GET route code here
   const eventId = req.params.id;
   const queryText = `
-                        SELECT *
-                        FROM event
-                        WHERE id = ${eventId};
-                      `;
+  SELECT * FROM event 
+JOIN user_event ON event.id = user_event.event_id
+JOIN "user" ON "user".id = user_event.user_id
+WHERE event.id = $1;
+  `
+
+
+
+  // `                       SELECT *
+  //                       FROM event
+  //                       WHERE id = ${eventId};`;
   pool.query(queryText)
     .then(result => {
       res.send(result.rows);
