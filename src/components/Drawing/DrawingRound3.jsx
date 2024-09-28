@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Drawing.css';
-import logo from '../LandingPage/drawleague.png';
+import NavPlayer from '../NavPlayer/NavPlayer'; 
 
 function DrawingRound3() {
   const location = useLocation();
@@ -40,6 +40,10 @@ function DrawingRound3() {
     fileInputRef.current.click();
   };
 
+  const handleRetakeClick = () => {
+    window.location.reload();
+  };
+
   const submitPhoto = () => {
     if (photo) {
       const formData = new FormData();
@@ -68,16 +72,14 @@ function DrawingRound3() {
   };
 
   const closePopupAndRefresh = () => {
-    console.log("Popup closed, refreshing the page...");
     window.location.reload();
   };
 
   return (
     <div className="container">
       <header className="header">
-        <img src={logo} alt="Draw League Logo" className="logo" />
+        <NavPlayer className="hamburger-right" />
       </header>
-
       <div className="main-content">
         <div className="left-panel">
           <div className="table-box">
@@ -101,9 +103,10 @@ function DrawingRound3() {
           </div>
         </div>
 
-        <div className="center-panel">
+        <div className="center-panel" onClick={handleSnapClick} style={{ cursor: 'pointer' }}>
           {!photo ? (
-            <div>
+            <div className="center-panel-text">
+              Tap here to take a photo
               <input
                 type="file"
                 accept="image/*"
@@ -124,7 +127,7 @@ function DrawingRound3() {
         </div>
 
         <div className="right-panel">
-          <button className="action-button" onClick={handleSnapClick}>SNAP</button>
+          <button className="action-button" onClick={handleRetakeClick}>RETAKE</button>
           <button className="action-button" onClick={submitPhoto}>SUBMIT</button>
         </div>
 
