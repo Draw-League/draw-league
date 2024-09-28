@@ -20,7 +20,7 @@ function ProJudge() {
           </div>
 
           <div className='judge-name'>
-            <h3 className='question-style'>JUDGE NAME</h3>
+            <h3 className='question-style'>JUDGE <br />NAME</h3>
           </div>
         </div>
 
