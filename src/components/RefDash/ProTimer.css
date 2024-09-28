@@ -24,3 +24,7 @@
     width: 145px; 
     align-self: center;
 }
+
+.timer-button:hover{
+  background-color: #ff5c3d;
+}
