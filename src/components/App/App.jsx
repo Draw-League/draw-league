@@ -47,23 +47,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // initializeSockets();
+     initializeSockets();
   }, [dispatch]);
 
-//   const initializeSockets = () => {
-//     if(!socket) {
-//         let appSocket = io();
-//         setSocket(appSocket);
-//         // client-side
-//         appSocket.on("connect", () => {
-//             console.log(socket.id);
-//         });
+  const initializeSockets = () => {
+    if(!socket) {
+        let appSocket = io();
+        setSocket(appSocket);
+        // client-side
+        appSocket.on("connect", () => {
+            console.log(socket.id);
+        });
         
-//         appSocket.on("disconnect", () => {
-//             console.log(socket.id)
-//         });
-//     }
-// }
+        appSocket.on("disconnect", () => {
+            console.log(socket.id)
+        });
+    }
+}
   return (
     <Router>
       <div>
@@ -115,12 +115,12 @@ function App() {
             <JudgeScore />
           </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows RefDash else shows LoginPage
             exact
-            path="/refdash">
-            <RefDash />
-          </ProtectedRoute>
+            path="/refdash"
+            render={(props) => (<RefDash socket={socket} {...props} />)} />
+          {/* </ProtectedRoute> */}
 
           <ProtectedRoute
             // logged in shows AdminDash else shows LoginPage

@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
+import { useEffect } from 'react';
 
-// select Ref hard coded dummy data
-const options = [
-  { value: 'Harry Potter', label: 'Harry Potter' },
-  { value: 'Hermione Granger', label: 'Hermione Granger' },
-  { value: 'Ron Weasley', label: 'Ron Weasley' }
-]
 
 
 function AddEvent() {
-
+  const refs = useSelector((store) => store.getRefsReducer);
+  
   const [newEvent, setNewEvent] = useState({
     theme: '',
     promptOne: '',
@@ -38,6 +34,16 @@ function AddEvent() {
   const dispatch = useDispatch();
   const fileInputRef = React.createRef();
 
+  //Dispatches Refs saga for ref dropdown
+  useEffect(() => {
+    dispatch({type: 'FETCH_REFS'});
+  }, []);
+
+  //populates ref dropdown
+  const refOptions = refs.map((ref) => ({
+    value: ref.username,  
+    label: ref.full_name  
+  }));
   const uploadImage = async () => {
     if (judgeImgFile) {
       const formData = new FormData();
@@ -180,7 +186,7 @@ function AddEvent() {
           <Select
           className='ref-select-dropdown'
             placeholder='---SELECT REF---'
-            options={options}
+            options={refOptions}
             value={selectedOptions}
             onChange={handleRefChange}
             isMulti= {true}
