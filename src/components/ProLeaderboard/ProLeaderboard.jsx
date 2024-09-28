@@ -30,28 +30,7 @@ function ProLeaderboard({socket}) {
       };
     }
   }, [socket, history]);
-  // useEffect(() => {
-  //   // Add the listener when we load the page
-  //   if(socket) {
-  //     socket.on('hello', (world) => {
-  //       console.log('hello');
-  //       console.log('socket connected!', socket.id);
-  //       // history.push...
-  //       history.push('/user');
-  //     })
-  //   } else {
-  //     console.error('Socket not connected!!!')
-  //   }
-  //   // Turn off the listener when we leave the page
-  //   return () => socket && socket.off('hello');
-  // }, [socket, history]);
-  
-  // const sendNextPage = () => {
-  //   if(socket) {
-  //       socket.emit('navigate', 'HelloWorld3');
-      
-  //   }
-  // }
+
   return (
     <div className="container">
       <div>
