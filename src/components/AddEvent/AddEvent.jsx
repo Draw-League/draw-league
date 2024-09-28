@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AddEvent.css';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import AdminNav from '../AdminNav/AdminNav';
 
 function AddEvent() {
   const [newEvent, setNewEvent] = useState({
@@ -73,50 +74,31 @@ function AddEvent() {
   };
 
   return (
+    <div className="adminnav">
+    <AdminNav />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
     <div className="container">
-      <div>
-        <p>This is the add an event page</p>
+      
+      <div className="new-event-form">
         <h3>Event Details</h3>
+
         <form onSubmit={createEvent}>
-          <input
-            type="text"
-            placeholder="Theme"
-            name="theme"
-            value={newEvent.theme}
-            onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Prompt One"
-            name="promptOne"
-            value={newEvent.promptOne}
-            onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Prompt Two"
-            name="promptTwo"
-            value={newEvent.promptTwo}
-            onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Prompt Three"
-            name="promptThree"
-            value={newEvent.promptThree}
-            onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
-          />
-          <br />
-          <input
+        <div className='event-info'>
+        <input
+          className='date-box'
             type="date"
             placeholder="Event Date"
             name="eventDate"
             value={newEvent.eventDate}
             onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
           />
+          <br />
           <br />
           <input
             type="text"
@@ -126,6 +108,7 @@ function AddEvent() {
             onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
           />
           <br />
+          <br />
           <input
             type="text"
             placeholder="Location Address"
@@ -134,6 +117,60 @@ function AddEvent() {
             onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
           />
           <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Theme"
+            name="theme"
+            value={newEvent.theme}
+            onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt One"
+            name="promptOne"
+            value={newEvent.promptOne}
+            onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt Two"
+            name="promptTwo"
+            value={newEvent.promptTwo}
+            onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt Three"
+            name="promptThree"
+            value={newEvent.promptThree}
+            onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
+          />
+          <br />
+          <br />
+          </div>
+
+
+
+        <div className='staff-detail'>
+          {/* NEED TO MAKE A MULTI-SELECT DROPDOWN SELECT */}
+          <input
+            type="text"
+            placeholder="** STILL NEED TO ADD: SELECT REF"
+            name="select ref"
+            // value={newEvent.judgeName}
+            // onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
+          />
+        <br />
+        <br />
+        <br />   
+        <br />
           <input
             type="text"
             placeholder="Judge's Name"
@@ -141,7 +178,8 @@ function AddEvent() {
             value={newEvent.judgeName}
             onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
           />
-          <br />
+        <br />
+        <br />
           <input
             type="text"
             placeholder="Judge's Job"
@@ -150,6 +188,7 @@ function AddEvent() {
             onChange={(event) => setNewEvent({ ...newEvent, judgeJob: event.target.value })}
           />
           <br />
+          <br />
           <input
             type="text"
             placeholder="Judge Likes"
@@ -157,7 +196,8 @@ function AddEvent() {
             value={newEvent.judgeLike}
             onChange={(event) => setNewEvent({ ...newEvent, judgeLike: event.target.value })}
           />
-          <br />
+         <br />
+         <br />
           <input
             type="text"
             placeholder="Judge Knows"
@@ -190,15 +230,19 @@ function AddEvent() {
                 onChange={handleImageChange}
                 style={{ display: 'none' }}
               />
-            </div>
+            
+          </div>
+          </div>
           </div>
 
           <br />
           <button type="submit" className="btn_desktop">Add Event</button>
 
           {/* Button should bring admin back to admin dashboard */}
+        
         </form>
       </div>
+    </div>
     </div>
   );
 }
