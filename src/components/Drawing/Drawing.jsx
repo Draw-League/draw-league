@@ -1,18 +1,40 @@
-import React from 'react';
-import './Drawing.css';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+import DrawingRound1 from './DrawingRound1';
+import DrawingRound2 from './DrawingRound2';
+import DrawingRound3 from './DrawingRound3';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+const socket = io('/socket.io');
 
 function Drawing() {
+  const [currentRound, setCurrentRound] = useState(1);
+
+  useEffect(() => {
+    socket.on('roundChange', (newRound) => {
+      setCurrentRound(newRound);
+    });
+
+    return () => {
+      socket.off('roundChange');
+    };
+  }, []);
+
+  const renderRoundComponent = () => {
+    switch (currentRound) {
+      case 1:
+        return <DrawingRound1 />;
+      case 2:
+        return <DrawingRound2 />;
+      case 3:
+        return <DrawingRound3 />;
+      default:
+        return <div>Invalid round</div>;
+    }
+  };
+
   return (
-    <div className="container">
-      <div>
-        <p>This where teams upload their drawing</p>
-        <p>This will get and post</p>
-      </div>
+    <div>
+      {renderRoundComponent()}
     </div>
   );
 }

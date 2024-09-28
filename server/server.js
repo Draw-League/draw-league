@@ -15,10 +15,11 @@ const teamsRouter = require('./routes/teams.router');
 const eventRouter = require('./routes/event.router');
 const adminRouter = require('./routes/admin.router');
 const drawingsRouter = require('./routes/drawings.router');
+const projectionsRouter = require ('./routes/projections.router')
 
 // Express Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('build'));
 
 // Passport Session Configuration
@@ -35,39 +36,32 @@ app.use('/api/teams', teamsRouter);
 app.use('/api/admins', adminRouter);
 app.use('/api/events', eventRouter);
 app.use('/api/drawings', drawingsRouter);
+app.use('/api/projections', projectionsRouter)
 
 const cors = require('cors');
 app.use(cors())
 const http = require('http');
 
-const ioPORT = process.env.ioPORT || 5002;
-
 const server = http.createServer(app);
-const io = require("socket.io")(server, {
-    
+const io = require("socket.io")(server, {});
+
+
+io.on('connection', (socket) => {
+  console.log('connected', socket.id);
+  socket.on('navigate', (pageName) => {
+    console.log('navigate', pageName)
+    io.emit('navigate', pageName); //currently io.emit which will emit the navigate socket to anyone one on the server. was socket.emit
   });
 
-
-  io.on('connection', (socket) => {
-    console.log('', socket.id);
-  
-    socket.on('', () => {
-      console.log('',)
-    });
-
-    socket.on('disconnect', () => {
-      console.log('User disconnected');
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
   });
 
-});
-
-  io.listen(ioPORT, () => {
-  console.log('Listening on ioPORT:', ioPORT);
 });
 
 
 
 // Listen Server & Port
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });

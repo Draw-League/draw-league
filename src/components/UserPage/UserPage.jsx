@@ -7,8 +7,15 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
+      <h2>Welcome, {user.full_name}!</h2>
       <p>Your ID is: {user.id}</p>
+      <p>Your Role: {user.user_role} </p>
+      {user.ref_img && (
+        <div>
+          <p>Your Referee Image:</p>
+          <img src={user.ref_img} alt="Referee" style={{ width: '150px', height: 'auto' }} />
+        </div>
+      )}
       <LogOutButton className="btn" />
     </div>
   );

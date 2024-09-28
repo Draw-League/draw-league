@@ -1,18 +1,27 @@
+html,
+body,
+#react-root {
+  height: 100%;
+  text-transform: uppercase;
+}
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
 
 .btn_desktop {
-    background-color: #C3DD00;
-    height: 60px;
-    width: 155px;
+    background-color: #ebe5e5;
+    height: auto;
+    width: auto;
     border: 3px solid black;
-    box-shadow: 3px 6px black;
     color: black;
     align-self: flex-end;
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 25px;
+    display: inline-block;
+    /* padding: 5px; */
+
+
   }
   
   .btn_sizeMin {
@@ -31,7 +40,32 @@ Button
   }
   
   .btn:hover {
-    background-color: #830d00;
+    background-color: #d9e602;
     text-decoration: none;
   }
+
+  .btn_desktop:hover {
+    background-color: #d9e602;
+    text-decoration: none;
+  }
+
+  /* --------------------------------------------------------------------------------
+FormPanels
+-------------------------------------------------------------------------------- */
+.formPanel {
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 100%;
+  padding: 2rem;
+  margin: 0 auto 1rem;
+  text-align: center;
   
+}
+
+input {
+  padding: auto;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 200px;
+
+}

@@ -7,7 +7,20 @@
     width: 100%;
   }
   
- 
+  .main-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100px;
+  }
+  
+  .landing-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+  }
+  
   .page-title {
     background-color: #c3dd00;
     color: #000000;

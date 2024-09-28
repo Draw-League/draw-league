@@ -1,0 +1,174 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0071ff;
+    height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+.tab {
+    background-color: #c3dd00;
+    padding: 10px;
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid #000;
+    width: 100%;
+}
+
+.team-box {
+    background-color: #ffffff;
+    border: 3px solid #000;
+    border-left: none;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.table-box {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+}
+
+.table-header {
+    background-color: #c3dd00;
+    padding: 10px;
+    font-size: clamp(16px, 2.5vw, 24px) !important;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid #000;
+    width: 100%;
+}
+
+.table-content {
+    background-color: #ffffff;
+    border: 3px solid #000;
+    border-left: none;
+    padding: 10px;
+    font-size: clamp(14px, 2vw, 20px) !important;
+    text-align: center;
+    width: 100%;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.center-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    max-width: 250px;
+    max-height: 350px;
+    aspect-ratio: 10 / 16;
+    box-shadow: 6px 6px #000;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+.center-panel-text {
+    font-size: 18px;
+    color: gray;
+    text-align: center;
+}
+
+.captured-image {
+    width: 100%; 
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+.video-element,
+.captured-image,
+canvas {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.right-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    max-width: 400px;
+    gap: 50px;
+}
+
+
+.action-button {
+    background-color: #c3dd00;
+    border: 3px solid #000;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #d9e602;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close-button {
+    background-color: #c3dd00;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-button:hover {
+    background-color: #d9e602;
+}

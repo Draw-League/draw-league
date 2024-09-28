@@ -34,10 +34,10 @@ function LoginForm() {
       )}
       <div>
         <label htmlFor="username">
-          Username:
           <input
             type="text"
             name="username"
+            placeholder='USERNAME'
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -46,10 +46,10 @@ function LoginForm() {
       </div>
       <div>
         <label htmlFor="password">
-          Password:
           <input
             type="password"
             name="password"
+            placeholder='PASSWORD'
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -57,7 +57,7 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="btn" type="submit" name="submit" value="LOG IN" />
       </div>
     </form>
   );

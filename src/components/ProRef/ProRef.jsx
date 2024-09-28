@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import './ProRef.css';
+import axios from 'axios';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
 
 function ProRef() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const ref = useSelector((store) => store.projectionReducer);
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_REFS", payload: id });
+  }, [id, dispatch]);
+
+
+
   return (
     <div className="container">
-      <div>
-        <p>This the projector ref page</p>
-        <p>This will get</p>
+      <div className='ref-title'>
+        <h2 className='ref-title-style'> REFEREE</h2>
+      </div>
+      <div className="ref-info">
+
+        <div key={ref.id}>
+          <div className='ref-image'>
+
+            <img className="ref-img" alt="placeholder image"
+              src='https://images.unsplash.com/photo-1565194637906-8f45f3351a5d?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'></img>
+
+          </div>
+
+          <div className='ref-name'>
+            <p className='rname-style'>ref name</p>
+          </div>
+
+          <div className='ref-facts'>
+            <p className='ref-style'>
+              ref facts
+              <br />
+              how much wood would a woodchuck chuck if a woodchuck could chuck wood?
+              </p>
+              <br /> 
+
+            <p className='ref-style'>@instagram handle</p> 
+          </div>
+        </div>
       </div>
     </div>
   );
