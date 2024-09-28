@@ -35,8 +35,8 @@ function RefDash() {
 
         <div className="right-content">
           <div className="prompt-container">
-            <h2>PROMPTS</h2>
-            <div>???</div>
+          <h2 className="prompt-header">PROMPTS</h2>
+           <div className="prompt-reveal">???</div>
           </div>
           <div className="square-containers">
             <div className="square-box">Leaderboard</div>
