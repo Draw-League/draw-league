@@ -9,11 +9,10 @@ Button
 -------------------------------------------------------------------------------- */
 
 .btn_desktop {
-    background-color: #C3DD00;
-    height: 60px;
-    width: 155px;
+    background-color: #ebe5e5;
+    height: auto;
+    width: auto;
     border: 3px solid black;
-    box-shadow: 3px 6px black;
     color: black;
     align-self: flex-end;
     margin-top: 20px;
@@ -37,6 +36,11 @@ Button
   }
   
   .btn:hover {
+    background-color: #d9e602;
+    text-decoration: none;
+  }
+
+  .btn_desktop:hover {
     background-color: #d9e602;
     text-decoration: none;
   }
