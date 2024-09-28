@@ -26,7 +26,7 @@ function AdminDash() {
   return (
     <div className="container">
       <AdminNav />
-    <section style={{ display: 'flex' }}">
+    <section style={{ display: 'flex' }}>
         {events.map((event) => ( 
             <div key={event.id}> 
               <div className='ref-image'>
