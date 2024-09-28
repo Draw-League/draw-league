@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import {Cloudinary} from "@cloudinary/url-gen";
+import { Cloudinary } from "@cloudinary/url-gen";
 import Contact from '../Contact/Contact';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -21,6 +21,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Rules from '../Rules/Rules';
 import Join from '../Join/Join';
 import Drawing from '../Drawing/Drawing';
+import TeamGallery from '../TeamGallery/TeamGallery';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
@@ -50,24 +51,24 @@ function App() {
     // initializeSockets();
   }, [dispatch]);
 
-//   const initializeSockets = () => {
-//     if(!socket) {
-//         let appSocket = io();
-//         setSocket(appSocket);
-//         // client-side
-//         appSocket.on("connect", () => {
-//             console.log(socket.id);
-//         });
-        
-//         appSocket.on("disconnect", () => {
-//             console.log(socket.id)
-//         });
-//     }
-// }
+  //   const initializeSockets = () => {
+  //     if(!socket) {
+  //         let appSocket = io();
+  //         setSocket(appSocket);
+  //         // client-side
+  //         appSocket.on("connect", () => {
+  //             console.log(socket.id);
+  //         });
+
+  //         appSocket.on("disconnect", () => {
+  //             console.log(socket.id)
+  //         });
+  //     }
+  // }
   return (
     <Router>
       <div>
-       
+
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
@@ -101,6 +102,7 @@ function App() {
             <Drawing />
           </Route>
 
+
           <Route
             // Not protected, shows JudgeGallery at all times (logged in or not)
             exact
@@ -113,6 +115,13 @@ function App() {
             exact
             path="/judgescore/:drawingid">
             <JudgeScore />
+          </Route>
+
+          <Route
+            // Not protected, shows TeamGallery at all times (logged in or not)
+            exact
+            path="/team-gallery">
+            <TeamGallery />
           </Route>
 
           <ProtectedRoute
@@ -137,7 +146,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-          // logged in shows AddRef else shows LoginPage
+            // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
@@ -149,7 +158,7 @@ function App() {
             path="/prorules">
             <ProRules />
           </ProtectedRoute>
-          
+
           <ProtectedRoute
             // logged in shows ProRef else shows LoginPage
             exact
