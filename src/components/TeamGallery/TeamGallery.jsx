@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './TeamGallery.css';
 import NavPlayer from '../NavPlayer/NavPlayer';
 import axios from 'axios';
-import logo from '../LandingPage/drawleague.png'; 
 
 function TeamGallery() {
   const [drawings, setDrawings] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchDrawings = async () => {
@@ -14,7 +12,6 @@ function TeamGallery() {
         const response = await axios.get('/api/drawings');
         setDrawings(response.data);
       } catch (error) {
-        setErrorMessage('Error fetching drawings.');
         console.error('Error:', error);
       }
     };
@@ -60,8 +57,6 @@ function TeamGallery() {
           </div>
           <div className="round-label">ROUND 3</div>
         </div>
-
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );
