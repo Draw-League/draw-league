@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 
 function AddEvent() {
@@ -22,14 +23,53 @@ function AddEvent() {
     createdBy: 0,
   });
 
+  const [judgeImgFile, setJudgeImgFile] = useState(null);
   const dispatch = useDispatch();
+  const fileInputRef = React.createRef();
 
-  const createEvent = (event) => {
+  const uploadImage = async () => {
+    if (judgeImgFile) {
+      const formData = new FormData();
+      formData.append('file', judgeImgFile);
+      formData.append('upload_preset', import.meta.env.VITE_PRESET_NAME);
+      try {
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUD_NAME}/image/upload`,
+          formData
+        );
+        return response.data.secure_url;
+      } catch (err) {
+        console.error('Error uploading image:', err);
+        return null;
+      }
+    }
+    return null;
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setJudgeImgFile(file);
+    }
+  };
+
+  const handleSelectFile = () => {
+    fileInputRef.current.click();
+  };
+
+  const createEvent = async (event) => {
     event.preventDefault();
+
+    const uploadedImgUrl = await uploadImage();
+
+    setNewEvent((prevEvent) => ({
+      ...prevEvent,
+      judgeImg: uploadedImgUrl || '',
+    }));
 
     dispatch({
       type: 'ADD_EVENT',
-      payload: newEvent, // Send the entire newEvent object
+      payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
   };
 
@@ -50,42 +90,16 @@ function AddEvent() {
 
         <form onSubmit={createEvent}>
         <div className='event-info'>
-          <input
-            type="text"
-            placeholder="Theme"
-            name="theme"
-            value={newEvent.theme}
-            onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
-          />
-
-          <input
-            type="text"
-            placeholder="Prompt One"
-            name="promptOne"
-            value={newEvent.promptOne}
-            onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Prompt Two"
-            name="promptTwo"
-            value={newEvent.promptTwo}
-            onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Prompt Three"
-            name="promptThree"
-            value={newEvent.promptThree}
-            onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
-          />
-          <input
+        <input
+          className='date-box'
             type="date"
             placeholder="Event Date"
             name="eventDate"
             value={newEvent.eventDate}
             onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
           />
+          <br />
+          <br />
           <input
             type="text"
             placeholder="Location Name"
@@ -93,6 +107,8 @@ function AddEvent() {
             value={newEvent.locationName}
             onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
           />
+          <br />
+          <br />
           <input
             type="text"
             placeholder="Location Address"
@@ -100,18 +116,61 @@ function AddEvent() {
             value={newEvent.locationAddress}
             onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
           />
-          </div>
-
-          <div className='ref-select'>
-            {/* NEED TO MAKE MULTI-SELECT DROPDOWN! */}
-            <input
+          <br />
+          <br />
+          <input
             type="text"
-            placeholder="---SELECT REF---"
-            name="select-ref"
-            />
+            placeholder="Theme"
+            name="theme"
+            value={newEvent.theme}
+            onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt One"
+            name="promptOne"
+            value={newEvent.promptOne}
+            onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt Two"
+            name="promptTwo"
+            value={newEvent.promptTwo}
+            onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
+          />
+          <br />
+          <br />
+          <input
+            type="text"
+            placeholder="Prompt Three"
+            name="promptThree"
+            value={newEvent.promptThree}
+            onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
+          />
+          <br />
+          <br />
           </div>
 
-          <div className='judge-details'>
+
+
+        <div className='staff-detail'>
+          {/* NEED TO MAKE A MULTI-SELECT DROPDOWN SELECT */}
+          <input
+            type="text"
+            placeholder="** STILL NEED TO ADD: SELECT REF"
+            name="select ref"
+            // value={newEvent.judgeName}
+            // onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
+          />
+        <br />
+        <br />
+        <br />   
+        <br />
           <input
             type="text"
             placeholder="Judge's Name"
@@ -119,6 +178,8 @@ function AddEvent() {
             value={newEvent.judgeName}
             onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
           />
+        <br />
+        <br />
           <input
             type="text"
             placeholder="Judge's Job"
@@ -126,6 +187,8 @@ function AddEvent() {
             value={newEvent.judgeJob}
             onChange={(event) => setNewEvent({ ...newEvent, judgeJob: event.target.value })}
           />
+          <br />
+          <br />
           <input
             type="text"
             placeholder="Judge Likes"
@@ -133,6 +196,8 @@ function AddEvent() {
             value={newEvent.judgeLike}
             onChange={(event) => setNewEvent({ ...newEvent, judgeLike: event.target.value })}
           />
+         <br />
+         <br />
           <input
             type="text"
             placeholder="Judge Knows"
@@ -140,16 +205,41 @@ function AddEvent() {
             value={newEvent.judgeKnow}
             onChange={(event) => setNewEvent({ ...newEvent, judgeKnow: event.target.value })}
           />
+
+          <div className="photo-upload-section">
+            <div className="image-preview">
+              {judgeImgFile ? (
+                <img
+                  src={URL.createObjectURL(judgeImgFile)}
+                  alt="Judge Preview"
+                />
+              ) : (
+                <span>Judge's Image Preview</span>
+              )}
+            </div>
+            <div className="photo-text">
+              <p>Please attach a Judge's picture</p>
+              <button type="button" onClick={handleSelectFile}>
+                UPLOAD
+              </button>
+              <br />
           <input
-            type="text"
-            placeholder="Judge's Picture"
-            name="judgeImg"
-            value={newEvent.judgeImg}
-            onChange={(event) => setNewEvent({ ...newEvent, judgeImg: event.target.value })}
-          />
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleImageChange}
+                style={{ display: 'none' }}
+              />
+            
           </div>
-          
-          <br /><button type="submit" className="btn_desktop">Add Event</button>
+          </div>
+          </div>
+
+          <br />
+          <button type="submit" className="btn_desktop">Add Event</button>
+
+          {/* Button should bring admin back to admin dashboard */}
+        
         </form>
       </div>
     </div>
