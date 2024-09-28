@@ -1,19 +1,30 @@
 import React from 'react';
 import './AdminDash.css';
-import AdminNav from '../AdminNav/AdminNav'
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import AdminNav from '../AdminNav/AdminNav';
 
 function AdminDash() {
   return (
     <div className="container">
       <AdminNav />
-      <div>
-        <p>This the admin dashboard</p>
-        <p>It will get </p>
+      <div style={{ display: 'flex' }}>
+        <div style={{ marginRight: '20px' }}>
+          <p>Location:</p>
+          <p>Address:</p>
+          <p>Time:</p>
+          <p>Date:</p>
+        </div>
+        <div>
+          <p>Judge:</p>
+          <p>Judge Code:</p>
+          <br></br>
+          <p>Ref: </p>
+          <br></br>
+          <p>Game Code:</p>
+        </div>
       </div>
+      <button className='event-buttons'>Play</button>
+      <button className='event-buttons'>Edit</button>
+      <button className='event-buttons'>Delete</button>
     </div>
   );
 }
