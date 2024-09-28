@@ -40,6 +40,10 @@ function DrawingRound3() {
     fileInputRef.current.click();
   };
 
+  const handleRetakeClick = () => {
+    window.location.reload();
+  };
+
   const submitPhoto = () => {
     if (photo) {
       const formData = new FormData();
@@ -68,7 +72,6 @@ function DrawingRound3() {
   };
 
   const closePopupAndRefresh = () => {
-    console.log("Popup closed, refreshing the page...");
     window.location.reload();
   };
 
@@ -100,9 +103,10 @@ function DrawingRound3() {
           </div>
         </div>
 
-        <div className="center-panel">
+        <div className="center-panel" onClick={handleSnapClick} style={{ cursor: 'pointer' }}>
           {!photo ? (
-            <div>
+            <div className="center-panel-text">
+              Tap here to take a photo
               <input
                 type="file"
                 accept="image/*"
@@ -123,7 +127,7 @@ function DrawingRound3() {
         </div>
 
         <div className="right-panel">
-          <button className="action-button" onClick={handleSnapClick}>SNAP</button>
+          <button className="action-button" onClick={handleRetakeClick}>RETAKE</button>
           <button className="action-button" onClick={submitPhoto}>SUBMIT</button>
         </div>
 

@@ -85,6 +85,14 @@
     aspect-ratio: 10 / 16;
     box-shadow: 6px 6px #000;
     margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+.center-panel-text {
+    font-size: 18px;
+    color: gray;
+    text-align: center;
 }
 
 .captured-image {
