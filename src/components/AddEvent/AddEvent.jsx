@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
 import { useDispatch } from 'react-redux';
+import AdminNav from '../AdminNav/AdminNav';
 
 function AddEvent() {
   const [newEvent, setNewEvent] = useState({
@@ -33,11 +34,22 @@ function AddEvent() {
   };
 
   return (
+    <div className="adminnav">
+    <AdminNav />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
     <div className="container">
-      <div>
-        <p>This is the add an event page</p>
+      
+      <div className="new-event-form">
         <h3>Event Details</h3>
+
         <form onSubmit={createEvent}>
+        <div className='event-info'>
           <input
             type="text"
             placeholder="Theme"
@@ -45,6 +57,7 @@ function AddEvent() {
             value={newEvent.theme}
             onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
           />
+
           <input
             type="text"
             placeholder="Prompt One"
@@ -87,6 +100,18 @@ function AddEvent() {
             value={newEvent.locationAddress}
             onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
           />
+          </div>
+
+          <div className='ref-select'>
+            {/* NEED TO MAKE MULTI-SELECT DROPDOWN! */}
+            <input
+            type="text"
+            placeholder="---SELECT REF---"
+            name="select-ref"
+            />
+          </div>
+
+          <div className='judge-details'>
           <input
             type="text"
             placeholder="Judge's Name"
@@ -122,9 +147,12 @@ function AddEvent() {
             value={newEvent.judgeImg}
             onChange={(event) => setNewEvent({ ...newEvent, judgeImg: event.target.value })}
           />
-          <button type="submit" className="btn_desktop">Add Event</button>
+          </div>
+          
+          <br /><button type="submit" className="btn_desktop">Add Event</button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

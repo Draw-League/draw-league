@@ -1,0 +1,11 @@
+.new-event-form{
+    width: 50%;
+    height: auto;
+    background: #C3DD00;
+    border: 4px solid #000000;
+}
+
+input{
+    margin: 1rem;
+    padding: 1rem;
+}
