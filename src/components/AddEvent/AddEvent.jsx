@@ -9,7 +9,7 @@ import Select from 'react-select';
 const options = [
   { value: 'Harry Potter', label: 'Harry Potter' },
   { value: 'Hermione Granger', label: 'Hermione Granger' },
-  { value: 'Ron', label: 'Weisley' }
+  { value: 'Ron Weasley', label: 'Ron Weasley' }
 ]
 
 
@@ -33,6 +33,7 @@ function AddEvent() {
     createdBy: 0,
   });
 
+  //Judge image file upload
   const [judgeImgFile, setJudgeImgFile] = useState(null);
   const dispatch = useDispatch();
   const fileInputRef = React.createRef();
@@ -175,25 +176,17 @@ function AddEvent() {
 
 
         <div className='staff-detail'>
-          {/* NEED TO MAKE A MULTI-SELECT DROPDOWN SELECT */}
+          {/* currently using hard coded dummy data starting from line 8 */}
           <Select
-            placeholder='SELECT REF'
+          className='ref-select-dropdown'
+            placeholder='---SELECT REF---'
             options={options}
             value={selectedOptions}
             onChange={handleRefChange}
             isMulti= {true}
          />
-          {/* <input
-            type="text"
-            placeholder="** STILL NEED TO ADD: SELECT REF"
-            name="select ref"
-            // value={newEvent.judgeName}
-            // onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
-          /> */}
         <br />
-        <br />
-        <br />   
-        <br />
+        <br />  
           <input
             type="text"
             placeholder="Judge's Name"
