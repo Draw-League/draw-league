@@ -57,11 +57,11 @@ function App() {
         setSocket(appSocket);
         // client-side
         appSocket.on("connect", () => {
-            console.log(socket.id);
+             console.log(socket.id);
         });
         
         appSocket.on("disconnect", () => {
-            console.log(socket.id)
+             console.log(socket.id)
         });
     }
 }
@@ -130,7 +130,7 @@ function App() {
             <TeamGallery />
           </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows RefDash else shows LoginPage
             exact
             path="/refdash"

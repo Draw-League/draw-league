@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import './RefDash.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
-import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
+//import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 
 import Timer from './ProTimer';
 import logo from './drawleague.png';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+
 
 function RefDash({socket}) {
   const history = useHistory();
