@@ -1,87 +1,81 @@
-.join-game{
-    background-color:#007bff;
-    width: 100%;
+.join-game {
+    background-color: #007bff;
+    width: 100vw;
     margin: 0;
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
     justify-content: center;
+    align-items: center;
 }
 
-.small-logo{
-    width: 400px;
+.join-game-box {
+    background-color: #C3DD00;
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
+    border: 3px solid black;
+    color: black;
+    font-weight: 700;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
 }
 
-.join-game-content{
+.join-game-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-
-
-.join-game-subtitle{
-    color:white;
-    padding: 0;
-    margin: 0;
-    font-size: 32px;
+.join-game-subtitle {
+    color: white;
+    width: 100%;
+    max-width: 300px;
+    font-size: 24px;
     font-weight: 700;
-    text-align: left;
-    align-self: flex-start;
     margin-top: 10px;
 }
 
-.join-game-form{
+.join-game-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    color: black;
-    font-size: 32px;
-    font-weight: 700;
+    align-items: end;
 }
 
-.join-game-form input{
+.join-game-form input {
     background-color: white;
     border: 3px solid black;
-    
     height: 50px;
-    width: 360px;
-    outline: 0;
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
     font-weight: 700;
     font-size: 32px;
 }
 
-.join-game-form button{
+.join-game-form button {
     background-color: #C3DD00;
     height: 60px;
-    width: 155px;
+    width: 150px;
     border: 3px solid black;
-    
     color: black;
-    align-self: flex-end;
-    margin-top: 20px;
     font-weight: 700;
     font-size: 32px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.join-game-form input::placeholder{
+.join-game-form button:hover {
+    background-color: #d9e602;
+}
+
+.error-message {
+    color: red;
     font-weight: 700;
-    color:#d1d0ce;
-}
-
-.judge-score-range{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: left;
-}
-
-.range-details{
-    color: white;
-    display: flex;
-    justify-content: space-between;
 }
