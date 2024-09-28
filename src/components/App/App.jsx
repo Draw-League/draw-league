@@ -137,26 +137,26 @@ function App() {
             render={(props) => (<RefDash socket={socket} {...props} />)} />
           {/* </ProtectedRoute> */}
 
-          <ProtectedRoute
+          <Route
             // logged in shows AdminDash else shows LoginPage
             exact
             path="/admindash">
             <AdminDash />
-          </ProtectedRoute>
+          </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows AddEvent else shows LoginPage
             exact
             path="/addevent">
             <AddEvent />
-          </ProtectedRoute>
+          </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
-          </ProtectedRoute>
+          </Route>
 
           <ProtectedRoute
             // logged in shows ProRules else shows LoginPage

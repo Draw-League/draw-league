@@ -47,6 +47,36 @@ const history = useHistory();
   return (
     <div className="container">
       <AdminNav />
+    <section style={{ display: 'flex' }}>
+        {events.map((event) => ( 
+            <div key={event.id}> 
+              <div className='ref-image'>
+               <p> {event.location_name}</p>
+              </div>
+            </div>
+          ))
+        }
+      </section>
+
+      <div >
+        <div style={{ marginRight: '20px' }}>
+          <p>Location:</p>
+          <p>Address:</p>
+          <p>Time:</p>
+          <p>Date:</p>
+        </div>
+        <div>
+          <p>Judge:</p>
+          <p>Judge Code:</p>
+          <br></br>
+          <p>Ref: </p>
+          <br></br>
+          <p>Game Code:</p>
+        </div>
+      </div>
+      <button className='event-buttons'>Play</button>
+      <button className='event-buttons'>Edit</button>
+      <button className='event-buttons'>Delete</button>
       <br />
       <br />
       <br />
@@ -58,18 +88,8 @@ const history = useHistory();
        
       </div>
       
-      <section className="ref-info">
-        {events.map((event) => ( 
-            <div key={event.id}> 
-              <div className='ref-image'>
-               <p> {event.location_name}</p>
-              </div>
-            </div>
-          ))
-        }
-      </section>
 
-      <div className="container">
+      <div>
       <h2>Welcome, {events.full_name}!</h2>
       <LogOutButton className="btn" />
     </div>
