@@ -78,11 +78,7 @@ function AddEvent() {
 
  
 
-  // deals with select ref
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const handleRefChange = (selectedOptions) => (
-    setSelectedOptions(selectedOptions)
-  );
+
 
 
   const createEvent = async (event) => {
