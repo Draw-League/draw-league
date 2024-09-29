@@ -27,6 +27,7 @@ function AddEvent() {
     judgeImg: '',
     judgeCode: '',
     createdBy: 0,
+    refId: 0
   });
 
   //Judge image file upload
@@ -41,9 +42,11 @@ function AddEvent() {
 
   //populates ref dropdown
   const refOptions = refs.map((ref) => ({
-    value: ref.username,  
+    value: ref.id,  
     label: ref.full_name  
   }));
+
+  console.log('refoptions', refOptions)
   const uploadImage = async () => {
     if (judgeImgFile) {
       const formData = new FormData();
@@ -74,6 +77,15 @@ function AddEvent() {
     fileInputRef.current.click();
   };
 
+ 
+
+  // deals with select ref
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const handleRefChange = (selectedOptions) => (
+    setSelectedOptions(selectedOptions)
+  );
+
+
   const createEvent = async (event) => {
     event.preventDefault();
 
@@ -90,11 +102,7 @@ function AddEvent() {
     });
   };
 
-  // deals with select ref
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const handleRefChange = (selectedOptions) => (
-    setSelectedOptions(selectedOptions)
-  );
+  console.log('selectedoptions', selectedOptions);
 
   return (
     <div className="adminnav">
@@ -187,10 +195,11 @@ function AddEvent() {
           className='ref-select-dropdown'
             placeholder='---SELECT REF---'
             options={refOptions}
-            value={selectedOptions}
+            value={selectedOptions[0].value}
             onChange={handleRefChange}
             isMulti= {true}
          />
+         {console.log('selectedOptions[0].value', selectedOptions[0].value)}
         <br />
         <br />  
           <input
