@@ -12,20 +12,21 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-const [currentGame, setCurrentGame] = useState('');
+  const [currentGame, setCurrentGame] = useState('');
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
-const handlePlay = (e) => {
-  e.preventDefault();
-  console.log('Game to PLAY id;', currentGame)
-  dispatch ({type: 'UPDATE_CURRENT_GAME', payload: currentGame});
-  setCurrentGame({currentGame});
-  // history.push('/ref-dash');
-}
+  const handlePlay = (e, eventID) => {
+    e.preventDefault();
+    console.log('Game to PLAY id;', eventID);
+    setCurrentGame(eventID);
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
+    // setCurrentGame({currentGame});
+    // history.push('/ref-dash');
+  }
 
   const removeEvent = (id) => {
     console.log('deleting event with id:', id);
@@ -62,8 +63,9 @@ const handlePlay = (e) => {
       <br />
       <section style={{ display: 'flex', marginRight: '20px' }}>
         {events.map((event) => (
-          <div key={event.id}>
+          <div key={event.id} >
             <div className='event-box'>
+              <p> {event.id}</p>
               <p> {event.location_name}</p>
               <p> {event.location_address}</p>
               <p> {event.event_date}</p>
@@ -71,7 +73,9 @@ const handlePlay = (e) => {
               <p> {event.judge_code}</p>
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
-              <button className='event-buttons' onClick={(e) => handlePlay(e)}>Play</button>
+              <button className='event-buttons'
+                //  value={event.id} onChange={(e) => setCurrentGame(e.target.value)} 
+                onClick={(e) => handlePlay(e, event.id)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons'>Delete</button>
             </div>
@@ -80,7 +84,7 @@ const handlePlay = (e) => {
         }
       </section>
 
-      <div >
+      {/* <div >
         <div style={{ marginRight: '20px' }}>
           <p>Location:</p>
           <p>Address:</p>
@@ -95,7 +99,7 @@ const handlePlay = (e) => {
           <br></br>
           <p>Game Code:</p>
         </div>
-      </div>
+      </div> */}
 
       <br />
       <br />
