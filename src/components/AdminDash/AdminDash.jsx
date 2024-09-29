@@ -3,7 +3,7 @@ import './AdminDash.css';
 import AdminNav from '../AdminNav/AdminNav'
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -12,17 +12,26 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-
+  const [currentGame, setCurrentGame] = useState('');
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
+  const handlePlay = (e, eventID) => {
+    e.preventDefault();
+    console.log('Game to PLAY id;', eventID);
+    setCurrentGame(eventID);
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
+    // history.push('/ref-dash');
+  }
+
   const removeEvent = (id) => {
     console.log('deleting event with id:', id);
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
+
 
   const history = useHistory();
   useEffect(() => {
@@ -53,8 +62,9 @@ function AdminDash({ socket }) {
       <br />
       <section style={{ display: 'flex', marginRight: '20px' }}>
         {events.map((event) => (
-          <div key={event.id}>
+          <div key={event.id} >
             <div className='event-box'>
+              <p> {event.id}</p>
               <p> {event.location_name}</p>
               <p> {event.location_address}</p>
               <p> {event.event_date}</p>
@@ -62,16 +72,18 @@ function AdminDash({ socket }) {
               <p> {event.judge_code}</p>
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
-              <button className='event-buttons'>Play</button>
+              <button className='event-buttons'
+                //  value={event.id} onChange={(e) => setCurrentGame(e.target.value)} 
+                onClick={(e) => handlePlay(e, event.id)}>Play</button>
               <button className='event-buttons'>Edit</button>
-              <button className='event-buttons'>Delete</button>
+              <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
         ))
         }
       </section>
 
-      <div >
+      {/* <div >
         <div style={{ marginRight: '20px' }}>
           <p>Location:</p>
           <p>Address:</p>
@@ -86,7 +98,7 @@ function AdminDash({ socket }) {
           <br></br>
           <p>Game Code:</p>
         </div>
-      </div>
+      </div> */}
 
       <br />
       <br />

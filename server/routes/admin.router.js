@@ -61,10 +61,11 @@ router.put('/', (req, res) => {
  * DELETE route template
  */
 router.delete('/id', (req, res) => {
-    // PUT route code here
+  console.log('req params',req.params);
+  console.log('req body',req.body);
     const { id } = req.params;
     const sqlText = `
-    // queryText goes here
+   DELETE FROM "event" WHERE id = $1;
     `;
     pool.query(sqlText, [id])
         .then((result) => {
