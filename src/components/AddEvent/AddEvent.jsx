@@ -195,11 +195,11 @@ function AddEvent() {
           className='ref-select-dropdown'
             placeholder='---SELECT REF---'
             options={refOptions}
-            value={selectedOptions[0].value}
+            value={selectedOptions}
             onChange={handleRefChange}
             isMulti= {true}
          />
-         {console.log('selectedOptions[0].value', selectedOptions[0].value)}
+         {console.log('selectedOptions[0].value', selectedOptions)}
         <br />
         <br />  
           <input
