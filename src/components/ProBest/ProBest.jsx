@@ -1,7 +1,24 @@
-import React from "react";
-import "./ProBest.css";
+import React from 'react';
+import './ProBest.css';
+import {useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+
+// This is one of our simplest components
+// It doesn't have local state,
+// It doesn't dispatch any redux actions or display any part of redux state
+// or even care what the redux state is'
 
 function ProBest() {
+
+  const winners = useSelector((store) => store.adminDashReducer);
+  const dispatch = useDispatch();
+
+
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_WINNERS' });
+  }, [dispatch]);
+
   return (
     <div className="winners">
       <div className="winners-top">
