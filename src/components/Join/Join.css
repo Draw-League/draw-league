@@ -1,5 +1,13 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    padding: 10px 20px;
+}
+
 .join-game {
-    background-color: #007bff;
+    background-color: #0071ff;
     width: 100vw;
     margin: 0;
     display: flex;

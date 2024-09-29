@@ -55,7 +55,7 @@ function AdminDash({ socket }) {
     }
   }, [socket, history]);
   return (
-    <div className="container">
+    <div className="admin-dash-container">
       <AdminNav />
       <br />
       <br />

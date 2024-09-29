@@ -83,7 +83,7 @@ router.get('/', (req, res) =>{
  */
 
 //Make sure to use rejectUnauthenticated once front end reducer and axios call are posting to the route.
-router.post('/create-event', async (req, res) => {
+router.post('/create-event', rejectUnauthenticated, async (req, res) => {
   // POST route code here
   //codeGenerator();
   console.log('code generator', codeGenerator().judgeCode);
@@ -104,7 +104,9 @@ router.post('/create-event', async (req, res) => {
       judgeKnow: req.body.judgeKnow,
       judgeImg: req.body.judgeImg,
       judgeCode: codeGenerator().judgeCode,
-      createdBy: req.user.id
+      createdBy: req.user.id,
+      refId: req.body.refId
+
     }
     const queryTextEvent = `
                         INSERT INTO event (theme, prompt_one, prompt_two, 
@@ -130,11 +132,12 @@ router.post('/create-event', async (req, res) => {
     eventCreate.createdBy
     ])
     const eventId = result.rows[0].id;
+    const refId = eventCreate.refId;
     const queryTextEventId = `
-                              INSERT INTO user_event (event_id)
-                              VALUES($1)
+                              INSERT INTO user_event (user_id, event_id)
+                              VALUES($1, $2)
                               ;`;
-    await connection.query(queryTextEventId, [eventId]);
+    await connection.query(queryTextEventId, [refId, eventId]);
     await connection.query('COMMIT;');
     res.sendStatus(201);
   }
