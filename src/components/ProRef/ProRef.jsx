@@ -5,7 +5,7 @@ import './ProRef.css';
 import axios from 'axios';
 
 
-function ProRef() {
+function ProRef({socket}) {
   const dispatch = useDispatch();
   const { id } = useParams();
   const ref = useSelector((store) => store.projectionReducer);
@@ -15,6 +15,26 @@ function ProRef() {
     dispatch({ type: "FETCH_REFS", payload: id });
   }, [id, dispatch]);
 
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/ProJudge'); 
+        }
+        else if(direction === 'back') {
+          history.push('/ProRules');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
 
 
   return (
