@@ -3,7 +3,7 @@ import './AdminDash.css';
 import AdminNav from '../AdminNav/AdminNav'
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -12,17 +12,26 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-
+const [currentGame, setCurrentGame] = useState('');
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
+const handlePlay = (e) => {
+  e.preventDefault();
+  console.log('Game to PLAY id;', currentGame)
+  dispatch ({type: 'UPDATE_CURRENT_GAME', payload: currentGame});
+  setCurrentGame({currentGame});
+  // history.push('/ref-dash');
+}
+
   const removeEvent = (id) => {
     console.log('deleting event with id:', id);
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
+
 
   const history = useHistory();
   useEffect(() => {
@@ -62,7 +71,7 @@ function AdminDash({ socket }) {
               <p> {event.judge_code}</p>
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
-              <button className='event-buttons'>Play</button>
+              <button className='event-buttons' onClick={(e) => handlePlay(e)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons'>Delete</button>
             </div>
