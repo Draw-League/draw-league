@@ -2,13 +2,13 @@ import React from 'react';
 import './AdminDash.css';
 import AdminNav from '../AdminNav/AdminNav'
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-function AdminDash({socket}) {
+function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
@@ -21,18 +21,18 @@ function AdminDash({socket}) {
 
   const removeEvent = (id) => {
     console.log('deleting event with id:', id);
-    dispatch({ type: 'REMOVE_EVENT', payload: id});
-}
+    dispatch({ type: 'REMOVE_EVENT', payload: id });
+  }
 
-const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     if (socket) {
       const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
-        if(direction === 'next') {
-          history.push('/ProRules'); 
+        if (direction === 'next') {
+          history.push('/ProRules');
         }
-        else if(direction === 'back') {
+        else if (direction === 'back') {
           history.push('/user');
         }
       };
@@ -45,16 +45,29 @@ const history = useHistory();
     }
   }, [socket, history]);
   return (
-    <div className="container">
+    <div className="admin-dash-container">
       <AdminNav />
-    <section style={{ display: 'flex' }}>
-        {events.map((event) => ( 
-            <div key={event.id}> 
-              <div className='ref-image'>
-               <p> {event.location_name}</p>
-              </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <section style={{ display: 'flex', marginRight: '20px' }}>
+        {events.map((event) => (
+          <div key={event.id}>
+            <div className='event-box'>
+              <p> {event.location_name}</p>
+              <p> {event.location_address}</p>
+              <p> {event.event_date}</p>
+              <p> {event.judge_name}</p>
+              <p> {event.judge_code}</p>
+              <p> {event.full_name}</p>
+              <p> {event.event_code}</p>
+              <button className='event-buttons'>Play</button>
+              <button className='event-buttons'>Edit</button>
+              <button className='event-buttons'>Delete</button>
             </div>
-          ))
+          </div>
+        ))
         }
       </section>
 
@@ -74,25 +87,20 @@ const history = useHistory();
           <p>Game Code:</p>
         </div>
       </div>
-      <button className='event-buttons'>Play</button>
-      <button className='event-buttons'>Edit</button>
-      <button className='event-buttons'>Delete</button>
+
       <br />
       <br />
       <br />
       <br />
       <br />
       <br />
-      <div>
-        <p>This the admin dashboard</p>
-       
-      </div>
-      
+
+
 
       <div>
-      <h2>Welcome, {events.full_name}!</h2>
-      <LogOutButton className="btn" />
-    </div>
+        <h2>Welcome, {events.full_name}!</h2>
+        <LogOutButton className="btn" />
+      </div>
     </div>
   );
 }

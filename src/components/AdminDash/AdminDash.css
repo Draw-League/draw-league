@@ -9,6 +9,18 @@
     top: 0;
     left: 0;}
 
+.admin-dash-container {
+    margin-top: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #EBF4F8;
+}
+
+
 .event-buttons {
     border: 3px solid black !important;
     background: #ebe5e5 !important;
@@ -19,4 +31,12 @@
     font-weight: bold;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
+}
+
+.event-box{
+    box-shadow: 10px 10px black;
+    color: black;
+    width: 50%;
+    height: auto;
+    border: 2px solid #000000;
 }
