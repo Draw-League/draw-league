@@ -57,11 +57,11 @@ function App() {
         setSocket(appSocket);
         // client-side
         appSocket.on("connect", () => {
-            console.log(socket.id);
+             console.log(socket.id);
         });
         
         appSocket.on("disconnect", () => {
-            console.log(socket.id)
+             console.log(socket.id)
         });
     }
 }
@@ -130,47 +130,45 @@ function App() {
             <TeamGallery />
           </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows RefDash else shows LoginPage
             exact
             path="/refdash"
             render={(props) => (<RefDash socket={socket} {...props} />)} />
           {/* </ProtectedRoute> */}
 
-          <ProtectedRoute
+          <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/admindash">
-            <AdminDash />
-          </ProtectedRoute>
+            path="/admindash"
+            render={(props) => (<AdminDash socket={socket} {...props} />)} />
 
-          <ProtectedRoute
+          <Route
             // logged in shows AddEvent else shows LoginPage
             exact
             path="/addevent">
             <AddEvent />
-          </ProtectedRoute>
+          </Route>
 
-          <ProtectedRoute
+          <Route
             // logged in shows AddRef else shows LoginPage
             exact
             path="/addref">
             <AddRef />
-          </ProtectedRoute>
+          </Route>
 
-          <ProtectedRoute
-            // logged in shows ProRules else shows LoginPage
-            exact
-            path="/prorules">
-            <ProRules />
-          </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows ProRef else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/proref">
-            <ProRef />
-          </ProtectedRoute>
+            path="/prorules"
+            render={(props) => (<ProRules socket={socket} {...props} />)} />
+
+          <Route
+            // logged in shows AdminDash else shows LoginPage
+            exact
+            path="/proref"
+            render={(props) => (<ProRef socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProDash else shows LoginPage
@@ -179,12 +177,11 @@ function App() {
             <ProDash />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/projudge">
-            <ProJudge />
-          </ProtectedRoute>
+            path="/projudge"
+            render={(props) => (<ProJudge socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProWinners else shows LoginPage

@@ -1,0 +1,22 @@
+.navbar {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Ensure it stays at the top when scrolling */
+    top: 0;
+    left: 0;}
+
+.event-buttons {
+    border: 3px solid black !important;
+    background: #ebe5e5 !important;
+    padding: 15px Im;
+    display: inline-block;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+}
