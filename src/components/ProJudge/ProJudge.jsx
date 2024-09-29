@@ -1,9 +1,33 @@
 import React from 'react';
 import './ProJudge.css';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
-function ProJudge() {
+function ProJudge({socket}) {
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/themeblk'); 
+        }
+        else if(direction === 'back') {
+          history.push('/proref');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
   return (
     <div className="container">
       <div className='judge-title'>

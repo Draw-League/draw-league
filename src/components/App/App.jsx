@@ -140,9 +140,8 @@ function App() {
           <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/admindash">
-            <AdminDash />
-          </Route>
+            path="/admindash"
+            render={(props) => (<AdminDash socket={socket} {...props} />)} />
 
           <Route
             // logged in shows AddEvent else shows LoginPage
@@ -158,19 +157,18 @@ function App() {
             <AddRef />
           </Route>
 
-          <ProtectedRoute
-            // logged in shows ProRules else shows LoginPage
-            exact
-            path="/prorules">
-            <ProRules />
-          </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows ProRef else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/proref">
-            <ProRef />
-          </ProtectedRoute>
+            path="/prorules"
+            render={(props) => (<ProRules socket={socket} {...props} />)} />
+
+          <Route
+            // logged in shows AdminDash else shows LoginPage
+            exact
+            path="/proref"
+            render={(props) => (<ProRef socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProDash else shows LoginPage
@@ -179,12 +177,11 @@ function App() {
             <ProDash />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/projudge">
-            <ProJudge />
-          </ProtectedRoute>
+            path="/projudge"
+            render={(props) => (<ProJudge socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProWinners else shows LoginPage
