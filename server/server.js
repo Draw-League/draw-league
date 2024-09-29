@@ -53,9 +53,16 @@ io.on('connection', (socket) => {
     io.emit('navigate', pageName); //currently io.emit which will emit the navigate socket to anyone one on the server. was socket.emit
   });
 
+  // socket.on('roundChange', (newRound) => {
+  //   console.log('roundChange', newRound);
+  //   io.emit('roundChange', newRound);
+  // });
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+
 
 });
 
