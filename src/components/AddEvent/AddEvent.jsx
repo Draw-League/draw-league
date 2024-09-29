@@ -76,9 +76,6 @@ function AddEvent() {
     fileInputRef.current.click();
   };
 
- 
-
-
 
 
   const createEvent = async (event) => {
@@ -197,7 +194,9 @@ function AddEvent() {
             onChange={handleRefChange}
             isMulti= {true}
          />
+         
          {selectedOptions[0] ? console.log('selectedOptions[0].value', selectedOptions[0].value) : console.log('not selected')}
+
         <br />
         <br />  
           <input

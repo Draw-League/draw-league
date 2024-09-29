@@ -106,6 +106,7 @@ router.post('/create-event', rejectUnauthenticated, async (req, res) => {
       judgeCode: codeGenerator().judgeCode,
       createdBy: req.user.id,
       refId: req.body.refId
+
     }
     const queryTextEvent = `
                         INSERT INTO event (theme, prompt_one, prompt_two, 

@@ -50,7 +50,9 @@ function Join() {
 
   return (
     <div className="container join-game">
-      <NavPlayer />
+      <header className="header">
+        <NavPlayer />
+      </header>
       <div className="join-game-box">JOIN A GAME</div>
       <div className="join-game-content">
         <p className='join-game-subtitle'>ENTER TEAM NAME & <br /> GAME CODE TO PLAY</p>

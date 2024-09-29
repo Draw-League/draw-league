@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    background-color: #007bff;
+    background-color: #0071ff;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -9,7 +9,7 @@
     top: 0;
     left: 0;}
 
-/* .container {
+.admin-dash-container {
     margin-top: 300px;
     margin-left: 50px;
     margin-right: 50px;
@@ -18,7 +18,8 @@
     align-items: center;
     padding: 20px;
     background-color: #EBF4F8;
-} */
+}
+
 
 .event-buttons {
     border: 3px solid black !important;
