@@ -24,7 +24,6 @@ function AdminDash({ socket }) {
     console.log('Game to PLAY id;', eventID);
     setCurrentGame(eventID);
     dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    // setCurrentGame({currentGame});
     // history.push('/ref-dash');
   }
 
@@ -77,7 +76,7 @@ function AdminDash({ socket }) {
                 //  value={event.id} onChange={(e) => setCurrentGame(e.target.value)} 
                 onClick={(e) => handlePlay(e, event.id)}>Play</button>
               <button className='event-buttons'>Edit</button>
-              <button className='event-buttons'>Delete</button>
+              <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
         ))
