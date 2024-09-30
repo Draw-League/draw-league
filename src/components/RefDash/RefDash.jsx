@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RefDash.css';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 //import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 
@@ -11,9 +11,10 @@ import logo from './drawleague.png';
 
 function RefDash({socket}) {
   const history = useHistory();
+  const { id } = useParams();
 
 
-  
+
   useEffect(() => {
     // Add the listener when we load the page
     if(socket) {

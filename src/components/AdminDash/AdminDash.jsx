@@ -19,12 +19,13 @@ function AdminDash({ socket }) {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
-  const handlePlay = (e, eventID) => {
-    e.preventDefault();
-    console.log('Game to PLAY id;', eventID);
-    setCurrentGame(eventID);
-    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    history.push('/refdash');
+  const handlePlay = (id) => {
+    // e.preventDefault();
+    console.log('Game to PLAY id;', id);
+    // setCurrentGame(id);
+    // dispatch({ type: 'UPDATE_CURRENT_GAME', payload: id });
+    history.push(`/refdash/${id}`);
+    window.open(`/prorules/${id}`, "__blank");    
   }
 
   const removeEvent = (id) => {
@@ -72,7 +73,7 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={(e) => handlePlay(e, event.id)}>Play</button>
+                onClick={() => handlePlay(event.id)}>Play</button>
               <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
