@@ -82,7 +82,10 @@ console.log({currentGame});
             <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
         </div>
-
+        <br />
+        <div className='draw-league-button'>
+        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/refdash')}></input>
+        </div>
       </div>
     </div>
   );

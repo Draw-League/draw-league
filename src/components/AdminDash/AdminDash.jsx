@@ -32,6 +32,9 @@ function AdminDash({ socket }) {
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
 
+  const editEvent = (id) => {
+    history.push(`/edit-event/${id}`);
+  }
 
   const history = useHistory();
   useEffect(() => {
@@ -56,10 +59,6 @@ function AdminDash({ socket }) {
   return (
     <div className="admin-dash-container">
       <AdminNav />
-      <br />
-      <br />
-      <br />
-      <br />
       <section style={{ display: 'flex', marginRight: '20px' }}>
         {events.map((event) => (
           <div key={event.id} >
@@ -74,7 +73,7 @@ function AdminDash({ socket }) {
               <p> {event.event_code}</p>
               <button className='event-buttons'
                 onClick={(e) => handlePlay(e, event.id)}>Play</button>
-              <button className='event-buttons'>Edit</button>
+              <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
@@ -109,7 +108,6 @@ function AdminDash({ socket }) {
 
 
       <div>
-        <h2>Welcome, {events.full_name}!</h2>
         <LogOutButton className="btn" />
       </div>
     </div>
