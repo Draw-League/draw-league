@@ -48,15 +48,21 @@ const io = require("socket.io")(server, {});
 
 io.on('connection', (socket) => {
   console.log('connected', socket.id);
-
   socket.on('navigate', (pageName) => {
     console.log('navigate', pageName)
-    socket.emit('hello', pageName);
+    io.emit('navigate', pageName); //currently io.emit which will emit the navigate socket to anyone one on the server. was socket.emit
   });
+
+  // socket.on('roundChange', (newRound) => {
+  //   console.log('roundChange', newRound);
+  //   io.emit('roundChange', newRound);
+  // });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+
 
 });
 

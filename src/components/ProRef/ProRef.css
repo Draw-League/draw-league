@@ -1,74 +1,97 @@
+.container-ref {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
 .ref-title {
-    width: 25%;
+    width: auto;
     background: #C3DD00;
     padding: 10px;
     margin: 20px;
     border-color: black;
     border-style: solid;
-    border-width: 6px;
-  
+    border-width: 4px;
+
 }
 
-.ref-title-style{
+.ref-title-style {
     font-size: 40pt;
     text-align: center;
     margin: 10px;
 }
-.ref-info{
+
+.ref-info {
     box-shadow: 10px 10px black;
     color: black;
-    display: flex;
-    flex-direction: column;
-    float: right;
     width: 35%;
-    height: 75vh;
-    border: 4px solid #000000;
-    overflow: hidden;
-    
+    height: auto;
+    border: 2px solid #000000;
+
+
 }
-.ref-image{ 
+
+.ref-image {
     background-color: #EBE5E5;
     align-items: center;
-    height: 60%;
+    height: 25rem;
     width: auto;
-    border: 4px solid #000000;
-    
+    border: 2px solid #000000;
+
 }
-.ref-name{
+
+.ref-name {
     background-color: #C3DD00;
     text-align: center;
-    height: 10%;
+    height: auto;
     width: auto;
-    font-size: 1.5rem;
-    border: 4px solid #000000;
-    
+    border: 2px solid #000000;
+    padding: .25rem;
+
 }
-.ref-facts{
+
+.ref-facts {
     background-color: #EBE5E5;
     height: 30%;
     width: auto;
-    border: 4px solid #000000;
-    
-}
-.ref-social-media{
-    margin: .5rem;
-    text-align: left;
-}
-.rname-style{
-    text-align: center;
-    font-size: 3rem;
-    
-}
-.ref-style{
-    text-align: left;
-    font-size: 2rem;
+    border: 2px solid #000000;
+    overflow: auto;
+
 }
 
-img {
+.ref-social-media {
+    text-align: left;
+    height: 10%;
+    /* background-color: #EBE5E5; */
+    width: auto;
+
+}
+
+.rname-style {
+    text-align: center;
+    font-size: 2.5rem;
+
+}
+
+.ref-style {
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.ref-img {
     height: 100%;
     width: 100%;
     object-fit: contain;
-    
+
 
 }
 
+.draw-league-button{
+    size: 5%;
+    margin-top: 10px;
+}

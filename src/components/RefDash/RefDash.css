@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #0078ff;
+    background-color: #0071ff;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -11,11 +11,12 @@
 .top-portion {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    padding: 10px;
+    padding: 0 20px;
     box-sizing: border-box;
     width: 100%;
-    justify-content: center;
+    height:auto;
 }
 
 .theme-container {
@@ -37,6 +38,7 @@
     justify-content: center;
     font-weight: bold;
     font-size: 24px;
+    border: 2px solid #000;
     height: 100%;
     flex: 0 0 auto;
 }
@@ -44,7 +46,7 @@
 .theme-display {
     flex: 1;
     background-color: #000;
-    color: #fff;
+    color: #ebe5e5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +71,48 @@
 .reveal-button:hover {
     background-color: #ff5c3d;
 }
-  
+
+.prompt-container {
+    background-color: #fff;
+    border: 2px solid #000;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.prompt-header {
+    width: 80%;
+    background-color: #b6e94c;
+    color: #000;
+    padding: 10px;
+    border: 2px solid #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+}
+
+.prompt-reveal {
+    width: 80%;
+    background-color: #000;
+    color: #ebe5e5;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 28px;
+    flex: 1;
+}
+
+
 .body-content {
     display: flex;
     flex-direction: row;
@@ -81,7 +124,7 @@
   
 .logo-container {
     flex: 1;
-    background-color: #0078ff;
+    background-color: #0071ff;
     display: flex;
     align-items: center;
     justify-content: center;

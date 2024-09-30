@@ -6,6 +6,7 @@ import drawingSaga from './drawing.saga';
 import addEventSaga from './event.saga';
 import projectionSaga from './projection.saga';
 import winnersSaga from './winners.saga'
+import refsSaga from './ref.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     addEventSaga(),
     projectionSaga(),
     winnersSaga(),
+    refsSaga()
   ]);
 }

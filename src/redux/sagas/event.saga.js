@@ -28,14 +28,14 @@ function* createEvent(action) {
   }
 
   function* deleteEvent(action) {
-    console.log("deleting plants, due to action:", action);
+    console.log("deleting event:", action);
   
     try {
       const serverResponse = yield axios({ method: 'DELETE', url: `/api/events/${action.payload}` });
       console.log('serverResponse:', serverResponse);
       yield put({ type: 'FETCH_EVENTS' });
     } catch (error) {
-      console.log("Error deleting plant from the server");
+      console.log("Error deleting event from the server");
     }
   }
 
