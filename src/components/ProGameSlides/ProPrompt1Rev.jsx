@@ -8,6 +8,28 @@ import logo from '../RefDash/drawleague.png';
 
 function ProPrompt1Rev({socket}){
 
+    const history = useHistory();
+
+    useEffect(() => {
+      if (socket) {
+        const handleNavigation = (direction) => {
+          console.log(`Navigating to: ${direction}`);
+          if(direction === 'next') {
+            history.push('/proprompt2blk'); 
+          }
+          else if(direction === 'back') {
+            history.push('/proprompt1blk');
+          }
+        };
+  
+        socket.on('navigate', handleNavigation);
+        console.log('socket.id', socket.id);
+        return () => {
+          socket.off('navigate', handleNavigation);
+        };
+      }
+    }, [socket, history]);
+  
 return (
     
     <div className="dashboard-container">

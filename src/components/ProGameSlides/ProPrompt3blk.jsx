@@ -1,11 +1,34 @@
 import React, { useState } from 'react';
 import '../RefDash/RefDash.css';
+import './ProPrompts.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import Timer from '../RefDash/ProTimer';
 import logo from '../RefDash/drawleague.png';
 
 function ProPrompt3blk({socket}){
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/proprompt3rev'); 
+        }
+        else if(direction === 'back') {
+          history.push('/proprompt2rev');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
 
 return (
     
@@ -14,9 +37,9 @@ return (
         <div className="timer-container">
           <Timer />
         </div>
-        <div className="theme-container">
+        <div className="theme-container-reveal">
           <span className="theme-label">THEME</span>
-          <div className="theme-display">???</div>
+          <div className="theme-display-reveal">{}THEME</div>
         </div>
       </div>
      
@@ -27,7 +50,7 @@ return (
 
         <div className="right-content">
           <div className="prompt-container">
-          <h2 className="prompt-header">PROMPTS</h2>
+          <h2 className="prompt-header">PROMPT #3</h2>
            <div className="prompt-reveal">???</div>
           </div>
           <div className="square-containers">

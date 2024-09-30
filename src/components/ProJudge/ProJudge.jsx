@@ -14,7 +14,7 @@ function ProJudge({socket}) {
       const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
         if(direction === 'next') {
-          history.push('/themeblk'); 
+          history.push('/prothemeblk'); 
         }
         else if(direction === 'back') {
           history.push('/proref');

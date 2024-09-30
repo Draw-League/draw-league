@@ -8,6 +8,28 @@ import logo from '../RefDash/drawleague.png';
 
 function ProPrompt2blk({socket}){
 
+  const history = useHistory();
+
+    useEffect(() => {
+      if (socket) {
+        const handleNavigation = (direction) => {
+          console.log(`Navigating to: ${direction}`);
+          if(direction === 'next') {
+            history.push('/proprompt2rev'); 
+          }
+          else if(direction === 'back') {
+            history.push('/proprompt1rev');
+          }
+        };
+  
+        socket.on('navigate', handleNavigation);
+        console.log('socket.id', socket.id);
+        return () => {
+          socket.off('navigate', handleNavigation);
+        };
+      }
+    }, [socket, history]);
+
 return (
     
     <div className="dashboard-container">
@@ -28,7 +50,7 @@ return (
 
         <div className="right-content">
           <div className="prompt-container">
-          <h2 className="prompt-header">PROMPT #{}</h2>
+          <h2 className="prompt-header">PROMPT #2</h2>
            <div className="prompt-reveal">???</div>
           </div>
           <div className="square-containers">

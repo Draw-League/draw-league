@@ -8,6 +8,28 @@ import logo from '../RefDash/drawleague.png';
 
 function ProPrompt1blk({socket}){
 
+  const history = useHistory();
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/proprompt1rev'); 
+        }
+        else if(direction === 'back') {
+          history.push('/prothemerev');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
+
 return (
     
     <div className="dashboard-container">
@@ -17,7 +39,7 @@ return (
         </div>
         <div className="theme-container-reveal">
           <span className="theme-label">{}THEME</span>
-          <div className="theme-display-reveal">???</div>
+          <div className="theme-display-reveal">THEME</div>
         </div>
       </div>
      
