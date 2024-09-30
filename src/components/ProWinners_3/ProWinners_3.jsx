@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProWinners_3.css";
-import "../ProWinners/ProWinners.css";
 import logo from "../LandingPage/drawleague.png";
 
 function ProWinners_3() {
@@ -40,7 +39,6 @@ function ProWinners_3() {
           <Podium winner={x} />
         ))}
       </div>
-      <button className="next-button">Next</button>
     </div>
   );
 }
