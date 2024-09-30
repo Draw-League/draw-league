@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './ProRef.css';
 import axios from 'axios';
 
 
 function ProRef({socket}) {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const currentGame = useSelector((store) => store.currentGame)
   const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
 
+console.log({currentGame});
+
   useEffect(() => {
-    dispatch({ type: "FETCH_REFS", payload: id });
-  }, [id, dispatch]);
+    if(currentGame){
+    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  }, [currentGame, dispatch]);
 
 
   useEffect(() => {
@@ -53,21 +56,25 @@ function ProRef({socket}) {
           </div>
 
           <div className='ref-name'>
-            <p className='rname-style'>ref name</p>
+            <p className='rname-style'>{ref.full_name} </p>
           </div>
 
           <div className='ref-facts'>
             <p className='ref-style'>
-              ref facts
+              ref fact
               <br />
-              how much wood would a woodchuck chuck if a woodchuck could chuck wood?
+              {ref.ref_fact}
               </p>
               <br /> 
 
             <p className='ref-style'>@instagram handle</p> 
+            
           </div>
         </div>
       </div>
+      <div className='draw-league-button'>
+        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/projudge')}></input>
+        </div>
     </div>
   );
 }

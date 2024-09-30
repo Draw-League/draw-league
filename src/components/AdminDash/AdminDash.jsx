@@ -24,7 +24,7 @@ function AdminDash({ socket }) {
     console.log('Game to PLAY id;', eventID);
     setCurrentGame(eventID);
     dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    // history.push('/ref-dash');
+    history.push('/proref');
   }
 
   const removeEvent = (id) => {
@@ -73,7 +73,6 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                //  value={event.id} onChange={(e) => setCurrentGame(e.target.value)} 
                 onClick={(e) => handlePlay(e, event.id)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
