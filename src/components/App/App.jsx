@@ -29,7 +29,8 @@ import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
 import ProDash from '../ProDash/ProDash';
-import ProWinners from '../ProWinners/ProWinners';
+import ProWinners_3 from '../ProWinners_3/ProWinners_3';
+import ProWinners_3_q from '../ProWinners_3_q/ProWinners_3_q';
 import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
@@ -174,8 +175,15 @@ function App() {
           <ProtectedRoute
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners">
-            <ProWinners />
+            path="/prowinners_3">
+            <ProWinners_3 />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_3_q">
+            <ProWinners_3_q />
           </ProtectedRoute>
 
           <ProtectedRoute

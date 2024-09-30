@@ -1,8 +1,9 @@
 import React from "react";
-import "./ProWinners.css";
+import "./ProWinners_3.css";
+import "../ProWinners/ProWinners.css";
 import logo from "../LandingPage/drawleague.png";
 
-function ProWinners() {
+function ProWinners_3() {
   const winners = [
     {
       name: "team panda",
@@ -39,11 +40,12 @@ function ProWinners() {
           <Podium winner={x} />
         ))}
       </div>
+      <button className="next-button">Next</button>
     </div>
   );
 }
 
-export default ProWinners;
+export default ProWinners_3;
 
 function Podium({ winner }) {
   return (
