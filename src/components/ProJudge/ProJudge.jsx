@@ -1,16 +1,52 @@
 import React from 'react';
 import './ProJudge.css';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
-function ProJudge() {
+function ProJudge({socket}) {
+
+  const history = useHistory();
+  const currentGame = useSelector((store) => store.currentGame)
+  const judge = useSelector((store) => store.projectionReducer);
+  const dispatch = useDispatch();
+
+console.log({currentGame});
+
+  useEffect(() => {
+    if(currentGame){
+    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  }, [currentGame, dispatch]);
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/prothemeblk'); 
+        }
+        else if(direction === 'back') {
+          history.push('/proref');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
   return (
-    <div className="container">
+    <div className="container-projudge">
+
       <div className='judge-title'>
         <h2 className='jtitle-style'> JUDGE</h2>
       </div>
 
-      <div className="judge-info">
+      <div className="judge-details">
 
         <div className='name-info'>
           <div className='judge-image'>
@@ -20,30 +56,30 @@ function ProJudge() {
           </div>
 
           <div className='judge-name'>
-            <h3 className='question-style'>JUDGE NAME</h3>
+            <h3 className='question-style'>JUDGE <br />{judge.judge_name}</h3>
           </div>
         </div>
 
         <div className="questions">
-          <div className='judge-question-one'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU DO?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>Answer</h3>
+            <h3 className='answer-style'>{judge.judge_job}</h3>
           </div>
           
-          <div className='judge-question-two'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU LIKE?</h3>
           </div>
-          <div className='judge-answer-two'>
-            <h3 className='answer-style'>Answer two</h3>
+          <div className='judge-answer'>
+            <h3 className='answer-style'>{judge.judge_like}</h3>
           </div>
 
-          <div className='judge-question-three'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU KNOW?</h3>
           </div>
-          <div className='judge-answer-three'>
-            <h3 className='answer-style'>Answer three</h3>
+          <div className='judge-answer'>
+            <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
         </div>
 

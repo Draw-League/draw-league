@@ -11,20 +11,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import {Cloudinary} from "@cloudinary/url-gen";
+import { Cloudinary } from "@cloudinary/url-gen";
 import Contact from '../Contact/Contact';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import EditEvent from '../EditEvent/EditEvent';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Rules from '../Rules/Rules';
 import Join from '../Join/Join';
 import Drawing from '../Drawing/Drawing';
+import TeamGallery from '../TeamGallery/TeamGallery';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
-import AddRef from '../AddRef/AddRef';
 import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
@@ -35,6 +35,14 @@ import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
+import ProThemeblk from '../ProGameSlides/ProThemeblk';
+import ProThemeRev from '../ProGameSlides/ProThemeRev';
+import ProPrompt1blk from '../ProGameSlides/ProPrompt1blk';
+import ProPrompt1Rev from '../ProGameSlides/ProPrompt1Rev';
+import ProPrompt2blk from '../ProGameSlides/ProPrompt2blk';
+import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
+import ProPrompt3blk from '../ProGameSlides/ProPrompt3blk';
+import ProPrompt3Rev from '../ProGameSlides/ProPrompt3Rev';
 
 
 import './App.css';
@@ -48,27 +56,27 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    // initializeSockets();
+     initializeSockets();
   }, [dispatch]);
 
-//   const initializeSockets = () => {
-//     if(!socket) {
-//         let appSocket = io();
-//         setSocket(appSocket);
-//         // client-side
-//         appSocket.on("connect", () => {
-//             console.log(socket.id);
-//         });
+  const initializeSockets = () => {
+    if(!socket) {
+        let appSocket = io();
+        setSocket(appSocket);
+        // client-side
+        appSocket.on("connect", () => {
+             console.log(socket.id);
+        });
         
-//         appSocket.on("disconnect", () => {
-//             console.log(socket.id)
-//         });
-//     }
-// }
+        appSocket.on("disconnect", () => {
+             console.log(socket.id)
+        });
+    }
+}
   return (
     <Router>
       <div>
-       
+
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
@@ -102,6 +110,7 @@ function App() {
             <Drawing />
           </Route>
 
+
           <Route
             // Not protected, shows JudgeGallery at all times (logged in or not)
             exact
@@ -116,47 +125,50 @@ function App() {
             <JudgeScore />
           </Route>
 
-          <ProtectedRoute
+          <Route
+            exact
+            path="/team-gallery">
+            <TeamGallery />
+          </Route>
+
+          <Route
+            // Not protected, shows TeamGallery at all times (logged in or not)
+            exact
+            path="/team-gallery">
+            <TeamGallery />
+          </Route>
+
+          <Route
             // logged in shows RefDash else shows LoginPage
             exact
-            path="/refdash">
-            <RefDash />
-          </ProtectedRoute>
+            path="/refdash"
+            render={(props) => (<RefDash socket={socket} {...props} />)} />
+          {/* </ProtectedRoute> */}
 
-          <ProtectedRoute
+          <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/admindash">
-            <AdminDash />
-          </ProtectedRoute>
+            path="/admindash"
+            render={(props) => (<AdminDash socket={socket} {...props} />)} />
 
-          <ProtectedRoute
+          <Route
             // logged in shows AddEvent else shows LoginPage
             exact
             path="/addevent">
             <AddEvent />
-          </ProtectedRoute>
+          </Route>
 
-          <ProtectedRoute
-          // logged in shows AddRef else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/addref">
-            <AddRef />
-          </ProtectedRoute>
+            path="/prorules"
+            render={(props) => (<ProRules socket={socket} {...props} />)} />
 
-          <ProtectedRoute
-            // logged in shows ProRules else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/prorules">
-            <ProRules />
-          </ProtectedRoute>
-          
-          <ProtectedRoute
-            // logged in shows ProRef else shows LoginPage
-            exact
-            path="/proref">
-            <ProRef />
-          </ProtectedRoute>
+            path="/proref"
+            render={(props) => (<ProRef socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProDash else shows LoginPage
@@ -165,12 +177,11 @@ function App() {
             <ProDash />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows ProJudge else shows LoginPage
+          <Route
+            // logged in shows AdminDash else shows LoginPage
             exact
-            path="/projudge">
-            <ProJudge />
-          </ProtectedRoute>
+            path="/projudge"
+            render={(props) => (<ProJudge socket={socket} {...props} />)} />
 
           <ProtectedRoute
             // logged in shows ProWinners else shows LoginPage
@@ -202,10 +213,51 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/edit-event/:id"
           >
-            <InfoPage />
+            <EditEvent />
           </ProtectedRoute>
+
+          <Route
+          exact
+          path="/ProThemeblk"
+          render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProThemeRev"
+          render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt1blk"
+          render={(props) => (<ProPrompt1blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt1Rev"
+          render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt2blk"
+          render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt2Rev"
+          render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt3blk"
+          render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt3Rev"
+          render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
+
 
           <Route
             exact
@@ -228,7 +280,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/admindash" />
               :
               // Otherwise, show the registration page
               <RegisterPage />

@@ -1,0 +1,20 @@
+.best-link{
+ right: 15px !important; 
+ background-color: #FF734F !important; 
+ width: 318px !important; 
+ position: absolute !important; 
+ font-size: 20px;
+ left: unset;
+ transform: unset;
+}
+
+.best-img{
+ object-fit: cover; 
+  
+}
+
+.best-exit{
+width: 150px !important;
+top: unset;
+bottom: 30px;
+}

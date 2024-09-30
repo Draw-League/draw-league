@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AddEvent.css';
+import './EditEvent.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
-function AddEvent() {
+function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
 
@@ -290,7 +290,7 @@ function AddEvent() {
             </div>
             <br />
             <div className='add-event-btn'>
-              <button type="submit" className="btn_desktop">Add Event</button>
+              <button type="submit" className="btn_desktop">UPDATE</button>
             </div>
           </form>
 
@@ -300,4 +300,4 @@ function AddEvent() {
   );
 }
 
-export default AddEvent;
+export default EditEvent;

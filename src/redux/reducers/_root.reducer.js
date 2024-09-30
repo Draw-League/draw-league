@@ -6,6 +6,8 @@ import createEventReducer from './event.reducer';
 import adminDashReducer from './admin.reducer';
 import projectionReducer from './projection.reducer';
 import winnersReducer from './winners.reducer';
+import getRefsReducer from './ref.reducer';
+import currentGame from './game.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +22,9 @@ const rootReducer = combineReducers({
   createEventReducer,
   adminDashReducer,
   projectionReducer,
-  winnersReducer  
+  winnersReducer,
+  getRefsReducer,
+  currentGame
 });
 
 export default rootReducer;

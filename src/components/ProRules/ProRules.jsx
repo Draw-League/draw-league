@@ -1,6 +1,8 @@
 import React from 'react';
 import './ProRules.css';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -9,7 +11,28 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function ProRules() {
+function ProRules({socket}) {
+const history = useHistory();
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/proref'); 
+        }
+        else if(direction === 'back') {
+          history.push('/admindash');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
+  
   return (
     <div className="main-container">\
       
