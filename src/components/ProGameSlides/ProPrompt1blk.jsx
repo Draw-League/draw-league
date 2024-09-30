@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import './RefDash.css';
+import './ProPrompts.css';
+import '../RefDash/RefDash.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import Timer from '../RefDash/ProTimer';
-import logo from './drawleague.png';
+import logo from '../RefDash/drawleague.png';
 
 function ProPrompt1blk({socket}){
 
@@ -14,9 +15,9 @@ return (
         <div className="timer-container">
           <Timer />
         </div>
-        <div className="theme-container">
-          <span className="theme-label">THEME</span>
-          <div className="theme-display">{theme}</div>
+        <div className="theme-container-reveal">
+          <span className="theme-label">{}THEME</span>
+          <div className="theme-display-reveal">???</div>
         </div>
       </div>
      
@@ -27,7 +28,7 @@ return (
 
         <div className="right-content">
           <div className="prompt-container">
-          <h2 className="prompt-header">PROMPTS</h2>
+          <h2 className="prompt-header">PROMPT #1</h2>
            <div className="prompt-reveal">???</div>
           </div>
           <div className="square-containers">
