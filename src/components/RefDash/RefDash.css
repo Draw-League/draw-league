@@ -11,11 +11,12 @@
 .top-portion {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    padding: 10px;
+    padding: 0 20px;
     box-sizing: border-box;
     width: 100%;
-    justify-content: center;
+    height:auto;
 }
 
 .theme-container {
@@ -44,7 +45,7 @@
 .theme-display {
     flex: 1;
     background-color: #000;
-    color: #0071ff;
+    color: #ebe5e5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,8 +99,8 @@
 
 .prompt-reveal {
     width: 80%;
-    background-color: #fff;
-    color: #000;
+    background-color: #000;
+    color: #ebe5e5;
     border: 2px solid #000;
     display: flex;
     align-items: center;
