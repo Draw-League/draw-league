@@ -1,3 +1,12 @@
+.container-projudge{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
 .judge-title {
     width: 480px;
     background: #C3DD00;
@@ -7,29 +16,31 @@
 }
 
 
-.judge-info {
-    box-shadow: 10px 10px black;
+.judge-details {
+    box-shadow: 10px 10px rgb(0, 0, 0);
     color: black;
     height: auto;
-    width: auto;
+    width: 60%;
     display: flex;
     align-items: row;
-    justify-content: center;
-  
-    
+    justify-content: center; 
 }
 
 .name-info {
-    
-    align-items: center;
+    width:50%;
+    height: 60vh; 
+    display: flex;
+    justify-content:flex-start; 
+    flex-direction: column;
+
 }
 
 .judge-image {
-    width: auto;
-    height: 570px;
+    height: 75%; 
     background: #EBE5E5;
     border: 4px solid #000000;
     object-fit: cover;
+    
 }
 
 img {
@@ -40,61 +51,34 @@ img {
 }
 
 .judge-name {
-    width: 670px;
-    height: 140px;
+    width: auto;
+    height: 25%;
     background: #C3DD00;
     border: 4px solid #000000;
 
 }
 
 .questions {
+    width:50%;
+    height: 60vh; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
     
 }
 
-.judge-question-one {
-    width: 670px;
-    height: 74.1px;
+.judge-question {
+    width: auto;
+    height: auto;
     background: #C3DD00;
     border: 4px solid #000000;
 
 }
 
 .judge-answer {
-    width: 670px;
-    height: 151.9px;
-    background: #EBE5E5;
-    border: 4px solid #000000;
-    text-align: left;
-}
-
-.judge-question-two {
-
-    width: 670px;
-    height: 74.1px;
-    background: #C3DD00;
-    border: 4px solid #000000;
-
-}
-
-.judge-answer-two {
-    width: 670px;
-    height: 151.9px;
-    background: #EBE5E5;
-    border: 4px solid #000000;
-    text-align: left;
-}
-
-.judge-question-three {
-    width: 670px;
-    height: 74.1px;
-    background: #C3DD00;
-    border: 4px solid #000000;
-
-}
-
-.judge-answer-three {
-    width: 670px;
-    height: 151.9px;
+    width: auto;
+    height: 18%;
     background: #EBE5E5;
     border: 4px solid #000000;
     text-align: left;
