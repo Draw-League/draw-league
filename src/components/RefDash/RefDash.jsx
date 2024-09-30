@@ -64,17 +64,17 @@ function RefDash({socket}) {
   return (
     
     <div className="dashboard-container">
-      <button onClick={sendBackPage} className='btn_desktop'>Back</button>
-      <button onClick={sendNextPage} className='btn_desktop'>Next</button>
+     
       <div className="top-portion">
         <div className="timer-container">
           <Timer />
         </div>
+        <button className="reveal-button" onClick={sendBackPage}>PREV SLIDE</button>
         <div className="theme-container">
           <span className="theme-label">THEME</span>
           <div className="theme-display">{theme}</div>
         </div>
-        <button className="reveal-button" onClick={handleRevealClick}>{buttonLabel}</button>
+        <button className="reveal-button" onClick={sendNextPage}>NEXT SLIDE</button>
       </div>
      
       <div className="body-content">
