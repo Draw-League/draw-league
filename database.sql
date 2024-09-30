@@ -97,3 +97,10 @@ VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=
 ALTER TABLE "user" ADD COLUMN "full_name" VARCHAR;
 ALTER TABLE "user" ADD COLUMN "art_medium" VARCHAR;
 ALTER TABLE "user" ADD COLUMN "phone_number" VARCHAR;
+
+ALTER TABLE user_event
+DROP CONSTRAINT user_event_event_id_fkey;
+
+ALTER TABLE user_event
+ADD CONSTRAINT user_event_event_id_fkey
+FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE;

@@ -194,9 +194,11 @@ router.put('/', (req, res) => {
 */
 router.delete('/:id', (req, res) => {
   // PUT route code here
-  const id = req.params;
+  console.log('req params',req.params);
+  console.log('req body',req.body);
+  const id = req.params.id;
   const sqlText = `
-      DELETE FROM events
+      DELETE FROM event
       WHERE id=$1
       `;
   pool.query(sqlText, [id])
@@ -205,7 +207,7 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(201);
     })
     .catch((error) => {
-      console.log(`Event Error DELETE`, error);
+      console.log(`Event Error DELETE at DB router`, error);
       res.sendStatus(500);
     })
 });
