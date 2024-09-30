@@ -30,6 +30,9 @@ import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
 import ProDash from '../ProDash/ProDash';
 import ProWinners from '../ProWinners/ProWinners';
+import ProWinners_1 from '../ProWinners_1/ProWinners_1';
+import ProWinners_2 from '../ProWinners_2/ProWinners_2';
+import ProWinners_3 from '../ProWinners_3/ProWinners_3';
 import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
@@ -182,12 +185,33 @@ function App() {
             path="/projudge"
             render={(props) => (<ProJudge socket={socket} {...props} />)} />
 
-          <ProtectedRoute
+          <Route
             // logged in shows ProWinners else shows LoginPage
             exact
             path="/prowinners">
             <ProWinners />
-          </ProtectedRoute>
+          </Route>
+
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_1">
+            <ProWinners_1 />
+          </Route>
+
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_2">
+            <ProWinners_2 />
+          </Route>
+
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_3">
+            <ProWinners_3 />
+          </Route>
 
           <ProtectedRoute
             // logged in shows ProBest else shows LoginPage
