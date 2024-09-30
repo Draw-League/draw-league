@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProWinners_1.css";
-import "../ProWinners/ProWinners.css";
 import logo from "../LandingPage/drawleague.png";
 
 function ProWinners_1() {
@@ -40,7 +39,6 @@ function ProWinners_1() {
           <Podium winner={x} />
         ))}
       </div>
-      <button className="next-button">Next</button>
     </div>
   );
 }
@@ -59,7 +57,7 @@ function Podium({ winner }) {
         {winner.drawing_url ? (
           <img src={winner.drawing_url} alt={`${winner.name} drawing`} />
         ) : (
-          <div className="no-image">No Image Available</div>
+          <div className="no-image"></div>
         )}
       </div>
 
