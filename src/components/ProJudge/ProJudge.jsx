@@ -40,12 +40,13 @@ console.log({currentGame});
     }
   }, [socket, history]);
   return (
-    <div className="container">
+    <div className="container-projudge">
+
       <div className='judge-title'>
         <h2 className='jtitle-style'> JUDGE</h2>
       </div>
 
-      <div className="judge-info">
+      <div className="judge-details">
 
         <div className='name-info'>
           <div className='judge-image'>
@@ -60,24 +61,24 @@ console.log({currentGame});
         </div>
 
         <div className="questions">
-          <div className='judge-question-one'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU DO?</h3>
           </div>
           <div className='judge-answer'>
             <h3 className='answer-style'>{judge.judge_job}</h3>
           </div>
           
-          <div className='judge-question-two'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU LIKE?</h3>
           </div>
-          <div className='judge-answer-two'>
+          <div className='judge-answer'>
             <h3 className='answer-style'>{judge.judge_like}</h3>
           </div>
 
-          <div className='judge-question-three'>
+          <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU KNOW?</h3>
           </div>
-          <div className='judge-answer-three'>
+          <div className='judge-answer'>
             <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
         </div>
