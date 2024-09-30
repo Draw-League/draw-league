@@ -19,14 +19,12 @@ function LandingPage() {
   return (
     <div>
 
-      <Nav /> 
-
+      <Nav />
       <main className="landing-main">
         <img src={logo} alt="DRAW LEAUGE LOGO" className="main-logo" />
         <p className="main-subtitle">A DRAWING GAME PLAYED AT PUBS</p>
-      <InstagramIcon className='instaicon'></InstagramIcon>
-
-      <button className="nav-button" onClick={() => navigation('/login')}>ADMIN LOGIN</button>
+        <InstagramIcon className='instaicon'></InstagramIcon>
+        <button className="landing-nav-button" onClick={() => navigation('/login')}>ADMIN LOGIN</button>
       </main>
     </div>
   );

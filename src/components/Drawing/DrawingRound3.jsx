@@ -77,7 +77,7 @@ function DrawingRound3() {
   };
 
   return (
-    <div className="container">
+    <div className="drawing-container">
       <header className="header">
         <NavPlayer className="hamburger-right" />
       </header>
