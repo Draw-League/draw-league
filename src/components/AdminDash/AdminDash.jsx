@@ -24,7 +24,7 @@ function AdminDash({ socket }) {
     console.log('Game to PLAY id;', eventID);
     setCurrentGame(eventID);
     dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    history.push('/proref');
+    history.push('/refdash');
   }
 
   const removeEvent = (id) => {

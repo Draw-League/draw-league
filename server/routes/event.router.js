@@ -35,6 +35,7 @@ const codeGenerator = () => {
 router.get('/:id', (req, res) => {
   // GET route code here
   const eventId = req.params.id;
+  console.log('one event GET reqparams are:', req.params);
   const queryText = `
   SELECT * FROM event 
 JOIN user_event ON event.id = user_event.event_id
@@ -43,6 +44,7 @@ WHERE event.id = $1;
   `
   pool.query(queryText, [eventId])
     .then(result => {
+      console.log('one event result from db:', result.rows);
       res.send(result.rows);
     })
     .catch(err => {

@@ -11,6 +11,9 @@ import logo from './drawleague.png';
 
 function RefDash({socket}) {
   const history = useHistory();
+
+
+  
   useEffect(() => {
     // Add the listener when we load the page
     if(socket) {

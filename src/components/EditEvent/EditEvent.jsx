@@ -13,14 +13,14 @@ function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
-  const ref = useSelector((store) => store.projectionReducer);
+  const event = useSelector((store) => store.createEventReducer);
   const { id } = useParams();
 
   
-  useEffect(() => {{
-    dispatch({ type: "FETCH_REFS", payload: id });}
+  useEffect(() => {
+    dispatch({ type: "FETCH_ONE_EVENT", payload: id });
   }, [id, dispatch]);
-
+console.log('event from reducer:', event);
 
   const [newEvent, setNewEvent] = useState({
     theme: '',
@@ -88,40 +88,40 @@ function EditEvent() {
 
 
 
-  // const createEvent = async (event) => {
-  //   event.preventDefault();
+  const updateEvent = async (event) => {
+    event.preventDefault();
 
-  //   const uploadedImgUrl = await uploadImage();
+    const uploadedImgUrl = await uploadImage();
 
-  //   setNewEvent((prevEvent) => ({
-  //     ...prevEvent,
-  //     judgeImg: uploadedImgUrl || '',
-  //   }));
+    setNewEvent((prevEvent) => ({
+      ...prevEvent,
+      judgeImg: uploadedImgUrl || '',
+    }));
 
-  //   dispatch({
-  //     type: 'ADD_EVENT',
-  //     payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
-  //   });
+    dispatch({
+      type: 'UPDATE_EVENT',
+      payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
+    });
 
-  //   setNewEvent({
-  //     theme: '',
-  //     promptOne: '',
-  //     promptTwo: '',
-  //     promptThree: '',
-  //     eventDate: '',
-  //     eventCode: '',
-  //     locationName: '',
-  //     locationAddress: '',
-  //     judgeName: '',
-  //     judgeJob: '',
-  //     judgeLike: '',
-  //     judgeKnow: '',
-  //     judgeImg: '',
-  //     judgeCode: '',
-  //     refId: '',
-  //   });
-  //   history.push("/admindash");
-  // };
+    setNewEvent({
+      theme: '',
+      promptOne: '',
+      promptTwo: '',
+      promptThree: '',
+      eventDate: '',
+      eventCode: '',
+      locationName: '',
+      locationAddress: '',
+      judgeName: '',
+      judgeJob: '',
+      judgeLike: '',
+      judgeKnow: '',
+      judgeImg: '',
+      judgeCode: '',
+      refId: '',
+    });
+    history.push("/admindash");
+  };
 
   // deals with select ref
   const [selectedOptions, setSelectedOptions] = useState([]);
