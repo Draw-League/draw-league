@@ -8,12 +8,16 @@ import axios from 'axios';
 function ProRef({socket}) {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const currentGame = useSelector((store) => store.currentGame)
   const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
 
+console.log({currentGame});
+
   useEffect(() => {
-    dispatch({ type: "FETCH_REFS", payload: id });
-  }, [id, dispatch]);
+    if(currentGame){
+    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  }, [currentGame, dispatch]);
 
 
   useEffect(() => {
@@ -53,7 +57,7 @@ function ProRef({socket}) {
           </div>
 
           <div className='ref-name'>
-            <p className='rname-style'>ref name</p>
+            <p className='rname-style'>{ref.full_name} </p>
           </div>
 
           <div className='ref-facts'>
