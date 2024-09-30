@@ -1,9 +1,9 @@
 import React from "react";
-import "./ProWinners_3_q.css";
+import "./ProWinners_2.css";
 import "../ProWinners/ProWinners.css";
 import logo from "../LandingPage/drawleague.png";
 
-function ProWinners_3_q() {
+function ProWinners_2() {
   const winners = [
     {
       name: "team panda",
@@ -45,35 +45,35 @@ function ProWinners_3_q() {
   );
 }
 
-export default ProWinners_3_q;
+export default ProWinners_2;
 
 function Podium({ winner }) {
   return (
-    <div 
-      className={`winner ${winner.position === 3 ? 'winner_3' : ''}`} 
-      style={{ order: winner.position === 1 ? 1 : winner.position === 2 ? 2 : 3 }}
+    <div
+      className={`winner ${winner.position === 3 ? 'winner_3' : winner.position === 2 ? 'winner_2' : 'winner_1'}`}
+      style={{
+        order: winner.position === 1 ? 2 : winner.position === 2 ? 1 : 3 // Winner 1 is centered, Winner 2 is on the left
+      }}
     >
       <div className="winner-drawing">
         {winner.drawing_url ? (
           <img src={winner.drawing_url} alt={`${winner.name} drawing`} />
         ) : (
-          <div>No Image Available</div> // Or you can leave it empty if you don't want to display anything
+          <div className="no-image">No Image Available</div>
         )}
       </div>
 
       <div className="winner-name">{winner.name}</div>
-      
+
       <div
         className="winner-position"
         style={{
-          height: winner.position === 1 ? "100px" : winner.position === 2 ? "150px" : "50px",
-          order: winner.position === 1 ? 1 : winner.position === 2 ? 2 : 3
+          height: winner.position === 1 ? "150px" : winner.position === 2 ? "100px" : "50px",
         }}
       >
-        {winner.position === 1 ? 2 : winner.position === 2 ? 1 : 3} {/* Display correct number */}
+        {winner.position}
       </div>
     </div>
-    
   );
 }
 
