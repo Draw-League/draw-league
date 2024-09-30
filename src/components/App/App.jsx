@@ -34,6 +34,14 @@ import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
+import ProThemeblk from '../ProGameSlides/ProThemeblk';
+import ProThemeRev from '../ProGameSlides/ProThemeRev';
+import ProPrompt1blk from '../ProGameSlides/ProPrompt1blk';
+import ProPrompt1Rev from '../ProGameSlides/ProPrompt1Rev';
+import ProPrompt2blk from '../ProGameSlides/ProPrompt2blk';
+import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
+import ProPrompt3blk from '../ProGameSlides/ProPrompt3blk';
+import ProPrompt3Rev from '../ProGameSlides/ProPrompt3Rev';
 
 
 import './App.css';
@@ -201,6 +209,47 @@ function App() {
           >
             <EditEvent />
           </ProtectedRoute>
+
+          <Route
+          exact
+          path="/ProThemeblk"
+          render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProThemeRev"
+          render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt1blk"
+          render={(props) => (<ProPrompt1blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt1Rev"
+          render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt2blk"
+          render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt2Rev"
+          render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt3blk"
+          render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
+
+          <Route
+          exact
+          path="/ProPrompt3Rev"
+          render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
+
 
           <Route
             exact
