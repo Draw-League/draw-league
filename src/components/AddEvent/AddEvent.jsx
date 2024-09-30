@@ -5,11 +5,14 @@ import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
 function AddEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
+  const history = useHistory();
+
   
   const [newEvent, setNewEvent] = useState({
     theme: '',
@@ -92,6 +95,25 @@ function AddEvent() {
       type: 'ADD_EVENT',
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
+
+    setNewEvent({
+      theme: '',
+      promptOne: '',
+      promptTwo: '',
+      promptThree: '',
+      eventDate: '',
+      eventCode: '',
+      locationName: '',
+      locationAddress: '',
+      judgeName: '',
+      judgeJob: '',
+      judgeLike: '',
+      judgeKnow: '',
+      judgeImg: '',
+      judgeCode: '',
+      refId: '',
+    });
+    history.push("/admindash");
   };
 
   // deals with select ref
