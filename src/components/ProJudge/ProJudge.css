@@ -12,10 +12,15 @@
     color: black;
     height: auto;
     width: auto;
+    display: flex;
+    align-items: row;
+    justify-content: center;
+  
+    
 }
 
 .name-info {
-    float: left;
+    
     align-items: center;
 }
 
@@ -43,7 +48,7 @@ img {
 }
 
 .questions {
-    float: left;
+    
 }
 
 .judge-question-one {
