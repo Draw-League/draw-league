@@ -38,14 +38,14 @@ router.get('/top', (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { team_id, drawing_url } = req.body;
+    const { team_id, drawing_url, event_id } = req.body;
     console.log('Received data:', req.body);
 
     const queryText = `
-      INSERT INTO "drawing" (team_id, drawing_url, favorite_drawing, score, round, created_at)
-      VALUES ($1, $2, false, 0, 1, NOW()) RETURNING *;
+      INSERT INTO "drawing" (team_id, drawing_url, favorite_drawing, score, round, created_at, event_id)
+      VALUES ($1, $2, false, 0, 1, NOW(), $3) RETURNING *;
     `;
-    const queryParams = [team_id, drawing_url];
+    const queryParams = [team_id, drawing_url, event_id];
 
     const result = await pool.query(queryText, queryParams);
     res.status(201).json(result.rows[0]);
