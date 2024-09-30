@@ -1,4 +1,4 @@
-.winner_3  .winner-drawing {
+/* .winner_3  .winner-drawing {
   background-color: black; 
   width: 235px;
 }
@@ -6,7 +6,7 @@
 .winner_3 .winner-name {
   background-color: #000000; 
   color: #ffffff;
-}
+} */
 
 .winners{
     width: 100%;
@@ -57,18 +57,33 @@
  
 }
 
-.winner-name{
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #C3DD00;
-color: black;
-font-weight: 600;
-height: 50px;
-border: 2px solid black;
-border-bottom: 0;
+.winner_1 .winner-name {
+  background-color: #C3DD00 !important; /* Use this color for winner 1 */
+  color: black !important;
 }
+
+.winner_2 .winner-name {
+  background-color: #C3DD00 !important; /* Ensure same background color */
+  color: black !important;
+}
+
+.winner_3 .winner-name {
+  background-color: black !important; /* Ensure winner 3 has a distinct background */
+  color: white !important;
+}
+
+.winner-name {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 600;
+  height: 50px;
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
 
 .winner-position{
 width: 100%;
