@@ -38,7 +38,7 @@ function ProRef({socket}) {
 
 
   return (
-    <div className="container">
+    <div className="container-ref">
       <div className='ref-title'>
         <h2 className='ref-title-style'> REFEREE</h2>
       </div>

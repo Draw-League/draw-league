@@ -14,7 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { Cloudinary } from "@cloudinary/url-gen";
 import Contact from '../Contact/Contact';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import EditEvent from '../EditEvent/EditEvent';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -25,7 +25,6 @@ import TeamGallery from '../TeamGallery/TeamGallery';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
-import AddRef from '../AddRef/AddRef';
 import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
@@ -151,14 +150,6 @@ function App() {
           </Route>
 
           <Route
-            // logged in shows AddRef else shows LoginPage
-            exact
-            path="/addref">
-            <AddRef />
-          </Route>
-
-
-          <Route
             // logged in shows AdminDash else shows LoginPage
             exact
             path="/prorules"
@@ -206,9 +197,9 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/edit-event/:id"
           >
-            <InfoPage />
+            <EditEvent />
           </ProtectedRoute>
 
           <Route
