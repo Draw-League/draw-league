@@ -18,7 +18,7 @@ function* fetchRefs(action) {
   }
 
   function* projectionSaga () {
-    yield takeEvery('FETCH_REFS', fetchRefs);
+    yield takeLatest('FETCH_REFS', fetchRefs);
   }
 
   export default projectionSaga;

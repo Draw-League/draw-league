@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './ProRef.css';
 import axios from 'axios';
 
 
 function ProRef({socket}) {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const currentGame = useSelector((store) => store.currentGame)
   const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
@@ -62,9 +61,9 @@ console.log({currentGame});
 
           <div className='ref-facts'>
             <p className='ref-style'>
-              ref facts
+              ref fact
               <br />
-              how much wood would a woodchuck chuck if a woodchuck could chuck wood?
+              {ref.ref_fact}
               </p>
               <br /> 
 

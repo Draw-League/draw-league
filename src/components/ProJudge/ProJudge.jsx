@@ -2,12 +2,23 @@ import React from 'react';
 import './ProJudge.css';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 function ProJudge({socket}) {
 
   const history = useHistory();
+  const currentGame = useSelector((store) => store.currentGame)
+  const judge = useSelector((store) => store.projectionReducer);
+  const dispatch = useDispatch();
+
+console.log({currentGame});
+
+  useEffect(() => {
+    if(currentGame){
+    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  }, [currentGame, dispatch]);
 
   useEffect(() => {
     if (socket) {
@@ -44,7 +55,7 @@ function ProJudge({socket}) {
           </div>
 
           <div className='judge-name'>
-            <h3 className='question-style'>JUDGE <br />NAME</h3>
+            <h3 className='question-style'>JUDGE <br />{judge.judge_name}</h3>
           </div>
         </div>
 
@@ -53,21 +64,21 @@ function ProJudge({socket}) {
             <h3 className='question-style'>WHAT DO YOU DO?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>Answer</h3>
+            <h3 className='answer-style'>{judge.judge_job}</h3>
           </div>
           
           <div className='judge-question-two'>
             <h3 className='question-style'>WHAT DO YOU LIKE?</h3>
           </div>
           <div className='judge-answer-two'>
-            <h3 className='answer-style'>Answer two</h3>
+            <h3 className='answer-style'>{judge.judge_like}</h3>
           </div>
 
           <div className='judge-question-three'>
             <h3 className='question-style'>WHAT DO YOU KNOW?</h3>
           </div>
           <div className='judge-answer-three'>
-            <h3 className='answer-style'>Answer three</h3>
+            <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
         </div>
 
