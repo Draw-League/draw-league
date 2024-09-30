@@ -1,55 +1,96 @@
-.nav-button {
-    border: 3px solid black;
-    background: #ebe5e5;
-    padding: 15px;
-    display: inline-block;
-    color: black;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer; 
-}
-.nav-button:hover {
-  background-color: #d9e602;
-}
-.nav-menu {
-  list-style-type: none;
-  padding: 0;
-  margin: 22px;
+.nav-wrapper {
   display: flex;
-  white-space: nowrap;
-  padding: 0;
-  justify-content: center;
-  gap: 100px;
-  list-style-type: none;
-  flex-grow: 1;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+  position: relative;
 }
 
-.nav-menu li {
-  margin: 0 5px; /* Adjust spacing between buttons */
+.logo-container {
+  position: absolute;
+  left: 20px;
 }
 
 .nav-logo {
   width: 150px;
-  height: auto;
-  margin-left: 20px;
-  justify-content: left;
   cursor: pointer;
 }
 
-.nav-container {
+.menu-container {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 18px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  justify-content: center;
 }
 
+.nav-menu {
+  display: flex;
+  gap: 100px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  align-items: center;
+}
 
+.nav-menu li {
+  display: flex;
+  align-items: center;
+}
 
+.nav-button {
+  padding: 15px;
+  font-size: 25px;
+  color: black;
+  background-color: #ebe5e5;
+  border: 3px solid black;
+  cursor: pointer;
+  width: 250px;
+  text-align: center;
+}
+
+.nav-button:hover {
+  background-color: #d9e602;
+}
+
+@media (orientation: portrait) {
+  .nav-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+  }
+
+  .logo-container {
+    position: static;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-logo {
+    width: 250px;
+    margin-left: 0;
+    cursor: pointer;
+  }
+
+  .menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .nav-button {
+    font-size: 20px;
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+  }
+}

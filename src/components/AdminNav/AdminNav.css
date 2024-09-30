@@ -1,4 +1,4 @@
-.nav-button {
+.admin-nav-button {
     border: 3px solid black;
     background: #ebe5e5;
     padding: 15px;
@@ -9,10 +9,10 @@
     font-family: 'Inter', sans-serif;
     cursor: pointer; 
 }
-.nav-button:hover {
+.admin-nav-button:hover {
   background-color: #d9e602;
 }
-.nav-menu {
+.admin-nav-menu {
   list-style-type: none;
   padding: 0;
   margin: 22px;
@@ -28,11 +28,11 @@
   transform: translateX(-50%);
 }
 
-.nav-menu li {
+.admin-nav-menu li {
   margin: 0 5px; /* Adjust spacing between buttons */
 }
 
-.nav-logo {
+.admin-nav-logo {
   width: 150px;
   height: auto;
   margin-left: 20px;
@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-.nav-container {
+.admin-nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
