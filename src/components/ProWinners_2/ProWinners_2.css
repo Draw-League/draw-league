@@ -1,25 +1,6 @@
-.winner_1 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
-}
-
-.winner_2 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
-}
-.winner_3 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
-}
-
-.winner_1 .winner-name {
-  background-color: #000000; 
-  color: #ffffff;
-}
-
-.winner_2 .winner-name {
-  background-color: #000000; 
-  color: #ffffff;
+.winner_3  .winner-drawing {
+  background-color: black; 
+  width: 235px;
 }
 
 .winner_3 .winner-name {

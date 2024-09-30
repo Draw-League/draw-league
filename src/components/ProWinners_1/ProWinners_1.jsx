@@ -1,14 +1,14 @@
 import React from "react";
-import "../ProWinners/ProWinners.css";
+import "./ProWinners_1.css";
 import logo from "../LandingPage/drawleague.png";
 
-function ProWinners() {
+function ProWinners_1() {
   const winners = [
     {
-      name: "???",
+      name: "team panda",
       position: 1,
       drawing_url:
-      "",
+        "https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       name: "???",
@@ -43,7 +43,7 @@ function ProWinners() {
   );
 }
 
-export default ProWinners;
+export default ProWinners_1;
 
 function Podium({ winner }) {
   return (
