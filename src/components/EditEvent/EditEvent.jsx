@@ -5,13 +5,21 @@ import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
 function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const ref = useSelector((store) => store.projectionReducer);
+  const { id } = useParams();
+
+  
+  useEffect(() => {{
+    dispatch({ type: "FETCH_REFS", payload: id });}
+  }, [id, dispatch]);
 
 
   const [newEvent, setNewEvent] = useState({
@@ -34,12 +42,11 @@ function EditEvent() {
 
   //Judge image file upload
   const [judgeImgFile, setJudgeImgFile] = useState(null);
-  const dispatch = useDispatch();
   const fileInputRef = React.createRef();
 
   //Dispatches Refs saga for ref dropdown
   useEffect(() => {
-    dispatch({ type: 'FETCH_REFS' });
+    dispatch({ type: 'FETCH_EVENTS' });
   }, []);
 
   //populates ref dropdown
@@ -81,40 +88,40 @@ function EditEvent() {
 
 
 
-  const createEvent = async (event) => {
-    event.preventDefault();
+  // const createEvent = async (event) => {
+  //   event.preventDefault();
 
-    const uploadedImgUrl = await uploadImage();
+  //   const uploadedImgUrl = await uploadImage();
 
-    setNewEvent((prevEvent) => ({
-      ...prevEvent,
-      judgeImg: uploadedImgUrl || '',
-    }));
+  //   setNewEvent((prevEvent) => ({
+  //     ...prevEvent,
+  //     judgeImg: uploadedImgUrl || '',
+  //   }));
 
-    dispatch({
-      type: 'ADD_EVENT',
-      payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
-    });
+  //   dispatch({
+  //     type: 'ADD_EVENT',
+  //     payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
+  //   });
 
-    setNewEvent({
-      theme: '',
-      promptOne: '',
-      promptTwo: '',
-      promptThree: '',
-      eventDate: '',
-      eventCode: '',
-      locationName: '',
-      locationAddress: '',
-      judgeName: '',
-      judgeJob: '',
-      judgeLike: '',
-      judgeKnow: '',
-      judgeImg: '',
-      judgeCode: '',
-      refId: '',
-    });
-    history.push("/admindash");
-  };
+  //   setNewEvent({
+  //     theme: '',
+  //     promptOne: '',
+  //     promptTwo: '',
+  //     promptThree: '',
+  //     eventDate: '',
+  //     eventCode: '',
+  //     locationName: '',
+  //     locationAddress: '',
+  //     judgeName: '',
+  //     judgeJob: '',
+  //     judgeLike: '',
+  //     judgeKnow: '',
+  //     judgeImg: '',
+  //     judgeCode: '',
+  //     refId: '',
+  //   });
+  //   history.push("/admindash");
+  // };
 
   // deals with select ref
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -138,8 +145,8 @@ function EditEvent() {
           <div className='event-title'>
             <h3 className='event-title-style'>Event Details</h3>
           </div>
-
-          <form onSubmit={createEvent}>
+        <form>
+          {/* <form onSubmit={createEvent}> */}
             <div className='event-input-form'>
               <div className='event-details'>
                 <input

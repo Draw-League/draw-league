@@ -41,13 +41,7 @@ JOIN user_event ON event.id = user_event.event_id
 JOIN "user" ON "user".id = user_event.user_id
 WHERE event.id = $1;
   `
-
-
-
-  // `                       SELECT *
-  //                       FROM event
-  //                       WHERE id = ${eventId};`;
-  pool.query(queryText)
+  pool.query(queryText, [eventId])
     .then(result => {
       res.send(result.rows);
     })
