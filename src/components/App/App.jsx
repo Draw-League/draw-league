@@ -37,7 +37,6 @@ import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
 import ProThemeblk from '../ProGameSlides/ProThemeblk';
 import ProThemeRev from '../ProGameSlides/ProThemeRev';
-import ProPrompt1blk from '../ProGameSlides/ProPrompt1blk';
 import ProPrompt1Rev from '../ProGameSlides/ProPrompt1Rev';
 import ProPrompt2blk from '../ProGameSlides/ProPrompt2blk';
 import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
@@ -228,11 +227,6 @@ function App() {
           exact
           path="/ProThemeRev"
           render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
-
-          <Route
-          exact
-          path="/ProPrompt1blk"
-          render={(props) => (<ProPrompt1blk socket={socket} {...props} />)} />
 
           <Route
           exact

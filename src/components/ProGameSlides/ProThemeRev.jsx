@@ -16,7 +16,7 @@ function ProThemeRev({socket}){
       const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
         if(direction === 'next') {
-          history.push('/proprompt1blk'); 
+          history.push('/proprompt1rev'); 
         }
         else if(direction === 'back') {
           history.push('/prothemeblk');
