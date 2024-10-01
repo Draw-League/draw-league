@@ -12,17 +12,18 @@ button {
     font-size: 30px;
 }
 
-.container {
+.contact-container {
     text-align: center;
 }
 
 .contact-info {
     color: #ebe5e5;
     text-align: left;
-    display: inline-block;
+    display: block;
     max-width: 820px;
     font-size: 30px;
     padding: 180px;
+    margin: 0 auto;
 }
 
 .contactus-title {
@@ -41,5 +42,36 @@ p {
 
 .email {
     margin-top: 35px;
+    word-break: break-word;
 }
-  
+
+
+@media (orientation: portrait) {
+    .contact-container {
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-info {
+        font-size: 16px;
+        padding: 20px;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .contact-info p {
+        margin: 10px 0;
+    }
+
+    .email {
+        font-size: 16px;
+        margin-top: 20px;
+        word-break: break-word;
+    }
+
+    .instaicon {
+        font-size: 35px;
+        margin-top: 10px;
+    }
+}

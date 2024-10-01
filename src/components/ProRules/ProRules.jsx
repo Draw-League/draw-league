@@ -34,7 +34,7 @@ const history = useHistory();
   }, [socket, history]);
   
   return (
-    <div className="main-container">\
+    <div className="main-container">
       
     <div className="rules-container">
       <div className="page-title">RULES</div>

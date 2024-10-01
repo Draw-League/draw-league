@@ -1,36 +1,3 @@
-.winner-name {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  height: 50px;
-  border: 2px solid black;
-  border-bottom: 0;
-}
-
-.winner_three .winner-name{
-  background-color: #000000;
-  color: #ffffff ;
-}
-
-.winner_two .winner-name{
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
-.winner_one .winner-name{
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
-.winner {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 .winners{
     width: 100%;
     height: 100%;
@@ -70,11 +37,17 @@
   justify-content: flex-end; 
 }
 
-.winner-drawing{
- width: 100%;  
- height: 309px; 
- margin: 0 auto;
- 
+.winner-name{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #C3DD00;
+color: black;
+font-weight: 600;
+height: 50px;
+border: 2px solid black;
+border-bottom: 0;
 }
 
 .winner-position{
@@ -87,4 +60,5 @@ color: black;
 font-weight: 600;
 font-size: 20px;
 border: 2px solid black;
+
 }

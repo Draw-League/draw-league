@@ -40,13 +40,13 @@
     color: black;
     height: 60px;
     width: 350px;
-    padding: 0;
+    padding: 4;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 3px solid black;
-    box-shadow: 3px 6px black;
+    /* box-shadow: 3px 6px black; */
     margin: 0 auto;
 }
 

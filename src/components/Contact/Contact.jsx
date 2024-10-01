@@ -10,7 +10,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 function Contact() {
 
   return (
-    <div className="container">
+    <div className="contact-container">
       <Nav />
 
         <div className='contact-info'>

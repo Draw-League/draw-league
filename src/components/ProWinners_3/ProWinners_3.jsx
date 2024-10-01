@@ -1,23 +1,23 @@
 import React from "react";
-import "./ProWinners.css";
+import "./ProWinners_3.css";
 import logo from "../LandingPage/drawleague.png";
 
-function ProWinners() {
+function ProWinners_3() {
   const winners = [
     {
-      name: "???",
+      name: "team panda",
       position: 1,
       drawing_url:
-      "",
+        "",
     },
     {
-      name: "???",
+      name: "team cake",
       position: 2,
       drawing_url:
-        "",   
-      },
+        "",
+    },
     {
-      name: "???",
+      name: "team yuka",
       position: 3,
       drawing_url:
         "",
@@ -43,40 +43,30 @@ function ProWinners() {
   );
 }
 
-export default ProWinners;
+export default ProWinners_3;
 
 function Podium({ winner }) {
   return (
-    <div
-   
-    className={`winner ${winner.position === 3 ? 'winner_three' : winner.position === 2 ? 'winner_two' : 'winner_one'}`}
-
-        style={{
-        order: winner.position === 1 ? 2 : winner.position === 2 ? 1 : 3 
-      }}
-    >
+    <div className="winner" style={{ order:winner.position===1?1:winner.position===2?0:2}}>
       <div className="winner-drawing">
-        {winner.drawing_url ? (
-          <img src={winner.drawing_url} alt={`${winner.name} drawing`} />
-        ) : (
-          <div className="no-image"></div>
-        )}
+       
       </div>
-
       <div className="winner-name">{winner.name}</div>
-
       <div
         className="winner-position"
         style={{
-          height: winner.position === 1 ? "150px" : winner.position === 2 ? "100px" : "50px",
+          height: `${
+            winner.position === 1
+              ? "150px"
+              : winner.position === 2
+              ? "100px"
+              : "50px"
+          }`,
+         
         }}
       >
         {winner.position}
       </div>
-      {/* <button onClick={() => history.push('/probest')}>x</button> */}
     </div>
   );
 }
-
-
-

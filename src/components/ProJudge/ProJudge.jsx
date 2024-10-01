@@ -6,28 +6,27 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 
-function ProJudge({socket}) {
+function ProJudge({socket, currentGame, ...props}) {
 
   const history = useHistory();
-  const currentGame = useSelector((store) => store.currentGame)
+  // const currentGame = useSelector((store) => store.currentGame)
   const judge = useSelector((store) => store.projectionReducer);
   const dispatch = useDispatch();
 
-console.log({currentGame});
+  //console.log('current game', currentGame)
 
-  useEffect(() => {
-    if(currentGame){
-    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
-  }, [currentGame, dispatch]);
+
 
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
           history.push('/prothemeblk'); 
         }
         else if(direction === 'back') {
+          console.log(`currentGame:`, currentGameIn);
           history.push('/proref');
         }
       };
@@ -82,7 +81,10 @@ console.log({currentGame});
             <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
         </div>
-
+        <br />
+        <div className='draw-league-button'>
+        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/refdash')}></input>
+        </div>
       </div>
     </div>
   );

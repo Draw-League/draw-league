@@ -5,14 +5,22 @@ import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
 function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const event = useSelector((store) => store.createEventReducer);
+  const { id } = useParams();
 
+  
+  useEffect(() => {
+    dispatch({ type: "FETCH_ONE_EVENT", payload: id });
+  }, [id, dispatch]);
+console.log('event from reducer:', event);
 
   const [newEvent, setNewEvent] = useState({
     theme: '',
@@ -34,12 +42,11 @@ function EditEvent() {
 
   //Judge image file upload
   const [judgeImgFile, setJudgeImgFile] = useState(null);
-  const dispatch = useDispatch();
   const fileInputRef = React.createRef();
 
   //Dispatches Refs saga for ref dropdown
   useEffect(() => {
-    dispatch({ type: 'FETCH_REFS' });
+    dispatch({ type: 'FETCH_EVENTS' });
   }, []);
 
   //populates ref dropdown
@@ -81,7 +88,7 @@ function EditEvent() {
 
 
 
-  const createEvent = async (event) => {
+  const updateEvent = async (event) => {
     event.preventDefault();
 
     const uploadedImgUrl = await uploadImage();
@@ -92,7 +99,7 @@ function EditEvent() {
     }));
 
     dispatch({
-      type: 'ADD_EVENT',
+      type: 'UPDATE_EVENT',
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
 
@@ -138,8 +145,8 @@ function EditEvent() {
           <div className='event-title'>
             <h3 className='event-title-style'>Event Details</h3>
           </div>
-
-          <form onSubmit={createEvent}>
+        <form>
+          {/* <form onSubmit={createEvent}> */}
             <div className='event-input-form'>
               <div className='event-details'>
                 <input
