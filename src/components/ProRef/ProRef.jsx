@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './ProRef.css';
@@ -9,13 +9,14 @@ function ProRef({socket}) {
   const currentGame = useSelector((store) => store.currentGame)
   // const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
-
+  const [localGame, setLocalGame] = useState(currentGame);
 
   useEffect(() => {
     if (socket) {
       const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
+        setLocalGame(currentGameIn);
         if(direction === 'next') {
           history.push('/ProJudge'); 
         }
@@ -50,7 +51,7 @@ function ProRef({socket}) {
           </div>
 
           <div className='ref-name'>
-            <p className='rname-style'>{currentGame.full_name} </p>
+            <p className='rname-style'>{localGame.full_name} </p>
           </div>
 
           <div className='ref-facts'>
