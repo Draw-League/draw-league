@@ -42,6 +42,7 @@ import ProPrompt2blk from '../ProGameSlides/ProPrompt2blk';
 import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
 import ProPrompt3blk from '../ProGameSlides/ProPrompt3blk';
 import ProPrompt3Rev from '../ProGameSlides/ProPrompt3Rev';
+import ProContactUs from '../ProContactUs/ProContactUs';
 
 
 import './App.css';
@@ -190,20 +191,19 @@ function App() {
             path="/projudge"
             render={(props) => (<ProJudge socket={socket} {...props} />)} />
 
-          <ProtectedRoute
+          <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners">
-            <ProWinners />
-          </ProtectedRoute>
+            path="/prowinners"
+            render={(props) => (<ProWinners  socket={socket} {...props} />)} />
+          
 
-          <ProtectedRoute
+          <Route
             // logged in shows ProBest else shows LoginPage
             exact
-            path="/probest">
-            <ProBest />
-          </ProtectedRoute>
-
+            path="/probest"
+            render={(props) => (<ProBest  socket={socket} {...props} />)} />
+          
           <Route
             // logged in shows ProLeaderboard else shows LoginPage
             exact
@@ -253,6 +253,10 @@ function App() {
           path="/ProPrompt3Rev"
           render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
 
+          <Route
+          exact
+          path="/ProContactUs"
+          render={(props) => (<ProContactUs socket={socket} {...props} />)} />
 
           <Route
             exact
