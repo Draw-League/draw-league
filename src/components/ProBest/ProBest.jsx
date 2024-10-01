@@ -76,7 +76,7 @@ const dispatch = useDispatch();
           }}
         >
           <div className="winner-drawing">
-            <img className="best-img" src='../../documentation/images/crow.jpg' alt="" />
+            <img className="best-img" src='../../documentation/images/jack.jpg' alt="" />
           </div>
           <div className="winner-name">team panda</div>
          
