@@ -1,8 +1,45 @@
 import React from "react";
 import "./ProWinners_2.css";
 import logo from "../LandingPage/drawleague.png";
+import {useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function ProWinners_2() {
+function ProWinners_2({socket}) {
+
+  const dispatch = useDispatch();
+  const currentGame = useSelector((store) => store.currentGame)
+  const ref = useSelector((store) => store.projectionReducer);
+  const history = useHistory();
+
+console.log({currentGame});
+
+  useEffect(() => {
+    if(currentGame){
+    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  }, [currentGame, dispatch]);
+
+
+  useEffect(() => {
+    if (socket) {
+      const handleNavigation = (direction) => {
+        console.log(`Navigating to: ${direction}`);
+        if(direction === 'next') {
+          history.push('/ProWinners_3'); 
+        }
+        else if(direction === 'back') {
+          history.push('/ProWinners_1');
+        }
+      };
+
+      socket.on('navigate', handleNavigation);
+      console.log('socket.id', socket.id);
+      return () => {
+        socket.off('navigate', handleNavigation);
+      };
+    }
+  }, [socket, history]);
+
   const winners = [
     {
       name: "team panda",

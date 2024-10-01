@@ -91,8 +91,8 @@ function RefDash({socket, currentGame, props}) {
       </div>
      
       <div className="body-content">
-        <div className='logo-container'>
-          <img src={logo} alt="DRAW LEAGUE LOGO" className="logo-image" />
+        <div className='dash-logo-container'>
+          <img src={logo} alt="DRAW LEAGUE LOGO" className="dash-logo-image" />
         </div>
 
         <div className="right-content">
