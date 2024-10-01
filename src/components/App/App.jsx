@@ -163,7 +163,7 @@ function App() {
           <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/prorules/:id"
+            path="/prorules"
             render={(props) => (<ProRules socket={socket} {...props} />)} />
 
           <Route

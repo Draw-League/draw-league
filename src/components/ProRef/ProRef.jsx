@@ -6,12 +6,10 @@ import axios from 'axios';
 
 
 function ProRef({socket}) {
-  const dispatch = useDispatch();
   const currentGame = useSelector((store) => store.currentGame)
-  const ref = useSelector((store) => store.projectionReducer);
+  // const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
 
-console.log({currentGame});
 
   useEffect(() => {
     if (socket) {
@@ -43,7 +41,7 @@ console.log({currentGame});
       </div>
       <div className="ref-info">
 
-        <div key={ref.id}>
+        <div key={currentGame.id}>
           <div className='ref-image'>
 
             <img className="ref-img" alt="placeholder image"
@@ -52,14 +50,14 @@ console.log({currentGame});
           </div>
 
           <div className='ref-name'>
-            <p className='rname-style'>{ref.full_name} </p>
+            <p className='rname-style'>{currentGame.full_name} </p>
           </div>
 
           <div className='ref-facts'>
             <p className='ref-style'>
               ref fact
               <br />
-              {ref.ref_fact}
+              {currentGame.ref_fact}
               </p>
               <br /> 
 

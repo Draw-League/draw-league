@@ -25,7 +25,7 @@ function AdminDash({ socket }) {
     setCurrentGame(event);
     dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
     history.push('/refdash');
-    window.open(`/proref/`, "_blank");
+    window.open(`/prorules/`, "_blank");
   }
 
   const removeEvent = (id) => {
@@ -74,9 +74,8 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={() => handlePlay(event.id)}>Play</button>
+                onClick={(e) => handlePlay(e, event )}>Play</button>
               <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
-              <button onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
