@@ -15,7 +15,7 @@ function ProPrompt3Rev({socket}){
         const handleNavigation = (direction) => {
           console.log(`Navigating to: ${direction}`);
           if(direction === 'next') {
-            history.push('/prowinners'); 
+            history.push('/prowinners_1'); 
           }
           else if(direction === 'back') {
             history.push('/proprompt3blk');
@@ -44,7 +44,7 @@ return (
       </div>
      
       <div className="body-content">
-        <div className='logo-container'>
+        <div className='dash-logo-container'>
           <img src={logo} alt="DRAW LEAGUE LOGO" className="logo-image" />
         </div>
 

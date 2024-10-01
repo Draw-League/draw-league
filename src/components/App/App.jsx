@@ -38,12 +38,12 @@ import JudgeGallery from '../JudgeGallery/JudgeGallery';
 import JudgeScore from '../JudgeScore/JudgeScore';
 import ProThemeblk from '../ProGameSlides/ProThemeblk';
 import ProThemeRev from '../ProGameSlides/ProThemeRev';
-import ProPrompt1blk from '../ProGameSlides/ProPrompt1blk';
 import ProPrompt1Rev from '../ProGameSlides/ProPrompt1Rev';
 import ProPrompt2blk from '../ProGameSlides/ProPrompt2blk';
 import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
 import ProPrompt3blk from '../ProGameSlides/ProPrompt3blk';
 import ProPrompt3Rev from '../ProGameSlides/ProPrompt3Rev';
+import ProContactUs from '../ProContactUs/ProContactUs';
 
 
 import './App.css';
@@ -58,23 +58,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-     initializeSockets();
+    initializeSockets();
   }, [dispatch]);
 
   const initializeSockets = () => {
-    if(!socket) {
-        let appSocket = io();
-        setSocket(appSocket);
-        // client-side
-        appSocket.on("connect", () => {
-             console.log(socket.id);
-        });
-        
-        appSocket.on("disconnect", () => {
-             console.log(socket.id)
-        });
+    if (!socket) {
+      let appSocket = io();
+      setSocket(appSocket);
+      // client-side
+      appSocket.on("connect", () => {
+        console.log(socket.id);
+      });
+
+      appSocket.on("disconnect", () => {
+        console.log(socket.id)
+      });
     }
-}
+  }
   return (
     <Router>
       <div>
@@ -185,36 +185,35 @@ function App() {
             path="/projudge"
             render={(props) => (<ProJudge socket={socket} {...props} currentGame={currentGame} />)} />
 
-<Route
+          <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners_1">
-            <ProWinners_1 />
-          </Route>
-{/* route above needs to be a ProtectedRoute */}
-
-<Route
-            // logged in shows ProWinners else shows LoginPage
-            exact
-            path="/prowinners_2">
-            <ProWinners_2 />
-          </Route>
-{/* route above needs to be a ProtectedRoute */}
+            path="/prowinners_1"
+            render={(props) => (<ProWinners_1 socket={socket} {...props} currentGame={currentGame} />)} />
+          
+          {/* route above needs to be a ProtectedRoute */}
 
           <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners_3">
-            <ProWinners_3 />
-          </Route>
-{/* route above needs to be a ProtectedRoute */}
+            path="/prowinners_2"
+            render={(props) => (<ProWinners_2 socket={socket} {...props} currentGame={currentGame} />)} />
+          
+          {/* route above needs to be a ProtectedRoute */}
 
-          <ProtectedRoute
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_3"
+            render={(props) => (<ProWinners_3 socket={socket} {...props} currentGame={currentGame} />)} />
+         
+          {/* route above needs to be a ProtectedRoute */}
+
+          <Route
             // logged in shows ProBest else shows LoginPage
             exact
-            path="/probest">
-            <ProBest />
-          </ProtectedRoute>
+            path="/probest"
+            render={(props) => (<ProBest socket={socket} {...props} />)} />
 
           <Route
             // logged in shows ProLeaderboard else shows LoginPage
@@ -231,45 +230,44 @@ function App() {
           </ProtectedRoute>
 
           <Route
-          exact
-          path="/ProThemeblk"
-          render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
+            exact
+            path="/ProThemeblk"
+            render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProThemeRev"
-          render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
+            exact
+            path="/ProThemeRev"
+            render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt1blk"
-          render={(props) => (<ProPrompt1blk socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt1Rev"
+            render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt1Rev"
-          render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt2blk"
+            render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt2blk"
-          render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt2Rev"
+            render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt2Rev"
-          render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt3blk"
+            render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt3blk"
-          render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt3Rev"
+            render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt3Rev"
-          render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
-
+            exact
+            path="/ProContactUs"
+            render={(props) => (<ProContactUs socket={socket} {...props} />)} />
 
           <Route
             exact

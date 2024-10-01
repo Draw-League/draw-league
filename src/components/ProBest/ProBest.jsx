@@ -2,17 +2,50 @@ import React from 'react';
 import './ProBest.css';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // This is one of our simplest components
 // It doesn't have local state,
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is'
 
-function ProBest() {
+function ProBest({socket}) {
+
+const dispatch = useDispatch();
+    const currentGame = useSelector((store) => store.currentGame)
+    const ref = useSelector((store) => store.projectionReducer);
+    const history = useHistory();
+  
+  console.log({currentGame});
+  
+    useEffect(() => {
+      if(currentGame){
+      dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+    }, [currentGame, dispatch]);
+  
+  
+    useEffect(() => {
+      if (socket) {
+        const handleNavigation = (direction) => {
+          console.log(`Navigating to: ${direction}`);
+          if(direction === 'next') {
+            history.push('/ProContactUs'); 
+          }
+          else if(direction === 'back') {
+            history.push('/ProWinners');
+          }
+        };
+  
+        socket.on('navigate', handleNavigation);
+        console.log('socket.id', socket.id);
+        return () => {
+          socket.off('navigate', handleNavigation);
+        };
+      }
+    }, [socket, history]);
 
   const winners = useSelector((store) => store.adminDashReducer);
-  const dispatch = useDispatch();
-
+  
 
 
   useEffect(() => {
