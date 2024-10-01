@@ -82,9 +82,9 @@ function ProJudge({socket, currentGame, ...props}) {
           </div>
         </div>
         <br />
-        <div className='draw-league-button'>
+        {/* <div className='draw-league-button'>
         <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/refdash')}></input>
-        </div>
+        </div> */}
       </div>
     </div>
   );

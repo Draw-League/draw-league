@@ -66,9 +66,9 @@ function ProRef({socket}) {
           </div>
         </div>
       </div>
-      <div className='draw-league-button'>
+      {/* <div className='draw-league-button'>
         <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/projudge')}></input>
-        </div>
+        </div> */}
     </div>
   );
 }
