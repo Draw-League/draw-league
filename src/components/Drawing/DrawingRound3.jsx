@@ -56,7 +56,8 @@ function DrawingRound3() {
           return axios.post('/api/drawings', {
             team_id: teamId,
             drawing_url: drawing_url,
-            round: 3
+            round: 3,
+            event_id: eventId
           });
         })
         .then(() => {
@@ -76,7 +77,7 @@ function DrawingRound3() {
   };
 
   return (
-    <div className="container">
+    <div className="drawing-container">
       <header className="header">
         <NavPlayer className="hamburger-right" />
       </header>

@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import './AddEvent.css';
+import './EditEvent.css';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import AdminNav from '../AdminNav/AdminNav';
 import Select from 'react-select';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
-function AddEvent() {
+function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const event = useSelector((store) => store.createEventReducer);
+  const { id } = useParams();
 
+  
+  useEffect(() => {
+    dispatch({ type: "FETCH_ONE_EVENT", payload: id });
+  }, [id, dispatch]);
+console.log('event from reducer:', event);
 
   const [newEvent, setNewEvent] = useState({
     theme: '',
@@ -34,12 +42,11 @@ function AddEvent() {
 
   //Judge image file upload
   const [judgeImgFile, setJudgeImgFile] = useState(null);
-  const dispatch = useDispatch();
   const fileInputRef = React.createRef();
 
   //Dispatches Refs saga for ref dropdown
   useEffect(() => {
-    dispatch({ type: 'FETCH_REFS' });
+    dispatch({ type: 'FETCH_EVENTS' });
   }, []);
 
   //populates ref dropdown
@@ -81,7 +88,7 @@ function AddEvent() {
 
 
 
-  const createEvent = async (event) => {
+  const updateEvent = async (event) => {
     event.preventDefault();
 
     const uploadedImgUrl = await uploadImage();
@@ -92,7 +99,7 @@ function AddEvent() {
     }));
 
     dispatch({
-      type: 'ADD_EVENT',
+      type: 'UPDATE_EVENT',
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
 
@@ -138,68 +145,80 @@ function AddEvent() {
           <div className='event-title'>
             <h3 className='event-title-style'>Event Details</h3>
           </div>
-          <form onSubmit={createEvent}>
-            <div className="event-form-wrapper">
-              <div className='event-left'>
+        <form>
+          {/* <form onSubmit={createEvent}> */}
+            <div className='event-input-form'>
+              <div className='event-details'>
                 <input
-                  className='event-input'
+                  className='date-box'
                   type="date"
                   placeholder="Event Date"
                   name="eventDate"
                   value={newEvent.eventDate}
                   onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Location Name"
                   name="locationName"
                   value={newEvent.locationName}
                   onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Location Address"
                   name="locationAddress"
                   value={newEvent.locationAddress}
                   onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Theme"
                   name="theme"
                   value={newEvent.theme}
                   onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt One"
                   name="promptOne"
                   value={newEvent.promptOne}
                   onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt Two"
                   name="promptTwo"
                   value={newEvent.promptTwo}
                   onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt Three"
                   name="promptThree"
                   value={newEvent.promptThree}
                   onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
                 />
+                <br />
+                <br />
               </div>
 
-              <div className='event-right'>
+
+
+              <div className='staff-detail'>
+                {/* currently using hard coded dummy data starting from line 8 */}
                 <Select
                   className='ref-select-dropdown'
                   placeholder='---SELECT REF---'
@@ -207,6 +226,11 @@ function AddEvent() {
                   onChange={handleRefChange}
                   isMulti={true}
                 />
+
+                {selectedOptions[0] ? console.log('selectedOptions[0].value', selectedOptions[0].value) : console.log('not selected')}
+
+                <br />
+                <br />
                 <input
                   type="text"
                   placeholder="Judge's Name"
@@ -214,6 +238,8 @@ function AddEvent() {
                   value={newEvent.judgeName}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
                   type="text"
                   placeholder="Judge's Job"
@@ -221,6 +247,8 @@ function AddEvent() {
                   value={newEvent.judgeJob}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeJob: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
                   type="text"
                   placeholder="Judge Likes"
@@ -228,6 +256,8 @@ function AddEvent() {
                   value={newEvent.judgeLike}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeLike: event.target.value })}
                 />
+                <br />
+                <br />
                 <input
                   type="text"
                   placeholder="Judge Knows"
@@ -252,6 +282,7 @@ function AddEvent() {
                     <button type="button" onClick={handleSelectFile}>
                       UPLOAD
                     </button>
+                    <br />
                     <input
                       type="file"
                       accept="image/*"
@@ -259,13 +290,14 @@ function AddEvent() {
                       onChange={handleImageChange}
                       style={{ display: 'none' }}
                     />
+
                   </div>
                 </div>
               </div>
             </div>
-
+            <br />
             <div className='add-event-btn'>
-              <button type="submit" className="event-buttons">Add Event</button>
+              <button type="submit" className="btn_desktop">UPDATE</button>
             </div>
           </form>
 
@@ -275,4 +307,4 @@ function AddEvent() {
   );
 }
 
-export default AddEvent;
+export default EditEvent;

@@ -14,7 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { Cloudinary } from "@cloudinary/url-gen";
 import Contact from '../Contact/Contact';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import EditEvent from '../EditEvent/EditEvent';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -25,12 +25,13 @@ import TeamGallery from '../TeamGallery/TeamGallery';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
-import AddRef from '../AddRef/AddRef';
 import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
 import ProDash from '../ProDash/ProDash';
-import ProWinners from '../ProWinners/ProWinners';
+import ProWinners_1 from '../ProWinners_1/ProWinners_1';
+import ProWinners_2 from '../ProWinners_2/ProWinners_2';
+import ProWinners_3 from '../ProWinners_3/ProWinners_3';
 import ProBest from '../ProBest/ProBest';
 import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 import JudgeGallery from '../JudgeGallery/JudgeGallery';
@@ -49,6 +50,7 @@ import './App.css';
 import { io } from "socket.io-client";
 
 function App() {
+  const currentGame = useSelector((store) => store.currentGame)
   const dispatch = useDispatch();
   const [socket, setSocket] = useState();
 
@@ -56,23 +58,23 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-     initializeSockets();
+    initializeSockets();
   }, [dispatch]);
 
   const initializeSockets = () => {
-    if(!socket) {
-        let appSocket = io();
-        setSocket(appSocket);
-        // client-side
-        appSocket.on("connect", () => {
-             console.log(socket.id);
-        });
-        
-        appSocket.on("disconnect", () => {
-             console.log(socket.id)
-        });
+    if (!socket) {
+      let appSocket = io();
+      setSocket(appSocket);
+      // client-side
+      appSocket.on("connect", () => {
+        console.log(socket.id);
+      });
+
+      appSocket.on("disconnect", () => {
+        console.log(socket.id)
+      });
     }
-}
+  }
   return (
     <Router>
       <div>
@@ -142,7 +144,7 @@ function App() {
             // logged in shows RefDash else shows LoginPage
             exact
             path="/refdash"
-            render={(props) => (<RefDash socket={socket} {...props} />)} />
+            render={(props) => (<RefDash socket={socket} {...props} currentGame={currentGame} />)} />
           {/* </ProtectedRoute> */}
 
           <Route
@@ -159,17 +161,9 @@ function App() {
           </Route>
 
           <Route
-            // logged in shows AddRef else shows LoginPage
-            exact
-            path="/addref">
-            <AddRef />
-          </Route>
-
-
-          <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/prorules"
+            path="/prorules/:id"
             render={(props) => (<ProRules socket={socket} {...props} />)} />
 
           <Route
@@ -189,21 +183,38 @@ function App() {
             // logged in shows AdminDash else shows LoginPage
             exact
             path="/projudge"
-            render={(props) => (<ProJudge socket={socket} {...props} />)} />
+            render={(props) => (<ProJudge socket={socket} {...props} currentGame={currentGame} />)} />
 
           <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners"
-            render={(props) => (<ProWinners  socket={socket} {...props} />)} />
-          
+            path="/prowinners_1">
+            <ProWinners_1 />
+          </Route>
+          {/* route above needs to be a ProtectedRoute */}
+
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_2">
+            <ProWinners_2 />
+          </Route>
+          {/* route above needs to be a ProtectedRoute */}
+
+          <Route
+            // logged in shows ProWinners else shows LoginPage
+            exact
+            path="/prowinners_3">
+            <ProWinners_3 />
+          </Route>
+          {/* route above needs to be a ProtectedRoute */}
 
           <Route
             // logged in shows ProBest else shows LoginPage
             exact
             path="/probest"
-            render={(props) => (<ProBest  socket={socket} {...props} />)} />
-          
+            render={(props) => (<ProBest socket={socket} {...props} />)} />
+
           <Route
             // logged in shows ProLeaderboard else shows LoginPage
             exact
@@ -213,50 +224,50 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/edit-event/:id"
           >
-            <InfoPage />
+            <EditEvent />
           </ProtectedRoute>
 
           <Route
-          exact
-          path="/ProThemeblk"
-          render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
+            exact
+            path="/ProThemeblk"
+            render={(props) => (<ProThemeblk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProThemeRev"
-          render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
+            exact
+            path="/ProThemeRev"
+            render={(props) => (<ProThemeRev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt1Rev"
-          render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt1Rev"
+            render={(props) => (<ProPrompt1Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt2blk"
-          render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt2blk"
+            render={(props) => (<ProPrompt2blk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt2Rev"
-          render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt2Rev"
+            render={(props) => (<ProPrompt2Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt3blk"
-          render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt3blk"
+            render={(props) => (<ProPrompt3blk socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProPrompt3Rev"
-          render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
+            exact
+            path="/ProPrompt3Rev"
+            render={(props) => (<ProPrompt3Rev socket={socket} {...props} />)} />
 
           <Route
-          exact
-          path="/ProContactUs"
-          render={(props) => (<ProContactUs socket={socket} {...props} />)} />
+            exact
+            path="/ProContactUs"
+            render={(props) => (<ProContactUs socket={socket} {...props} />)} />
 
           <Route
             exact
@@ -279,7 +290,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/admindash" />
               :
               // Otherwise, show the registration page
               <RegisterPage />

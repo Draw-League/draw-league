@@ -1,5 +1,5 @@
 
-const currentGame = (state = 0, action) => {
+const currentGame = (state = {}, action) => {
   if (action.type === 'UPDATE_CURRENT_GAME') {
     return action.payload;
 }

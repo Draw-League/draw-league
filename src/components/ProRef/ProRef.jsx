@@ -14,19 +14,15 @@ function ProRef({socket}) {
 console.log({currentGame});
 
   useEffect(() => {
-    if(currentGame){
-    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
-  }, [currentGame, dispatch]);
-
-
-  useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
           history.push('/ProJudge'); 
         }
         else if(direction === 'back') {
+          console.log(`currentGame:`, currentGameIn);
           history.push('/ProRules');
         }
       };
@@ -41,7 +37,7 @@ console.log({currentGame});
 
 
   return (
-    <div className="container">
+    <div className="container-ref">
       <div className='ref-title'>
         <h2 className='ref-title-style'> REFEREE</h2>
       </div>

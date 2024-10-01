@@ -8,10 +8,11 @@
     margin-bottom: 30px;
 }
 
-.nav-logo {
+.nav-player-logo {
     position: absolute;
     left: 1px;
     width: 150px;
+    cursor: pointer;
 }
 
 .hamburger-icon {

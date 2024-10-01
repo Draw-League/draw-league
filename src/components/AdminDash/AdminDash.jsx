@@ -12,19 +12,20 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-  const [currentGame, setCurrentGame] = useState('');
+  const [currentGame, setCurrentGame] = useState({});
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
-  const handlePlay = (e, eventID) => {
+  const handlePlay = (e, event) => {
     e.preventDefault();
-    console.log('Game to PLAY id;', eventID);
-    setCurrentGame(eventID);
-    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    history.push('/proref');
+    console.log('Game to PLAY id;', event);
+    setCurrentGame(event);
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+    history.push('/refdash');
+    window.open(`/proref/`, "_blank");
   }
 
   const removeEvent = (id) => {
@@ -32,12 +33,16 @@ function AdminDash({ socket }) {
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
 
+  const editEvent = (id) => {
+    history.push(`/edit-event/${id}`);
+  }
 
   const history = useHistory();
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGame) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame: ${currentGame}`);
         if (direction === 'next') {
           history.push('/ProRules');
         }
@@ -53,14 +58,68 @@ function AdminDash({ socket }) {
       };
     }
   }, [socket, history]);
+
   return (
     <div className="admin-dash-container">
       <AdminNav />
-      <br />
-      <br />
-      <br />
-      <br />
-      <section style={{ display: 'flex', marginRight: '20px' }}>
+      <section className="admin-events-section">
+        {events.map((event) => (
+          <div key={event.id} className="admin-event-box">
+            <div className="admin-event-details">
+              <div className="admin-event-left">
+                <p>
+                  <span className="admin-event-label">Location:</span>{' '}
+                  <span className="admin-event-info">{event.location_name}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Address:</span>{' '}
+                  <span className="admin-event-info">{event.location_address}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Time:</span>{' '}
+                  <span className="admin-event-info">{event.time}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Date:</span>{' '}
+                  <span className="admin-event-info">{event.event_date}</span>
+                </p>
+              </div>
+              <div className="admin-event-right">
+                <p>
+                  <span className="admin-event-label">Judge:</span>{' '}
+                  <span className="admin-event-info">{event.judge_name}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Judge Code:</span>{' '}
+                  <span className="admin-event-info">{event.judge_code}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Ref:</span>{' '}
+                  <span className="admin-event-info">{event.full_name}</span>
+                </p>
+                <p>
+                  <span className="admin-event-label">Game Code:</span>{' '}
+                  <span className="admin-event-info">{event.event_code}</span>
+                </p>
+              </div>
+            </div>
+            <div className="admin-event-buttons">
+              <button className="admin-event-button" onClick={() => handlePlay(event)}>Play</button>
+              <button className="admin-event-button" onClick={() => editEvent(event.id)}>Edit</button>
+              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <div>
+        <LogOutButton className="admin-logout-btn" />
+      </div>
+    </div>
+  );
+}
+
+{/* <section style={{ display: 'flex', marginRight: '20px' }}>
         {events.map((event) => (
           <div key={event.id} >
             <div className='event-box'>
@@ -73,7 +132,9 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={(e) => handlePlay(e, event.id)}>Play</button>
+                onClick={() => handlePlay(event.id)}>Play</button>
+              <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
+              <button onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
@@ -97,7 +158,7 @@ function AdminDash({ socket }) {
           <br></br>
           <p>Game Code:</p>
         </div>
-      </div> */}
+      </div> 
 
       <br />
       <br />
@@ -105,15 +166,11 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br />
-
 
 
       <div>
-        <h2>Welcome, {events.full_name}!</h2>
         <LogOutButton className="btn" />
       </div>
-    </div>
-  );
-}
+      //*/}
 
 export default AdminDash;
