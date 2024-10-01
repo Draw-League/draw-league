@@ -4,13 +4,25 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 //import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import Timer from './ProTimer';
 import logo from './drawleague.png';
 
 
 
-function RefDash({socket}) {
+function RefDash({socket, currentGame, props}) {
+  console.log('props ref dash', props)
+  console.log('current game', currentGame)
+  const dispatch = useDispatch();
   const history = useHistory();
+  // const currentGame = useSelector((store) => store.currentGame)
+  // useEffect(() => {
+  //   if(currentGame){
+  //   dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+  // }, [currentGame, dispatch]);
+
+
   useEffect(() => {
     // Add the listener when we load the page
     if(socket) {
@@ -26,14 +38,15 @@ function RefDash({socket}) {
   }, [socket]);
   const sendNextPage = () => {
     if(socket) {
-        socket.emit('navigate', 'next');
+        socket.emit('navigate', 'next', currentGame);
         console.log('socket.id', socket.id);
+        console.log('current game is:', currentGame)
     }
   }
 
   const sendBackPage = () => {
     if(socket) {
-        socket.emit('navigate', 'back');
+        socket.emit('navigate', 'back', currentGame);
         console.log('socket.id', socket.id);
     }
   }

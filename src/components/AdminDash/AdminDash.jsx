@@ -12,19 +12,20 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-  const [currentGame, setCurrentGame] = useState('');
+  const [currentGame, setCurrentGame] = useState({});
 
 
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
-  const handlePlay = (e, eventID) => {
+  const handlePlay = (e, event) => {
     e.preventDefault();
-    console.log('Game to PLAY id;', eventID);
-    setCurrentGame(eventID);
-    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: eventID });
-    history.push('/proref');
+    console.log('Game to PLAY id;', event);
+    setCurrentGame(event);
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+    history.push('/refdash');
+    window.open(`/proref/`, "_blank");
   }
 
   const removeEvent = (id) => {
@@ -36,8 +37,9 @@ function AdminDash({ socket }) {
   const history = useHistory();
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGame) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame: ${currentGame}`);
         if (direction === 'next') {
           history.push('/ProRules');
         }
@@ -73,7 +75,7 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={(e) => handlePlay(e, event.id)}>Play</button>
+                onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>

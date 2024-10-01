@@ -29,7 +29,6 @@ import ProRules from '../ProRules/ProRules';
 import ProRef from '../ProRef/ProRef';
 import ProJudge from '../ProJudge/ProJudge';
 import ProDash from '../ProDash/ProDash';
-import ProWinners from '../ProWinners/ProWinners';
 import ProWinners_1 from '../ProWinners_1/ProWinners_1';
 import ProWinners_2 from '../ProWinners_2/ProWinners_2';
 import ProWinners_3 from '../ProWinners_3/ProWinners_3';
@@ -51,6 +50,7 @@ import './App.css';
 import { io } from "socket.io-client";
 
 function App() {
+  const currentGame = useSelector((store) => store.currentGame)
   const dispatch = useDispatch();
   const [socket, setSocket] = useState();
 
@@ -144,7 +144,7 @@ function App() {
             // logged in shows RefDash else shows LoginPage
             exact
             path="/refdash"
-            render={(props) => (<RefDash socket={socket} {...props} />)} />
+            render={(props) => (<RefDash socket={socket} {...props} currentGame={currentGame} />)} />
           {/* </ProtectedRoute> */}
 
           <Route
@@ -183,28 +183,23 @@ function App() {
             // logged in shows AdminDash else shows LoginPage
             exact
             path="/projudge"
-            render={(props) => (<ProJudge socket={socket} {...props} />)} />
+            render={(props) => (<ProJudge socket={socket} {...props} currentGame={currentGame} />)} />
 
-          <Route
-            // logged in shows ProWinners else shows LoginPage
-            exact
-            path="/prowinners">
-            <ProWinners />
-          </Route>
-
-          <Route
+<Route
             // logged in shows ProWinners else shows LoginPage
             exact
             path="/prowinners_1">
             <ProWinners_1 />
           </Route>
+{/* route above needs to be a ProtectedRoute */}
 
-          <Route
+<Route
             // logged in shows ProWinners else shows LoginPage
             exact
             path="/prowinners_2">
             <ProWinners_2 />
           </Route>
+{/* route above needs to be a ProtectedRoute */}
 
           <Route
             // logged in shows ProWinners else shows LoginPage
@@ -212,6 +207,7 @@ function App() {
             path="/prowinners_3">
             <ProWinners_3 />
           </Route>
+{/* route above needs to be a ProtectedRoute */}
 
           <ProtectedRoute
             // logged in shows ProBest else shows LoginPage
