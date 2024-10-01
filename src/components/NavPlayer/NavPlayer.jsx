@@ -55,7 +55,7 @@ function NavPlayer() {
 
     return (
         <div className="nav-player-container">
-            <img src={logo} alt="Draw League Logo" className="nav-logo" onClick={handleLogoClick} />
+            <img src={logo} alt="Draw League Logo" className="nav-player-logo" onClick={handleLogoClick} />
             <FaBars className="hamburger-icon" onClick={toggleMenu} />
             {menuOpen && (
                 <div className="hamburger-menu">

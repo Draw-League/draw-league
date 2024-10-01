@@ -1,30 +1,34 @@
-.winner_1 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
+.winner-name {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  height: 50px;
+  border: 2px solid black;
+  border-bottom: 0;
 }
 
-.winner_2 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
-}
-.winner_3 .winner-drawing {
-  /* background-color: black; 
-  width: 235px; */
+.winner_three .winner-name{
+  background-color: #000000;
+  color: #ffffff ;
 }
 
-.winner_1 .winner-name {
-  background-color: #000000; 
-  color: #ffffff;
+.winner_two .winner-name{
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
 
-.winner_2 .winner-name {
-  background-color: #000000; 
-  color: #ffffff;
+.winner_one .winner-name{
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
 
-.winner_3 .winner-name {
-  background-color: #000000; 
-  color: #ffffff;
+.winner {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .winners{
@@ -72,22 +76,6 @@
  margin: 0 auto;
  
 }
-.winner-drawing img{
- 
-}
-
-.winner-name{
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #C3DD00;
-color: black;
-font-weight: 600;
-height: 50px;
-border: 2px solid black;
-border-bottom: 0;
-}
 
 .winner-position{
 width: 100%;
@@ -99,5 +87,4 @@ color: black;
 font-weight: 600;
 font-size: 20px;
 border: 2px solid black;
-
 }
