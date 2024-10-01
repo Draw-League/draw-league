@@ -138,80 +138,68 @@ function AddEvent() {
           <div className='event-title'>
             <h3 className='event-title-style'>Event Details</h3>
           </div>
-
           <form onSubmit={createEvent}>
-            <div className='event-input-form'>
-              <div className='event-details'>
+            <div className="event-form-wrapper">
+              <div className='event-left'>
                 <input
-                  className='date-box'
+                  className='event-input'
                   type="date"
                   placeholder="Event Date"
                   name="eventDate"
                   value={newEvent.eventDate}
                   onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Location Name"
                   name="locationName"
                   value={newEvent.locationName}
                   onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Location Address"
                   name="locationAddress"
                   value={newEvent.locationAddress}
                   onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Theme"
                   name="theme"
                   value={newEvent.theme}
                   onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Prompt One"
                   name="promptOne"
                   value={newEvent.promptOne}
                   onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Prompt Two"
                   name="promptTwo"
                   value={newEvent.promptTwo}
                   onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
+                  className='event-input'
                   type="text"
                   placeholder="Prompt Three"
                   name="promptThree"
                   value={newEvent.promptThree}
                   onChange={(event) => setNewEvent({ ...newEvent, promptThree: event.target.value })}
                 />
-                <br />
-                <br />
               </div>
 
-
-
-              <div className='staff-detail'>
-                {/* currently using hard coded dummy data starting from line 8 */}
+              <div className='event-right'>
                 <Select
                   className='ref-select-dropdown'
                   placeholder='---SELECT REF---'
@@ -219,11 +207,6 @@ function AddEvent() {
                   onChange={handleRefChange}
                   isMulti={true}
                 />
-
-                {selectedOptions[0] ? console.log('selectedOptions[0].value', selectedOptions[0].value) : console.log('not selected')}
-
-                <br />
-                <br />
                 <input
                   type="text"
                   placeholder="Judge's Name"
@@ -231,8 +214,6 @@ function AddEvent() {
                   value={newEvent.judgeName}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeName: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
                   type="text"
                   placeholder="Judge's Job"
@@ -240,8 +221,6 @@ function AddEvent() {
                   value={newEvent.judgeJob}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeJob: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
                   type="text"
                   placeholder="Judge Likes"
@@ -249,8 +228,6 @@ function AddEvent() {
                   value={newEvent.judgeLike}
                   onChange={(event) => setNewEvent({ ...newEvent, judgeLike: event.target.value })}
                 />
-                <br />
-                <br />
                 <input
                   type="text"
                   placeholder="Judge Knows"
@@ -275,7 +252,6 @@ function AddEvent() {
                     <button type="button" onClick={handleSelectFile}>
                       UPLOAD
                     </button>
-                    <br />
                     <input
                       type="file"
                       accept="image/*"
@@ -283,14 +259,13 @@ function AddEvent() {
                       onChange={handleImageChange}
                       style={{ display: 'none' }}
                     />
-
                   </div>
                 </div>
               </div>
             </div>
-            <br />
+
             <div className='add-event-btn'>
-              <button type="submit" className="btn_desktop">Add Event</button>
+              <button type="submit" className="event-buttons">Add Event</button>
             </div>
           </form>
 

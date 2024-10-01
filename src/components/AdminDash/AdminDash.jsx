@@ -58,10 +58,44 @@ function AdminDash({ socket }) {
       };
     }
   }, [socket, history]);
+
   return (
     <div className="admin-dash-container">
       <AdminNav />
-      <section style={{ display: 'flex', marginRight: '20px' }}>
+      <section className="events-section">
+        {events.map((event) => (
+          <div key={event.id} className="event-box">
+            <div className="event-details">
+              <div className="event-left">
+                <p><span className="event-label">Location:</span> <span className="event-info">{event.location_name}</span></p>
+                <p><span className="event-label">Address:</span> <span className="event-info">{event.location_address}</span></p>
+                <p><span className="event-label">Time:</span> <span className="event-info">{event.time}</span></p>
+                <p><span className="event-label">Date:</span> <span className="event-info">{event.event_date}</span></p>
+              </div>
+              <div className="event-right">
+                <p><span className="event-label">Judge:</span> <span className="event-info">{event.judge_name}</span></p>
+                <p><span className="event-label">Judge Code:</span> <span className="event-info">{event.judge_code}</span></p>
+                <p><span className="event-label">Ref:</span> <span className="event-info">{event.full_name}</span></p>
+                <p><span className="event-label">Game Code:</span> <span className="event-info">{event.event_code}</span></p>
+              </div>
+            </div>
+            <div className="event-buttons">
+              <button className="event-button" onClick={() => handlePlay(event)}>Play</button>
+              <button className="event-button" onClick={() => editEvent(event.id)}>Edit</button>
+              <button className="event-button delete" onClick={() => removeEvent(event.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <div>
+        <LogOutButton className="logout-btn" />
+      </div>
+    </div>
+  );
+}
+
+{/* <section style={{ display: 'flex', marginRight: '20px' }}>
         {events.map((event) => (
           <div key={event.id} >
             <div className='event-box'>
@@ -100,7 +134,7 @@ function AdminDash({ socket }) {
           <br></br>
           <p>Game Code:</p>
         </div>
-      </div> */}
+      </div> 
 
       <br />
       <br />
@@ -108,14 +142,11 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br />
-
 
 
       <div>
         <LogOutButton className="btn" />
       </div>
-    </div>
-  );
-}
+      //*/}
 
 export default AdminDash;

@@ -1,42 +1,102 @@
-.navbar {
-    width: 100%;
-    background-color: #0071ff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed; /* Ensure it stays at the top when scrolling */
-    top: 0;
-    left: 0;}
-
-.admin-dash-container {
-    margin-top: 300px;
-    margin-left: 50px;
-    margin-right: 50px;
+.events-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #EBF4F8;
-}
-
-
-.event-buttons {
-    border: 3px solid black !important;
-    background: #ebe5e5 !important;
-    padding: 15px Im;
-    display: inline-block;
-    color: black;
-    font-size: 30px;
+  }
+  
+  .event-box {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    padding: 20px;
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .event-left, .event-right {
+    width: 48%;
+  }
+  
+  .event-left {
+    text-align: left; 
+    padding-right: 20px;
+  }
+  
+  .event-right {
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .event-label {
     font-weight: bold;
-    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #0071ff;
+  }
+  
+  .event-info {
+    font-weight: normal;
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  .event-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .event-button {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 3px solid black;
+    background-color: #c3dd00;
+    color: #000;
     cursor: pointer;
-}
-
-.event-box{
-    box-shadow: 10px 10px black;
-    color: black;
-    width: 50%;
-    height: auto;
-    border: 2px solid #000000;
-}
+    flex: 1;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .event-button:hover {
+    background-color: #d9e602;
+  }
+  
+  .event-button.delete {
+    background-color: #ff734f;
+  }
+  
+  .event-button.delete:hover {
+    background-color: #ff967f;
+  }
+  
+  .logout-btn {
+    background-color: #c3dd00;
+    border: 3px solid black;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #d9e602;
+  }
+  
