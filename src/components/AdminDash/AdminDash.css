@@ -1,12 +1,12 @@
-.events-section {
+.admin-events-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 0 auto;
     padding: 20px;
-  }
+}
   
-  .event-box {
+.admin-event-box {
     display: flex;
     flex-direction: column;
     border: 3px solid black;
@@ -15,47 +15,47 @@
     max-width: 800px;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  .event-details {
+.admin-event-details {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-  }
+}
   
-  .event-left, .event-right {
+.admin-event-left, .admin-event-right {
     width: 48%;
-  }
+}
   
-  .event-left {
+.admin-event-left {
     text-align: left; 
     padding-right: 20px;
-  }
+}
   
-  .event-right {
+.admin-event-right {
     text-align: left;
     padding-left: 20px;
-  }
+}
   
-  .event-label {
+.admin-event-label {
     font-weight: bold;
     font-size: 18px;
     color: #0071ff;
-  }
+}
   
-  .event-info {
+.admin-event-info {
     font-weight: normal;
     font-size: 16px;
     color: #000000;
-  }
+}
   
-  .event-buttons {
+.admin-event-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-  }
+}
   
-  .event-button {
+.admin-event-button {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -66,21 +66,21 @@
     flex: 1;
     margin: 0 5px;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .event-button:hover {
+.admin-event-button:hover {
     background-color: #d9e602;
-  }
+}
   
-  .event-button.delete {
+.admin-delete-button {
     background-color: #ff734f;
-  }
+}
   
-  .event-button.delete:hover {
+.admin-delete-button:hover {
     background-color: #ff967f;
-  }
+}
   
-  .logout-btn {
+.admin-logout-btn {
     background-color: #c3dd00;
     border: 3px solid black;
     padding: 10px 20px;
@@ -94,9 +94,8 @@
     align-items: center;
     margin: 20px auto;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .logout-btn:hover {
+.admin-logout-btn:hover {
     background-color: #d9e602;
-  }
-  
+}
