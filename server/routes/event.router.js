@@ -35,20 +35,16 @@ const codeGenerator = () => {
 router.get('/:id', (req, res) => {
   // GET route code here
   const eventId = req.params.id;
+  console.log('one event GET reqparams are:', req.params);
   const queryText = `
   SELECT * FROM event 
 JOIN user_event ON event.id = user_event.event_id
 JOIN "user" ON "user".id = user_event.user_id
 WHERE event.id = $1;
   `
-
-
-
-  // `                       SELECT *
-  //                       FROM event
-  //                       WHERE id = ${eventId};`;
-  pool.query(queryText)
+  pool.query(queryText, [eventId])
     .then(result => {
+      console.log('one event result from db:', result.rows);
       res.send(result.rows);
     })
     .catch(err => {
@@ -62,10 +58,13 @@ WHERE event.id = $1;
 // GET route for admin dash
 router.get('/', (req, res) =>{
   const queryText = `
-  SELECT event.id, location_name, location_address, event_date, event_code, judge_name, judge_code, full_name
+SELECT art_medium, event.created_at, created_by, event_code, event_date, 
+  event_id, full_name, judge_code, judge_img, judge_job, judge_know, 
+  judge_like, judge_name, location_name, location_address, prompt_one, 
+  prompt_two, prompt_three, ref_fact, ref_img, ref_job, theme, user_id
   FROM event
   JOIN user_event ON event.id = user_event.event_id
-  JOIN "user" ON "user".id = user_event.user_id
+  JOIN "user" ON "user".id = user_event.user_id;
   `
   pool.query(queryText)
     .then(result => {

@@ -73,6 +73,7 @@ function Podium({ winner }) {
       >
         {winner.position}
       </div>
+      {/* <button onClick={() => history.push('/probest')}>x</button> */}
     </div>
   );
 }

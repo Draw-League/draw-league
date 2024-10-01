@@ -15,6 +15,19 @@ function* fetchEvents(action) {
     }
 }
 
+function* fetchOneEvent(action) {
+  console.log("fetching one event by id:", action.payload);
+
+  try {
+    const eventResponse = yield axios.get(`api/events/${action.payload}`);
+    console.log("event response:", eventResponse);
+
+    yield put({type: 'SET_EVENTS', payload: eventResponse.data});
+    } catch (error) {
+      console.log('event get failed', error);
+    }
+}
+
 function* createEvent(action) {
     try {
        yield axios.post('/api/events/create-event', action.payload);
@@ -26,6 +39,22 @@ function* createEvent(action) {
       console.log('Error creating event:', error);
     }
   }
+
+  // Redux Saga Update
+function* updateEvent(action) {
+  console.log('updating meal list', action);
+
+  try {
+    const { tripid, eventId } = action.payload;
+    const mealResponse = yield axios({method: 'PUT', url:`/api/events/${eventId}`, data: { tripid }});
+    console.log('update/put meal response', mealResponse);
+
+    yield put({type: 'FETCH_MEAL' , payload: tripid });
+  }
+  catch(error) {
+    console.log('Error updating meal to the server')
+  }
+}
 
   function* deleteEvent(action) {
     console.log("deleting event:", action);
@@ -42,7 +71,9 @@ function* createEvent(action) {
   function* addEventSaga () {
     yield takeEvery('ADD_EVENT', createEvent);
     yield takeEvery('FETCH_EVENTS', fetchEvents);
-    yield takeEvery('REMOVE_EVENT', deleteEvent)
+    yield takeEvery('FETCH_ONE_EVENT', fetchOneEvent);
+    yield takeEvery('UPDATE_EVENT', updateEvent);
+    yield takeEvery('REMOVE_EVENT', deleteEvent);
   }
 
   export default addEventSaga;
