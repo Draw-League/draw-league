@@ -134,23 +134,20 @@ console.log('event from reducer:', event);
       <AdminNav />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
 
-      <div className="container-add-event">
 
-        <div className="new-event-form">
-          <div className='event-title'>
-            <h3 className='event-title-style'>Event Details</h3>
+      <div className="container-edit-event">
+
+        <div className="edit-event-form">
+          <div className='edit-event-title'>
+            <h3 className='edit-event-title-style'>Event Details</h3>
           </div>
         <form>
           {/* <form onSubmit={createEvent}> */}
-            <div className='event-input-form'>
-              <div className='event-details'>
+            <div className='edit-event-input-form'>
+              <div className='edit-event-details'>
                 <input
-                  className='date-box'
+                  className='edit-date-box'
                   type="date"
                   placeholder="Event Date"
                   name="eventDate"
@@ -217,10 +214,10 @@ console.log('event from reducer:', event);
 
 
 
-              <div className='staff-detail'>
+              <div className='edit-staff-detail'>
                 {/* currently using hard coded dummy data starting from line 8 */}
                 <Select
-                  className='ref-select-dropdown'
+                  className='edit-ref-select-dropdown'
                   placeholder='---SELECT REF---'
                   options={refOptions}
                   onChange={handleRefChange}
@@ -296,7 +293,7 @@ console.log('event from reducer:', event);
               </div>
             </div>
             <br />
-            <div className='add-event-btn'>
+            <div className='update-event-btn'>
               <button type="submit" className="btn_desktop">UPDATE</button>
             </div>
           </form>

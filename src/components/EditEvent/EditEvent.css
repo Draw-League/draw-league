@@ -1,4 +1,4 @@
-.container-add-event {
+.container-edit-event {
     width: auto;
     height: auto;
     display: flex;
@@ -9,7 +9,7 @@
 
 }
 
-.new-event-form {
+.edit-event-form {
     width: 800px, 50%;
     height: auto;
     background: #C3DD00;
@@ -23,12 +23,12 @@
 
 }
 
-.event-title {
+.edit-event-title {
     justify-content: flex-start;
     
 }
 
-.event-input-form {
+.edit-event-input-form {
     width: auto;
     height: auto;
     display: flex;
@@ -37,19 +37,19 @@
     text-align: center;
 }
 
-.event-details {
+.edit-event-details {
     width: 50%;
     padding: 1rem; 
 
 }
 
-.staff-detail {
+.edit-staff-detail {
     width: 50%;
     padding: 1rem;
 
 }
 
-.date-box {
+.edit-date-box {
     border-style: solid;
     border-width: 4px;
     border-color: black;
@@ -58,16 +58,16 @@
 
 }
 
-.ref-select-dropdown {
+.edit-ref-select-dropdown {
     border-style: solid;
     border-width: 4px;
     border-color: black;
 }
 
-.add-event-btn {
+.update-event-btn {
     justify-content: flex-end;
 }
 
-.event-title-style{
+.edit-event-title-style{
     font-size: 20pt;
 }
