@@ -37,14 +37,6 @@
   justify-content: flex-end; 
 }
 
-.winner-drawing{
- width: 100%;  
- height: 309px; 
- margin: 0 auto;
- 
-}
-.winner-drawing img{}
-
 .winner-name{
 width: 100%;
 display: flex;
