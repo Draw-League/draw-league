@@ -188,25 +188,25 @@ function App() {
           <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners_1">
-            <ProWinners_1 />
-          </Route>
+            path="/prowinners_1"
+            render={(props) => (<ProWinners_1 socket={socket} {...props} currentGame={currentGame} />)} />
+          
           {/* route above needs to be a ProtectedRoute */}
 
           <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners_2">
-            <ProWinners_2 />
-          </Route>
+            path="/prowinners_2"
+            render={(props) => (<ProWinners_2 socket={socket} {...props} currentGame={currentGame} />)} />
+          
           {/* route above needs to be a ProtectedRoute */}
 
           <Route
             // logged in shows ProWinners else shows LoginPage
             exact
-            path="/prowinners_3">
-            <ProWinners_3 />
-          </Route>
+            path="/prowinners_3"
+            render={(props) => (<ProWinners_3 socket={socket} {...props} currentGame={currentGame} />)} />
+         
           {/* route above needs to be a ProtectedRoute */}
 
           <Route
