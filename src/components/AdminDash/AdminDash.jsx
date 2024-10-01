@@ -71,6 +71,12 @@ function AdminDash({ socket }) {
           <div key={event.id} className="admin-event-box">
             <div className="admin-event-details">
               <div className="admin-event-left">
+                <div>
+                <p>
+                  <span className="admin-event-label">Event #:</span>{' '}
+                  <span className="admin-event-info">{event.event_id}</span>
+                </p>
+                </div>
                 <p>
                   <span className="admin-event-label">Location:</span>{' '}
                   <span className="admin-event-info">{event.location_name}</span>
