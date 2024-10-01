@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './ProRef.css';
@@ -10,6 +10,8 @@ function ProRef({socket}) {
   const currentGame = useSelector((store) => store.currentGame)
   const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
+  
+  const [currentGame2, setCurrentGame2] = useState({});
 
 console.log({currentGame});
 
@@ -20,6 +22,7 @@ console.log({currentGame});
         console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
           history.push('/ProJudge'); 
+          setCurrentGame2(currentGameIn);
         }
         else if(direction === 'back') {
           console.log(`currentGame:`, currentGameIn);
@@ -35,7 +38,7 @@ console.log({currentGame});
     }
   }, [socket, history]);
 
-
+console.log('currentGame2', currentGame2);
   return (
     <div className="container-ref">
       <div className='ref-title'>
@@ -59,7 +62,7 @@ console.log({currentGame});
             <p className='ref-style'>
               ref fact
               <br />
-              {ref.ref_fact}
+              {currentGame2.ref_fact}
               </p>
               <br /> 
 

@@ -3,6 +3,7 @@ import './ProJudge.css';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
+import  { useState } from 'react';
 
 
 
@@ -12,7 +13,7 @@ function ProJudge({socket, currentGame, ...props}) {
   // const currentGame = useSelector((store) => store.currentGame)
   const judge = useSelector((store) => store.projectionReducer);
   const dispatch = useDispatch();
-
+  const [currentGame2, setCurrentGame2] = useState({});
   //console.log('current game', currentGame)
 
 
@@ -23,7 +24,8 @@ function ProJudge({socket, currentGame, ...props}) {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
-          history.push('/prothemeblk'); 
+          history.push('/prothemeblk');
+          setCurrentGame2(currentGameIn) 
         }
         else if(direction === 'back') {
           console.log(`currentGame:`, currentGameIn);
@@ -64,7 +66,7 @@ function ProJudge({socket, currentGame, ...props}) {
             <h3 className='question-style'>WHAT DO YOU DO?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>{judge.judge_job}</h3>
+            <h3 className='answer-style'>{currentGame2.judge_job}</h3>
           </div>
           
           <div className='judge-question'>
