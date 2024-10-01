@@ -14,9 +14,9 @@ function AdminNav() {
 
       <img src={logo} className='nav-logo' onClick={() => navigation('/admindash')} />
 
-        <ul className="nav-menu">
-          <li><button className="nav-button" onClick={() => navigation('/admindash')}>DASHBOARD</button></li>
-          <li><button className="nav-button" onClick={() => navigation('/addevent')}>CREATE EVENT</button></li>
+        <ul className="admin-nav-menu">       
+          <li><button className="admin-nav-button" onClick={() => navigation('/admindash')}>DASHBOARD</button></li>
+          <li><button className="admin-nav-button" onClick={() => navigation('/addevent')}>CREATE EVENT</button></li>
           {/* <li><button className="nav-button" onClick={() => navigation('/addref')}>ADD A REF</button></li> */}
         </ul>
       

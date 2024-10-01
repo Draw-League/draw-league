@@ -67,6 +67,12 @@ function AdminDash({ socket }) {
           <div key={event.id} className="admin-event-box">
             <div className="admin-event-details">
               <div className="admin-event-left">
+                <div>
+                <p>
+                  <span className="admin-event-label">Event #:</span>{' '}
+                  <span className="admin-event-info">{event.event_id}</span>
+                </p>
+                </div>
                 <p>
                   <span className="admin-event-label">Location:</span>{' '}
                   <span className="admin-event-info">{event.location_name}</span>
@@ -105,8 +111,8 @@ function AdminDash({ socket }) {
             </div>
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={() => handlePlay(event)}>Play</button>
-              <button className="admin-event-button" onClick={() => editEvent(event.id)}>Edit</button>
-              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
+              <button className="admin-event-button" onClick={() => editEvent(event.event_id)}>Edit</button>
+              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.event_id)}>Delete</button>
             </div>
           </div>
         ))}

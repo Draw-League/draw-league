@@ -18,7 +18,7 @@ function ProPrompt1Rev({socket}){
             history.push('/proprompt2blk'); 
           }
           else if(direction === 'back') {
-            history.push('/proprompt1blk');
+            history.push('/prothemerev');
           }
         };
   
@@ -44,7 +44,7 @@ return (
       </div>
      
       <div className="body-content">
-        <div className='logo-container'>
+        <div className='dash-logo-container'>
           <img src={logo} alt="DRAW LEAGUE LOGO" className="logo-image" />
         </div>
 
