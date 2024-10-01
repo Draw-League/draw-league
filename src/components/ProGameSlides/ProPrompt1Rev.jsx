@@ -18,7 +18,7 @@ function ProPrompt1Rev({socket}){
             history.push('/proprompt2blk'); 
           }
           else if(direction === 'back') {
-            history.push('/proprompt1blk');
+            history.push('/prothemerev');
           }
         };
   

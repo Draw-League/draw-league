@@ -15,7 +15,7 @@ function ProPrompt3Rev({socket}){
         const handleNavigation = (direction) => {
           console.log(`Navigating to: ${direction}`);
           if(direction === 'next') {
-            history.push('/prowinners'); 
+            history.push('/prowinners_1'); 
           }
           else if(direction === 'back') {
             history.push('/proprompt3blk');
