@@ -127,10 +127,7 @@ function AddEvent() {
       <AdminNav />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
 
       <div className="container-add-event">
 
