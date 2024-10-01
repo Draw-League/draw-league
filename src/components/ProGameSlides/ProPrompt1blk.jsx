@@ -12,8 +12,9 @@ function ProPrompt1blk({socket}){
 
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
           history.push('/proprompt1rev'); 
         }
