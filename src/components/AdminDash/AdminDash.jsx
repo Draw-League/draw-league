@@ -23,9 +23,9 @@ function AdminDash({ socket }) {
     e.preventDefault();
     console.log('Game to PLAY id;', event);
     setCurrentGame(event);
-    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-    history.push('/refdash');
+    // dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
     window.open(`/prorules/`, "_blank");
+    history.push('/refdash');
   }
 
   const removeEvent = (id) => {
@@ -68,10 +68,10 @@ function AdminDash({ socket }) {
             <div className="admin-event-details">
               <div className="admin-event-left">
                 <div>
-                <p>
-                  <span className="admin-event-label">Event #:</span>{' '}
-                  <span className="admin-event-info">{event.event_id}</span>
-                </p>
+                  <p>
+                    <span className="admin-event-label">Event #:</span>{' '}
+                    <span className="admin-event-info">{event.event_id}</span>
+                  </p>
                 </div>
                 <p>
                   <span className="admin-event-label">Location:</span>{' '}
@@ -172,9 +172,9 @@ function AdminDash({ socket }) {
       <br /> */}
 
 
-     <div>
-       <LogOutButton className="btn" />
-    </div>
-    
+<div>
+  <LogOutButton className="btn" />
+</div>
+
 
 export default AdminDash;
