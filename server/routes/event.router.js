@@ -32,7 +32,7 @@ const codeGenerator = () => {
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/one/:id', (req, res) => {
   // GET route code here
   const eventId = req.params.id;
   console.log('one event GET reqparams are:', req.params);

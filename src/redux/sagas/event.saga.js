@@ -19,10 +19,11 @@ function* fetchOneEvent(action) {
   console.log("fetching one event by id:", action.payload);
 
   try {
-    const eventResponse = yield axios.get(`api/events/${action.payload}`);
-    console.log("event response:", eventResponse);
+    const  id  = action.payload
+    const oneEventResponse = yield axios.get(`api/events/one/${id}`);
+    console.log("event response:", oneEventResponse);
 
-    yield put({type: 'SET_EVENTS', payload: eventResponse.data});
+    yield put({type: 'SET_EVENT', payload: oneEventResponse.data});
     } catch (error) {
       console.log('event get failed', error);
     }
@@ -45,11 +46,11 @@ function* updateEvent(action) {
   console.log('updating meal list', action);
 
   try {
-    const { tripid, eventId } = action.payload;
-    const mealResponse = yield axios({method: 'PUT', url:`/api/events/${eventId}`, data: { tripid }});
-    console.log('update/put meal response', mealResponse);
+    const { eventId } = action.payload;
+    const updateResponse = yield axios({method: 'PUT', url:`/api/events/${eventId}`, data: { eventId }});
+    console.log('update/put meal response', updateResponse);
 
-    yield put({type: 'FETCH_MEAL' , payload: tripid });
+    yield put({type: 'SET_EVENTS' , payload: eventId });
   }
   catch(error) {
     console.log('Error updating meal to the server')

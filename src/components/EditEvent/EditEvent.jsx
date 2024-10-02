@@ -18,9 +18,13 @@ function EditEvent() {
 
   
   useEffect(() => {
-    dispatch({ type: "FETCH_ONE_EVENT", payload: id });
-  }, [id, dispatch]);
-console.log('event from reducer:', event);
+    dispatch({ type: 'FETCH_ONE_EVENT', payload: id });
+  }, [id]);
+console.log('event from reducer:', id);
+
+useEffect(() => {  
+    setNewEvent(event);  
+}, [event]);
 
   const [newEvent, setNewEvent] = useState({
     theme: '',
@@ -46,8 +50,8 @@ console.log('event from reducer:', event);
 
   //Dispatches Refs saga for ref dropdown
   useEffect(() => {
-    dispatch({ type: 'FETCH_EVENTS' });
-  }, []);
+    dispatch({ type: 'FETCH_REFS' });
+  }, [dispatch]);
 
   //populates ref dropdown
   const refOptions = refs.map((ref) => ({
@@ -124,9 +128,9 @@ console.log('event from reducer:', event);
   };
 
   // deals with select ref
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(null);
   const handleRefChange = (selectedOptions) => {
-    setNewEvent({ ...newEvent, refId: selectedOptions[0].value });
+    setNewEvent({ ...newEvent, refId: selectedOptions.value });
   };
 
   return (
@@ -142,8 +146,8 @@ console.log('event from reducer:', event);
           <div className='edit-event-title'>
             <h3 className='edit-event-title-style'>Event Details</h3>
           </div>
-        <form>
-          {/* <form onSubmit={createEvent}> */}
+       
+          <form onSubmit={updateEvent}>
             <div className='edit-event-input-form'>
               <div className='edit-event-details'>
                 <input
@@ -221,10 +225,7 @@ console.log('event from reducer:', event);
                   placeholder='---SELECT REF---'
                   options={refOptions}
                   onChange={handleRefChange}
-                  isMulti={true}
                 />
-
-                {selectedOptions[0] ? console.log('selectedOptions[0].value', selectedOptions[0].value) : console.log('not selected')}
 
                 <br />
                 <br />
