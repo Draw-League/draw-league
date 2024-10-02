@@ -15,7 +15,6 @@ function ProJudge({socket, ...props}) {
   const dispatch = useDispatch();
 
 
-
   useEffect(() => {
     if (socket) {
       const handleNavigation = (direction, currentGameIn) => {
@@ -81,9 +80,7 @@ function ProJudge({socket, ...props}) {
           <div className='judge-answer'>
             <h3 className='answer-style'>{currentGame.judge_know}</h3>
           </div>
-        </div>
-        <br />
-
+        </div>      
       </div>
     </div>
   );

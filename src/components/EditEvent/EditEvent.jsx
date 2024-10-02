@@ -13,32 +13,28 @@ function EditEvent() {
   const refs = useSelector((store) => store.getRefsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
-  const event = useSelector((store) => store.createEventReducer);
+  const event = useSelector((store) => store.currentGame);
   const { id } = useParams();
 
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_ONE_EVENT', payload: id });
-  }, [id]);
-console.log('event from reducer:', id);
-
-useEffect(() => {  
-    setNewEvent(event);  
-}, [event]);
+    dispatch({ type: "FETCH_ONE_EVENT", payload: event });
+  }, []);
+console.log('event from reducer:', event);
 
   const [newEvent, setNewEvent] = useState({
-    theme: '',
-    promptOne: '',
-    promptTwo: '',
-    promptThree: '',
-    eventDate: '',
+    theme: `${event.theme}`,
+    promptOne: `${event.prompt_one}`,
+    promptTwo: `${event.prompt_two}`,
+    promptThree: `${event.prompt_three}`,
+    eventDate: `${event.event_date}`,
     eventCode: '',
-    locationName: '',
-    locationAddress: '',
-    judgeName: '',
-    judgeJob: '',
-    judgeLike: '',
-    judgeKnow: '',
+    locationName: `${event.location_name}`,
+    locationAddress: `${event.location_address}`,
+    judgeName: `${event.judge_name}`,
+    judgeJob: `${event.judge_job}`,
+    judgeLike: `${event.judge_like}`,
+    judgeKnow: `${event.judge_know}`,
     judgeImg: '',
     judgeCode: '',
     refId: '',
