@@ -21,7 +21,6 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Rules from '../Rules/Rules';
 import Join from '../Join/Join';
 import Drawing from '../Drawing/Drawing';
-import TeamGallery from '../TeamGallery/TeamGallery';
 import RefDash from '../RefDash/RefDash';
 import AdminDash from '../AdminDash/AdminDash';
 import AddEvent from '../AddEvent/AddEvent';
@@ -131,19 +130,6 @@ function App() {
             exact
             path="/judgescore/:drawingid">
             <JudgeScore />
-          </Route>
-
-          <Route
-            exact
-            path="/team-gallery">
-            <TeamGallery />
-          </Route>
-
-          <Route
-            // Not protected, shows TeamGallery at all times (logged in or not)
-            exact
-            path="/team-gallery">
-            <TeamGallery />
           </Route>
 
           <Route

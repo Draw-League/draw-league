@@ -19,6 +19,10 @@ function AdminDash({ socket }) {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
+  const handleLogout = () => {
+    history.push('/home');
+  };
+
   const handlePlay = (e, event) => {
     e.preventDefault();
     console.log('Game to PLAY id;', event);
@@ -113,14 +117,14 @@ function AdminDash({ socket }) {
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className="admin-event-button" onClick={() => editEvent(event.event_id)}>Edit</button>
-              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.event_id)}>Delete</button>
+              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
         ))}
       </section>
 
       <div>
-        <LogOutButton className="admin-logout-btn" />
+      <LogOutButton className="admin-logout-btn" onLogout={handleLogout} />
       </div>
     </div>
   );
