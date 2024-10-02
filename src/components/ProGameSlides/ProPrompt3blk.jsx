@@ -36,7 +36,7 @@ return (
     <div className="dashboard-container">
       <div className="top-portion">
         <div className="timer-container">
-          <Timer />
+          <Timer socket={socket}/>
         </div>
         <div className="theme-container-reveal">
           <span className="theme-label">THEME</span>
