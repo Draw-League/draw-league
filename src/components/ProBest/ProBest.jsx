@@ -12,27 +12,27 @@ import { useHistory } from 'react-router-dom';
 function ProBest({socket}) {
 
 const dispatch = useDispatch();
-    const currentGame = useSelector((store) => store.currentGame)
     const ref = useSelector((store) => store.projectionReducer);
+    const currentGame = useSelector((store) => store.currentGame)
+
     const history = useHistory();
   
-  console.log({currentGame});
-  
-    // useEffect(() => {
-    //   if(currentGame){
-    //   dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
-    // }, [currentGame, dispatch]);
-  
+    const eventId = currentGame.event_id
+    
+   useEffect(() => {
+    dispatch({ type: 'FETCH_WINNERS', payload: eventId });
+  }, [dispatch, eventId]);
   
     useEffect(() => {
       if (socket) {
-        const handleNavigation = (direction) => {
+        const handleNavigation = (direction, currentGameIn) => {
           console.log(`Navigating to: ${direction}`);
+          console.log(`currentGame:`, currentGameIn);
           if(direction === 'next') {
             history.push('/ProContactUs'); 
           }
           else if(direction === 'back') {
-            history.push('/ProWinners');
+            history.push('/ProWinners_3');
           }
         };
   
@@ -44,14 +44,16 @@ const dispatch = useDispatch();
       }
     }, [socket, history]);
 
-  const winners = useSelector((store) => store.adminDashReducer);
+  const winners = useSelector((store) => store.winnersReducer);
+  
   
 
+ 
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_WINNERS' });
-  }, [dispatch]);
+console.log('Drawings from db:', winners)
 
+  const favoriteWinner = winners.find(winner => winner.favorite_drawing === true);
+console.log(favoriteWinner);
   return (
     <div className="winners">
       <div className="winners-top">
@@ -76,18 +78,13 @@ const dispatch = useDispatch();
           }}
         >
           <div className="winner-drawing">
-            <img className="best-img" src='../../documentation/images/jack.jpg' alt="" />
+            <img className="best-img" src={favoriteWinner.drawing_url} alt="" />
           </div>
-          <div className="winner-name">team panda</div>
+          <div className="winner-name">{favoriteWinner.team_name}</div>
          
         </div>
       </div>
-      {/* <button
-          className="judge-view-title winners-title best-link best-exit"
-          
-        >
-          EXIT
-        </button> */}
+      
     </div>
   );
 }

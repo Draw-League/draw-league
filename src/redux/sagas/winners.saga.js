@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* fetchWinners() {
+function* fetchWinners(action) {
   try {
-    const response = yield call(axios.get, '/api/photos');
-    yield put({ type: 'GET_IMAGES_SUCCESS', payload: response.data });
+    const response = yield call(axios.get, `/api/drawings/top/${action.payload}`);
+    yield put({ type: 'SET_WINNERS', payload: response.data });
   } catch (error) {
     console.error('Error fetching images:', error);
   }

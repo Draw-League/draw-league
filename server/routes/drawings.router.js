@@ -22,14 +22,17 @@ router.get('/submissions/:id', (req, res) => {
     });
 });
 
-router.get('/top', (req, res) => {
+router.get('/top/:id', (req, res) => {
+  const eventId = req.params.id
+  console.log('req params from top', req.params)
   const queryText = `
     SELECT drawing.id, drawing.drawing_url, drawing.score, drawing.round, drawing.favorite_drawing, team.team_name, team.event_id
     FROM drawing
     JOIN team ON drawing.team_id = team.id
+    WHERE team.event_id = $1
     ORDER BY drawing.score DESC;
   `;
-  pool.query(queryText)
+  pool.query(queryText, [eventId])
     .then(result => {
       res.status(200).json(result.rows);
     })
