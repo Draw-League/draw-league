@@ -36,7 +36,7 @@ function LandingPage() {
         <img src={logo} alt="DRAW LEAGUE LOGO" className="main-logo" />
         <p className="main-subtitle">A DRAWING GAME PLAYED AT PUBS</p>
         <InstagramIcon className='instaicon' style={{ fontSize: iconSize }} />
-        <button className="landing-nav-button" onClick={() => navigation('/login')}>ADMIN LOGIN</button>
+        {/* <button className="landing-nav-button" onClick={() => navigation('/login')}>ADMIN LOGIN</button> */}
         <button className="landing-nav-button" onClick={() => navigation('/judgejoin')}>JUDGE LOGIN</button>
       </main>
     </div>
