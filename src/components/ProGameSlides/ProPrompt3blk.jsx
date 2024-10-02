@@ -5,9 +5,10 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import Timer from '../RefDash/ProTimer';
 import logo from '../RefDash/drawleague.png';
+import { useSelector } from 'react-redux';
 
 function ProPrompt3blk({socket}){
-
+  const currentGame = useSelector((store) => store.currentGame)
   const history = useHistory();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ return (
         </div>
         <div className="theme-container-reveal">
           <span className="theme-label">THEME</span>
-          <div className="theme-display-reveal">{}THEME</div>
+          <div className="theme-display-reveal">{currentGame.theme}</div>
         </div>
       </div>
      

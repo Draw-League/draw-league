@@ -1,0 +1,83 @@
+.container-join-game {
+    background-color: #0071ff;
+    width: 95%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.join-game-box {
+    background-color: #C3DD00;
+    height: 50px;
+    width: 100%;
+    max-width: 500px;
+    border: 3px solid black;
+    color: black;
+    font-weight: 700;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.join-game-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.join-game-subtitle {
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.join-game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+}
+
+.join-game-form input {
+    background-color: white;
+    border: 3px solid black;
+    height: 50px;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.join-game-form button {
+    background-color: #C3DD00;
+    height: 60px;
+    width: 150px;
+    border: 3px solid black;
+    color: black;
+    font-weight: 700;
+    font-size: 32px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;   
+}
+
+.join-game-form button:hover {
+    background-color: #d9e602;
+}
+
+.error-message {
+    color: red;
+    font-weight: 700;
+}

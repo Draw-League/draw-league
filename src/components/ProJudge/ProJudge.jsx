@@ -3,17 +3,16 @@ import './ProJudge.css';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
+import  { useState } from 'react';
 
 
 
-function ProJudge({socket, currentGame, ...props}) {
+function ProJudge({socket, ...props}) {
 
   const history = useHistory();
-  // const currentGame = useSelector((store) => store.currentGame)
-  const judge = useSelector((store) => store.projectionReducer);
+  const currentGame = useSelector((store) => store.currentGame)
+  // const judge = useSelector((store) => store.projectionReducer);
   const dispatch = useDispatch();
-
-  //console.log('current game', currentGame)
 
 
 
@@ -22,8 +21,10 @@ function ProJudge({socket, currentGame, ...props}) {
       const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
+        // setCurrentGame2(currentGameIn)
         if(direction === 'next') {
-          history.push('/prothemeblk'); 
+          history.push('/prothemeblk');
+          // setCurrentGame2(currentGameIn) 
         }
         else if(direction === 'back') {
           console.log(`currentGame:`, currentGameIn);
@@ -51,11 +52,11 @@ function ProJudge({socket, currentGame, ...props}) {
           <div className='judge-image'>
 
             <img alt="placeholder image"
-              src='https://images.unsplash.com/photo-1565194637906-8f45f3351a5d?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'></img>
+              src={currentGame.judge_img}></img>
           </div>
 
           <div className='judge-name'>
-            <h3 className='question-style'>{judge.judge_name}</h3>
+            <h3 className='question-style'>JUDGE <br />{currentGame.judge_name}</h3>
           </div>
         </div>
 
@@ -64,27 +65,25 @@ function ProJudge({socket, currentGame, ...props}) {
             <h3 className='question-style'>WHAT DO YOU DO?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>{judge.judge_job}</h3>
+            <h3 className='answer-style'>{currentGame.judge_job}</h3>
           </div>
           
           <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU LIKE?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>{judge.judge_like}</h3>
+            <h3 className='answer-style'>{currentGame.judge_like}</h3>
           </div>
 
           <div className='judge-question'>
             <h3 className='question-style'>WHAT DO YOU KNOW?</h3>
           </div>
           <div className='judge-answer'>
-            <h3 className='answer-style'>{judge.judge_know}</h3>
+            <h3 className='answer-style'>{currentGame.judge_know}</h3>
           </div>
         </div>
         <br />
-        <div className='draw-league-button'>
-        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/refdash')}></input>
-        </div>
+
       </div>
     </div>
   );

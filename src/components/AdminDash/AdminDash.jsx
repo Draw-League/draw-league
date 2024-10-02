@@ -12,7 +12,7 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-  const [currentGame, setCurrentGame] = useState({});
+  // const [currentGame, setCurrentGame] = useState({});
 
 
   useEffect(() => {
@@ -22,10 +22,13 @@ function AdminDash({ socket }) {
   const handlePlay = (e, event) => {
     e.preventDefault();
     console.log('Game to PLAY id;', event);
-    setCurrentGame(event);
-    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-    history.push('/refdash');
-    window.open(`/proref/`, "_blank");
+
+    // setCurrentGame(event);
+   dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+   window.open(`/prorules/`, "_blank");
+   history.push('/refdash');
+
+  
   }
 
   const removeEvent = (id) => {
@@ -40,9 +43,9 @@ function AdminDash({ socket }) {
   const history = useHistory();
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction, currentGame) => {
+      const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
-        console.log(`currentGame: ${currentGame}`);
+        // console.log(`currentGame: ${currentGame}`);
         if (direction === 'next') {
           history.push('/ProRules');
         }
@@ -68,10 +71,10 @@ function AdminDash({ socket }) {
             <div className="admin-event-details">
               <div className="admin-event-left">
                 <div>
-                <p>
-                  <span className="admin-event-label">Event #:</span>{' '}
-                  <span className="admin-event-info">{event.event_id}</span>
-                </p>
+                  <p>
+                    <span className="admin-event-label">Event #:</span>{' '}
+                    <span className="admin-event-info">{event.event_id}</span>
+                  </p>
                 </div>
                 <p>
                   <span className="admin-event-label">Location:</span>{' '}
@@ -110,7 +113,7 @@ function AdminDash({ socket }) {
               </div>
             </div>
             <div className="admin-event-buttons">
-              <button className="admin-event-button" onClick={() => handlePlay(event)}>Play</button>
+              <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className="admin-event-button" onClick={() => editEvent(event.event_id)}>Edit</button>
               <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.event_id)}>Delete</button>
             </div>
@@ -138,10 +141,8 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={() => handlePlay(event.id)}>Play</button>
+                onClick={(e) => handlePlay(e, event )}>Play</button>
               <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
-              <button onClick={(e) => handlePlay(e, event)}>Play</button>
-              <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
@@ -171,12 +172,12 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br />
-      <br />
+      <br /> */}
 
 
-      <div>
-        <LogOutButton className="btn" />
-      </div>
-      //*/}
+<div>
+  <LogOutButton className="btn" />
+</div>
+
 
 export default AdminDash;
