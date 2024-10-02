@@ -5,8 +5,11 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import JudgeScore from "../JudgeScore/JudgeScore";
 import "./JudgeGallery.css";
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function JudgeGallery() {
+  const { id } = useParams();
   const [submissions, setSubmissions] = useState([]);
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showOverview, setShowOverview] = useState(false);
@@ -25,7 +28,7 @@ function JudgeGallery() {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const response = await axios.get("/api/drawings/submissions");
+        const response = await axios.get(`/api/drawings/submissions/${id}`);
         setSubmissions(response.data);
         setFilteredSubmissions(response.data);
       } catch (error) {

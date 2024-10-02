@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './ProRef.css';
@@ -6,18 +6,16 @@ import axios from 'axios';
 
 
 function ProRef({socket}) {
-  const dispatch = useDispatch();
   const currentGame = useSelector((store) => store.currentGame)
-  const ref = useSelector((store) => store.projectionReducer);
+  // const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
-
-console.log({currentGame});
 
   useEffect(() => {
     if (socket) {
       const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
+
         if(direction === 'next') {
           history.push('/ProJudge'); 
         }
@@ -25,8 +23,8 @@ console.log({currentGame});
           console.log(`currentGame:`, currentGameIn);
           history.push('/ProRules');
         }
-      };
-
+    };
+     
       socket.on('navigate', handleNavigation);
       console.log('socket.id', socket.id);
       return () => {
@@ -43,7 +41,7 @@ console.log({currentGame});
       </div>
       <div className="ref-info">
 
-        <div key={ref.id}>
+        <div key={currentGame.id}>
           <div className='ref-image'>
 
             <img className="ref-img" alt="placeholder image"
@@ -52,14 +50,14 @@ console.log({currentGame});
           </div>
 
           <div className='ref-name'>
-            <p className='rname-style'>{ref.full_name} </p>
+            <p className='rname-style'>{currentGame.full_name} </p>
           </div>
 
           <div className='ref-facts'>
             <p className='ref-style'>
               ref fact
               <br />
-              {ref.ref_fact}
+              {currentGame.ref_fact}
               </p>
               <br /> 
 
@@ -67,10 +65,7 @@ console.log({currentGame});
             
           </div>
         </div>
-      </div>
-      <div className='draw-league-button'>
-        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/projudge')}></input>
-        </div>
+      </div>  
     </div>
   );
 }

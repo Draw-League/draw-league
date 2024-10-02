@@ -13,9 +13,6 @@ function ProJudge({socket, currentGame, ...props}) {
   const judge = useSelector((store) => store.projectionReducer);
   const dispatch = useDispatch();
 
-  //console.log('current game', currentGame)
-
-
 
   useEffect(() => {
     if (socket) {
@@ -80,11 +77,7 @@ function ProJudge({socket, currentGame, ...props}) {
           <div className='judge-answer'>
             <h3 className='answer-style'>{judge.judge_know}</h3>
           </div>
-        </div>
-        <br />
-        <div className='draw-league-button'>
-        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/refdash')}></input>
-        </div>
+        </div>      
       </div>
     </div>
   );
