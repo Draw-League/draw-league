@@ -24,7 +24,7 @@ function LoginPage() {
             history.push('/registration');
           }}
         >
-          Register
+          Register As New Referee
         </button>
       </center>
     </div>

@@ -64,7 +64,10 @@ SELECT art_medium, event.created_at, created_by, event_code, event_date,
   prompt_two, prompt_three, ref_fact, ref_img, ref_job, theme, user_id
   FROM event
   JOIN user_event ON event.id = user_event.event_id
-  JOIN "user" ON "user".id = user_event.user_id;
+  JOIN "user" ON "user".id = user_event.user_id
+  ORDER BY event.created_at DESC
+LIMIT 12
+;
   `
   pool.query(queryText)
     .then(result => {

@@ -89,10 +89,6 @@ function AdminDash({ socket }) {
                   <span className="admin-event-info">{event.location_address}</span>
                 </p>
                 <p>
-                  <span className="admin-event-label">Time:</span>{' '}
-                  <span className="admin-event-info">{event.time}</span>
-                </p>
-                <p>
                   <span className="admin-event-label">Date:</span>{' '}
                   <span className="admin-event-info">{event.event_date}</span>
                 </p>
@@ -128,6 +124,7 @@ function AdminDash({ socket }) {
       <div>
       <LogOutButton className="admin-logout-btn" onLogout={handleLogout} />
       </div>
+      <br/>
     </div>
   );
 }
