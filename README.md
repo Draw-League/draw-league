@@ -12,9 +12,23 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
 
 Before you get started, make sure you have the following software installed on your computer:
 
+- [Virtual_Studio_Code](https://code.visualstudio.com/Download)
 - [Node.js](https://nodejs.org/en)
 - [PostgreSQL](https://www.postgresql.org)
 - [Nodemon](https://nodemon.io)
+
+## Built with
+
+<a href="https://www.w3schools.com/w3css/defaulT.asp"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" height="40px" width="40px" /></a>
+<a href="https://www.w3schools.com/html/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a>
+<a href="https://www.w3schools.com/js/default.asp"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a>
+<a href="https://www.postgresql.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" height="40px" width="40px" /></a>
+<a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" height="40px" width="40px" /></a>
+<a href="https://redux.js.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" height="40px" width="40px" /></a>
+<a href="https://www.figma.com/?fuid="><img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" height="40px" width="40px" /></a>
+<a href="https://material-ui.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" height="40px" width="40px" /></a>
+<a href="https://nodejs.org/en/"><img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-plain.svg" height="40px" width="40px" /></a>
+<!-- https://socket.io/docs/v4/ -->
 
 ## Create Database and Table
 
@@ -95,10 +109,8 @@ VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=
 - Create a `.env` file at the root of the project and paste this line into the file:
 
 ```plaintext
-SERVER_SESSION_SECRET=superDuperSecret
+SERVER_SESSION_SECRET=eightcaracterlongpassword
 ```
-
-While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [Password Generator Plus](https://passwordsgenerator.net). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
 
 - Start postgres if not running already by using opening up the [Postgres.app](https://postgresapp.com), or if using [Homebrew](https://brew.sh) you can use the command `brew services start postgresql`.
 - Run `npm run server` to start the server.
@@ -156,8 +168,6 @@ Directory Structure:
 This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
 
 - src/components
-  - AddEvent/AddEvent
-  - 
   - App/App
   - Footer/Footer
   - Nav/Nav
@@ -185,6 +195,3 @@ This code is also heavily commented. We recommend reading through the comments, 
 2. Add an environment (.env file) variable for `VITE_CLOUD_NAME` with cloud name as as a string.
 3. Add an environment (.env file) variable for `VITE_PRESET_NAME` with preset name as as a string.
 
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2.
