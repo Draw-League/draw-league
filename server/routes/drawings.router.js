@@ -38,14 +38,14 @@ router.get('/top', (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { team_id, drawing_url, event_id } = req.body;
+    const { team_id, drawing_url, round, event_id } = req.body;
     console.log('Received data:', req.body);
 
     const queryText = `
       INSERT INTO "drawing" (team_id, drawing_url, favorite_drawing, score, round, created_at, event_id)
-      VALUES ($1, $2, false, 0, 1, NOW(), $3) RETURNING *;
+      VALUES ($1, $2, false, 0, $3, NOW(), $4) RETURNING *;
     `;
-    const queryParams = [team_id, drawing_url, event_id];
+    const queryParams = [team_id, drawing_url, round, event_id];
 
     const result = await pool.query(queryText, queryParams);
     res.status(201).json(result.rows[0]);
@@ -54,6 +54,7 @@ router.post('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 router.put('/:id/score', async (req, res) => {
   const drawingId = req.params.id;
