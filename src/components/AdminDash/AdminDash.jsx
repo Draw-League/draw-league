@@ -68,10 +68,10 @@ function AdminDash({ socket }) {
             <div className="admin-event-details">
               <div className="admin-event-left">
                 <div>
-                <p>
-                  <span className="admin-event-label">Event #:</span>{' '}
-                  <span className="admin-event-info">{event.event_id}</span>
-                </p>
+                  <p>
+                    <span className="admin-event-label">Event #:</span>{' '}
+                    <span className="admin-event-info">{event.event_id}</span>
+                  </p>
                 </div>
                 <p>
                   <span className="admin-event-label">Location:</span>{' '}
@@ -138,10 +138,8 @@ function AdminDash({ socket }) {
               <p> {event.full_name}</p>
               <p> {event.event_code}</p>
               <button className='event-buttons'
-                onClick={() => handlePlay(event.id)}>Play</button>
+                onClick={(e) => handlePlay(e, event )}>Play</button>
               <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
-              <button onClick={(e) => handlePlay(e, event)}>Play</button>
-              <button className='event-buttons'>Edit</button>
               <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
@@ -171,12 +169,12 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br />
-      <br />
+      <br /> */}
 
 
-      <div>
-        <LogOutButton className="btn" />
-      </div>
-      //*/}
+<div>
+  <LogOutButton className="btn" />
+</div>
+
 
 export default AdminDash;

@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import '../RefDash/RefDash.css';
 import './ProPrompts.css';
+import '../RefDash/RefDash.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import Timer from '../RefDash/ProTimer';
 import logo from '../RefDash/drawleague.png';
-import { useSelector} from 'react-redux';
-function ProThemeRev({socket}){
-  const currentGame = useSelector((store) => store.currentGame)
+
+function ProPrompt1blk({socket}){
 
   const history = useHistory();
 
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
+        console.log(`currentGame:`, currentGameIn);
         if(direction === 'next') {
           history.push('/proprompt1rev'); 
         }
         else if(direction === 'back') {
-          history.push('/prothemeblk');
+          history.push('/prothemerev');
         }
       };
 
@@ -31,7 +31,6 @@ function ProThemeRev({socket}){
     }
   }, [socket, history]);
 
-
 return (
     
     <div className="dashboard-container">
@@ -40,13 +39,13 @@ return (
           <Timer />
         </div>
         <div className="theme-container-reveal">
-          <span className="theme-label">THEME</span>
-          <div className="theme-display-reveal">{currentGame.theme}</div>
+          <span className="theme-label">{}THEME</span>
+          <div className="theme-display-reveal">THEME</div>
         </div>
       </div>
      
       <div className="body-content">
-        <div className='dash-logo-container'>
+        <div className='logo-container'>
           <img src={logo} alt="DRAW LEAGUE LOGO" className="logo-image" />
         </div>
 
@@ -65,4 +64,4 @@ return (
   );
 }
 
-export default ProThemeRev;
+export default ProPrompt1blk;
