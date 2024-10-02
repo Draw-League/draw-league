@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import Timer from '../RefDash/ProTimer';
 import logo from '../RefDash/drawleague.png';
-
+import { useSelector} from 'react-redux';
 function ProThemeRev({socket}){
-
+  const currentGame = useSelector((store) => store.currentGame)
 
   const history = useHistory();
 
@@ -41,7 +41,7 @@ return (
         </div>
         <div className="theme-container-reveal">
           <span className="theme-label">THEME</span>
-          <div className="theme-display-reveal">THEME HERE</div>
+          <div className="theme-display-reveal">{currentGame.theme}</div>
         </div>
       </div>
      

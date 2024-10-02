@@ -4,28 +4,39 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import { useDispatch, useSelector}from 'react-redux';
+import { useState } from 'react';
 
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
 
 function ProRules({socket}) {
 const history = useHistory();
+const dispatch = useDispatch();
+const currentGame = useSelector((store) => store.currentGame);
+
   useEffect(() => {
+    
     if (socket) {
-      const handleNavigation = (direction, currentGameIn ) => {
+      socket.emit("getGameInfo");
+
+      const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
+
         if(direction === 'next') {
-          history.push('/proref'); 
+            history.push('/proref');      
         }
         else if(direction === 'back') {
           history.push('/admindash');
         }
       };
 
+      const saveGameInfo = (currentGame) => {
+        console.log('in saveGameInfo');
+        console.log('currentGame', currentGame);
+        dispatch({type:'UPDATE_CURRENT_GAME', payload: currentGame});
+      };
+
       socket.on('navigate', handleNavigation);
+      socket.on('gameInfo', saveGameInfo)
       console.log('socket.id', socket.id);
       return () => {
         socket.off('navigate', handleNavigation);
