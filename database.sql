@@ -15,7 +15,6 @@
 --TABLE CREATION:
 
 CREATE TABLE "user" (
-
  "id" SERIAL PRIMARY KEY,
  "username" VARCHAR (80) UNIQUE NOT NULL,
  "password" VARCHAR (1000) NOT NULL,
@@ -25,8 +24,8 @@ CREATE TABLE "user" (
  "ref_img" VARCHAR ,
  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
  "full_name" VARCHAR,
- "art_medium" VARCHAR
-
+ "art_medium" VARCHAR,
+ "phone_number" VARCHAR
  );
  
  CREATE TABLE "event" (
@@ -47,20 +46,14 @@ CREATE TABLE "user" (
 	"judge_code" VARCHAR NOT NULL,
 	"created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
 	"created_by" INT REFERENCES "user"
-	
 );
-
-
 
 CREATE TABLE "user_event" (
 	"id" SERIAL PRIMARY KEY,
 	"user_id" INT REFERENCES "user",
-	"event_id" INT REFERENCES "event",
+	"event_id" INT REFERENCES "event" ON DELETE CASCADE,
 	"created_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
-
-
-
 
 CREATE TABLE "team" (
 	"id" SERIAL PRIMARY KEY,
@@ -82,8 +75,8 @@ CREATE TABLE "drawing" (
 
 --SEED DATA  
 /********************MAKE SURE TO RUN INSERT STATEMENTS IN THIS ORDER*******************/
-INSERT INTO "user" (username, password, user_role, ref_job, ref_fact, ref_img)
-VALUES ('admiralGreer', 'fish', 'ref', 'fisherman', 'My real name is Ishmael', 'https://plus.unsplash.com/premium_photo-1676511249826-2adf52caabee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+INSERT INTO "user" (username, password, user_role, ref_job, ref_fact, ref_img, full_name, art_medium, phone_number)
+VALUES ('admiralGreer', 'fish', 'ref', 'fisherman', 'My real name is Ishmael', 'https://plus.unsplash.com/premium_photo-1676511249826-2adf52caabee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Richard Greer', 'film', '5551234567');
 
 INSERT INTO "event" (theme, prompt_one, prompt_two, prompt_three, event_date, event_code, location_name, location_address, judge_name, judge_job, judge_like, judge_know, judge_img, judge_code, created_by)
 VALUES ('Olympics', 'Opening Ceremonies', 'Sporting Event', 'Medals', '2024-9-25', '1234', 'Bauhaus', '1315 Tyler St NE, Minneapolis, MN 55413', 'Steve Perry', 'Singer', 'Journies', 'Songwriting', 'https://images.unsplash.com/photo-1536320439102-e28493dade27?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', '4321', 1);
@@ -93,14 +86,3 @@ VALUES ('Pencil Pushers', 1);
 
 INSERT INTO "drawing" (team_id, drawing_url, score, round)
 VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',85, 1);
-
-ALTER TABLE "user" ADD COLUMN "full_name" VARCHAR;
-ALTER TABLE "user" ADD COLUMN "art_medium" VARCHAR;
-ALTER TABLE "user" ADD COLUMN "phone_number" VARCHAR;
-
-ALTER TABLE user_event
-DROP CONSTRAINT user_event_event_id_fkey;
-
-ALTER TABLE user_event
-ADD CONSTRAINT user_event_event_id_fkey
-FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE;
