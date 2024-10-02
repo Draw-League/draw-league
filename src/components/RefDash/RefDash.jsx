@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RefDash.css';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
-//import ProLeaderboard from '../ProLeaderboard/ProLeaderboard';
+
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,21 +11,23 @@ import logo from './drawleague.png';
 
 
 
-function RefDash({socket, currentGame, props}) {
+function RefDash({socket, props}) {
   console.log('props ref dash', props)
+  const currentGame = useSelector((store) => store.currentGame);
+
   console.log('current game', currentGame)
   const dispatch = useDispatch();
   const history = useHistory();
-  // const currentGame = useSelector((store) => store.currentGame)
-  // useEffect(() => {
-  //   if(currentGame){
-  //   dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
-  // }, [currentGame, dispatch]);
+  
+
 
 
   useEffect(() => {
     // Add the listener when we load the page
     if(socket) {
+
+      socket.on('sendGameInfo', () => socket.emit('sendingGameInfo', currentGame));
+
       socket.on('navigate', (pageName) => {
         
         console.log('socket connected!', socket.id);
@@ -38,7 +40,7 @@ function RefDash({socket, currentGame, props}) {
   }, [socket]);
   const sendNextPage = () => {
     if(socket) {
-        socket.emit('navigate', 'next', currentGame);
+        socket.emit('gameInfo', 'navigate', 'next', currentGame);
         console.log('socket.id', socket.id);
         console.log('current game is:', currentGame)
     }
@@ -51,16 +53,6 @@ function RefDash({socket, currentGame, props}) {
     }
   }
   
-    // <div className="container">
-    //   <div>
-    //     <p>This is the ref dashboard</p>
-    //     <p>This will get, post, and put</p>
-
-        
-    //     <button onClick={sendBackPage} className='btn_desktop'>Back</button>
-    //     <button onClick={sendNextPage} className='btn_desktop'>Next</button>
-
-
 
 
   const [theme, setTheme] = useState("???");
@@ -85,7 +77,7 @@ function RefDash({socket, currentGame, props}) {
         <button className="reveal-button" onClick={sendBackPage}>PREV SLIDE</button>
         <div className="theme-container">
           <span className="theme-label">THEME</span>
-          <div className="theme-display">{theme}</div>
+          <div className="theme-display">{currentGame.theme}</div>
         </div>
         <button className="reveal-button" onClick={sendNextPage}>NEXT SLIDE</button>
       </div>

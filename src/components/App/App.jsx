@@ -43,7 +43,7 @@ import ProPrompt2Rev from '../ProGameSlides/ProPrompt2Rev';
 import ProPrompt3blk from '../ProGameSlides/ProPrompt3blk';
 import ProPrompt3Rev from '../ProGameSlides/ProPrompt3Rev';
 import ProContactUs from '../ProContactUs/ProContactUs';
-
+import JudgeJoin from '../JudgeJoin/JudgeJoin';
 
 import './App.css';
 import { io } from "socket.io-client";
@@ -111,11 +111,17 @@ function App() {
             <Drawing />
           </Route>
 
+          <Route
+            // Not protected, shows JudgeGallery at all times (logged in or not)
+            exact
+            path="/judgejoin">
+            <JudgeJoin />
+          </Route>
 
           <Route
             // Not protected, shows JudgeGallery at all times (logged in or not)
             exact
-            path="/judgegallery">
+            path="/judgegallery/:id">
             <JudgeGallery />
           </Route>
 
@@ -149,7 +155,7 @@ function App() {
           <Route
             // logged in shows AdminDash else shows LoginPage
             exact
-            path="/prorules/:id"
+            path="/prorules"
             render={(props) => (<ProRules socket={socket} {...props} />)} />
 
           <Route
