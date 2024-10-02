@@ -25,7 +25,7 @@ function AdminDash({ socket }) {
 
     // setCurrentGame(event);
    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-   window.open(`/prorules/`, "_blank");
+   window.open(`/proref/`, "_blank");
    history.push('/refdash');
 
   

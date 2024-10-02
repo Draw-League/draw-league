@@ -25,10 +25,10 @@ CREATE TABLE "user" (
  "ref_img" VARCHAR ,
  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
  "full_name" VARCHAR,
- "art_medium" VARCHAR
-
+ "art_medium" VARCHAR,
+"phone_number" VARCHAR
  );
- 
+
  CREATE TABLE "event" (
 	"id" SERIAL PRIMARY KEY,
 	"theme" VARCHAR(500),
@@ -55,7 +55,7 @@ CREATE TABLE "user" (
 CREATE TABLE "user_event" (
 	"id" SERIAL PRIMARY KEY,
 	"user_id" INT REFERENCES "user",
-	"event_id" INT REFERENCES "event",
+	"event_id" INT REFERENCES "event" ON DELETE CASCADE,
 	"created_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -94,9 +94,6 @@ VALUES ('Pencil Pushers', 1);
 INSERT INTO "drawing" (team_id, drawing_url, score, round)
 VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',85, 1);
 
-ALTER TABLE "user" ADD COLUMN "full_name" VARCHAR;
-ALTER TABLE "user" ADD COLUMN "art_medium" VARCHAR;
-ALTER TABLE "user" ADD COLUMN "phone_number" VARCHAR;
 
 ALTER TABLE user_event
 DROP CONSTRAINT user_event_event_id_fkey;

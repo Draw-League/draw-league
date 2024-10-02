@@ -59,7 +59,9 @@ function JudgeJoin() {
             value={judgeCode}
             onChange={(e) => setJudgeCode(e.target.value)}
           />
-          <button type='submit'>PLAY!</button>
+          <div >
+          <button className="judge-join-play" type='submit'>PLAY!</button>
+          </div>
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>

@@ -19,7 +19,7 @@ const currentGame = useSelector((store) => store.currentGame);
 
       socket.emit("getGameInfo");
 
-      const handleNavigation = (direction) => {
+      const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
 
         if(direction === 'next') {
