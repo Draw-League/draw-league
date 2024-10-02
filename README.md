@@ -98,6 +98,8 @@ Directory Structure:
 This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
 
 - src/components
+  - AddEvent/AddEvent
+  - 
   - App/App
   - Footer/Footer
   - Nav/Nav
@@ -118,6 +120,12 @@ This code is also heavily commented. We recommend reading through the comments, 
 1. Create the necessary tables.
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security.
 1. In the deploy section, select manual deploy.
+
+## Cloudinary 
+
+1. Create Cloudinary account.
+2. Add an environment (.env file) variable for `VITE_CLOUD_NAME` with cloud name as as a string.
+3. Add an environment (.env file) variable for `VITE_PRESET_NAME` with preset name as as a string.
 
 ## Update Documentation
 
