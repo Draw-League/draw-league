@@ -10,9 +10,9 @@ function AdminNav() {
     history.push(path);
   };
   return (
-    <div className="nav-container">
+    <div className="admin-nav-container">
 
-      <img src={logo} className='nav-logo' onClick={() => navigation('/admindash')} />
+      <img src={logo} className='admin-nav-logo' onClick={() => navigation('/admindash')} />
 
         <ul className="admin-nav-menu">       
           <li><button className="admin-nav-button" onClick={() => navigation('/admindash')}>DASHBOARD</button></li>

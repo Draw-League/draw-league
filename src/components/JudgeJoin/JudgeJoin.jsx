@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './JudgeJoin.css';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import NavPlayer from '../NavPlayer/NavPlayer';
+import Nav from '../Nav/Nav.jsx';
 
 function JudgeJoin() {
   const [judgeName, setJudgeName] = useState('');
@@ -47,6 +47,10 @@ function JudgeJoin() {
   };
 
   return (
+    <div>
+
+    <Nav />
+
     <div className="container-join-game">      
       <div className="join-game-box">JOIN A GAME</div>
       <div className="join-game-content">
@@ -63,6 +67,7 @@ function JudgeJoin() {
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
+    </div>
     </div>
   );
 }
