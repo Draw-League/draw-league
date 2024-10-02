@@ -14,16 +14,16 @@ console.log({currentGame});
 
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction, currentGameIn) => {
+      const handleNavigation = (direction, currentGame) => {
         console.log(`Navigating to: ${direction}`);
-        console.log(`currentGame:`, currentGameIn);
+        console.log(`currentGame:`, currentGame);
 
         if(direction === 'next') {
           history.push('/ProJudge'); 
           // setCurrentGame2(currentGameIn);
         }
         else if(direction === 'back') {
-          console.log(`currentGame:`, currentGameIn);
+          console.log(`currentGame:`, currentGame);
           history.push('/ProRules');
         }
     };
