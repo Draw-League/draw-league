@@ -4,7 +4,7 @@ import axios from 'axios';
 import './RegisterForm.css';
 
 function RegisterForm() {
-  const [userRole, setUserRole] = useState('');
+  const [userRole, setUserRole] = useState('ref');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
@@ -83,24 +83,6 @@ function RegisterForm() {
           </h3>
         )}
 
-        <div className="role-label">Select a role:</div>
-        <div className="role-selection">
-          <button
-            type="button"
-            className={`role-button ${userRole === 'ref' ? 'selected' : ''}`}
-            onClick={() => setUserRole('ref')}
-          >
-            REFEREE
-          </button>
-          <button
-            type="button"
-            className={`role-button ${userRole === 'admin' ? 'selected' : ''}`}
-            onClick={() => setUserRole('admin')}
-          >
-            ADMIN
-          </button>
-        </div>
-
         <div>
           <label htmlFor="username">
             <input
@@ -140,8 +122,7 @@ function RegisterForm() {
           </label>
         </div>
 
-        {userRole === 'ref' && (
-          <>
+
             <div>
               <label htmlFor="refJob">
                 <input
@@ -216,8 +197,6 @@ function RegisterForm() {
                 />
               </div>
             </div>
-          </>
-        )}
 
         <div>
           <input className="btn" type="submit" name="submit" value="REGISTER" />
