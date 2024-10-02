@@ -14,6 +14,7 @@ Before you get started, make sure you have the following software installed on y
 
 - [Virtual_Studio_Code](https://code.visualstudio.com/Download)
 - [Node.js](https://nodejs.org/en)
+- [Postico] (https://eggerapps.at/postico/v1.php)
 - [PostgreSQL](https://www.postgresql.org)
 - [Nodemon](https://nodemon.io)
 
