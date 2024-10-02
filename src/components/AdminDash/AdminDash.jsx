@@ -23,7 +23,7 @@ function AdminDash({ socket }) {
     console.log('Game to PLAY id;', event);
     // setCurrentGame(event);
    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-   window.open(`/prorules`, "_blank");
+   window.open(`#/prorules`, "_blank");
    history.push('/refdash');
   }
 
