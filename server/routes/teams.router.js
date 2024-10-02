@@ -43,6 +43,30 @@ router.post('/verify-or-add-team', async (req, res) => {
 });
 
 /**
+ * POST route
+ */
+// router.post('/verify-or-add-judge', async (req, res) => {
+//   const { judgeName, eventId, judgeJob, judgeLike, judgeKnow } = req.body;
+  
+//   try {
+//     const queryTextCheck = `SELECT * FROM "event" WHERE id = $1`;
+//     const result = await pool.query(queryTextCheck, [ eventId]);
+
+//     if (result.rows.length > 0) {
+//       res.status(200).json({ success: true, teamId: result.rows[0].id });
+//     } else {
+//       const queryTextAdd = `INSERT INTO "event" (judge_name, judge_job, judge_like, judge_know) VALUES ($1, $2, $3, $4) RETURNING id`;
+//       const insertResult = await pool.query(queryTextAdd, [judgeName, judgeJob, judgeLike, judgeKnow ]);
+//       console.log(res.rows)
+//       res.status(201).json({ success: true, teamId: insertResult.rows[0].id });
+//     }
+//   } catch (err) {
+//     console.error('Error verifying or adding team:', err);
+//     res.status(500).send('Server error');
+//   }
+// });
+
+/**
  * PUT route template
  */
 router.put('/:id', (req, res) => {

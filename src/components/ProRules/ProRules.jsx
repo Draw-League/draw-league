@@ -15,7 +15,6 @@ function ProRules({socket}) {
 const history = useHistory();
   useEffect(() => {
     if (socket) {
-      socket.on('gameInfo', gameInfo)
       const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
