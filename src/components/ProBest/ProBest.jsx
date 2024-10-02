@@ -18,10 +18,10 @@ const dispatch = useDispatch();
   
   console.log({currentGame});
   
-    useEffect(() => {
-      if(currentGame){
-      dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
-    }, [currentGame, dispatch]);
+    // useEffect(() => {
+    //   if(currentGame){
+    //   dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+    // }, [currentGame, dispatch]);
   
   
     useEffect(() => {
@@ -61,12 +61,12 @@ const dispatch = useDispatch();
         >
           TOP DRAWING
         </button>
-        <button
+        {/* <button
           className="judge-view-title winners-title best-link"
           
         >
           REVEAL LEADERBOARD
-        </button>
+        </button> */}
       </div>
       <div className="winners-list">
         <div
@@ -76,18 +76,18 @@ const dispatch = useDispatch();
           }}
         >
           <div className="winner-drawing">
-            <img className="best-img" src="https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+            <img className="best-img" src='../../documentation/images/jack.jpg' alt="" />
           </div>
           <div className="winner-name">team panda</div>
          
         </div>
       </div>
-      <button
+      {/* <button
           className="judge-view-title winners-title best-link best-exit"
           
         >
           EXIT
-        </button>
+        </button> */}
     </div>
   );
 }

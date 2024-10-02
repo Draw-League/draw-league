@@ -13,8 +13,6 @@ function ProJudge({socket, ...props}) {
   const currentGame = useSelector((store) => store.currentGame)
   // const judge = useSelector((store) => store.projectionReducer);
   const dispatch = useDispatch();
-  // const [currentGame2, setCurrentGame2] = useState({});
-  //console.log('current game', currentGame)
 
 
 
@@ -85,7 +83,7 @@ function ProJudge({socket, ...props}) {
           </div>
         </div>
         <br />
-        
+
       </div>
     </div>
   );

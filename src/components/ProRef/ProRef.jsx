@@ -6,18 +6,17 @@ import axios from 'axios';
 
 
 function ProRef({socket}) {
-  const dispatch = useDispatch();
   const currentGame = useSelector((store) => store.currentGame)
+
   const history = useHistory();
   
-
-console.log({currentGame});
 
   useEffect(() => {
     if (socket) {
       const handleNavigation = (direction, currentGameIn) => {
         console.log(`Navigating to: ${direction}`);
         console.log(`currentGame:`, currentGameIn);
+
         if(direction === 'next') {
           history.push('/ProJudge'); 
           // setCurrentGame2(currentGameIn);
@@ -26,8 +25,8 @@ console.log({currentGame});
           console.log(`currentGame:`, currentGameIn);
           history.push('/ProRules');
         }
-      };
-
+    };
+     
       socket.on('navigate', handleNavigation);
       console.log('socket.id', socket.id);
       return () => {
@@ -67,10 +66,7 @@ console.log({currentGame});
             
           </div>
         </div>
-      </div>
-      <div className='draw-league-button'>
-        <input type="image" src='../../documentation/images/DRAWLEAGUE_Logo02_thicker.png' onClick={() => history.push('/projudge')}></input>
-        </div>
+      </div>  
     </div>
   );
 }

@@ -16,6 +16,7 @@ const currentGame = useSelector((store) => store.currentGame);
   useEffect(() => {
     
     if (socket) {
+
       socket.emit("getGameInfo");
 
       const handleNavigation = (direction) => {
@@ -25,6 +26,7 @@ const currentGame = useSelector((store) => store.currentGame);
             history.push('/proref');      
         }
         else if(direction === 'back') {
+          console.log(`currentGame:`, currentGameIn);
           history.push('/admindash');
         }
       };
