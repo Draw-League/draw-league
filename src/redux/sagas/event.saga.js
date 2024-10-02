@@ -20,7 +20,7 @@ function* fetchOneEvent(action) {
 
   try {
     const  id  = action.payload
-    const oneEventResponse = yield axios.get(`api/events/one/${id}`);
+    const oneEventResponse = yield axios.get(`/api/events/one/${id}`);
     console.log("event response:", oneEventResponse);
 
     yield put({type: 'SET_EVENT', payload: oneEventResponse.data});
