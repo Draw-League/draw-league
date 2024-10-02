@@ -1,7 +1,6 @@
 import React from 'react';
 import './AdminDash.css';
 import AdminNav from '../AdminNav/AdminNav'
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -18,10 +17,6 @@ function AdminDash({ socket }) {
   useEffect(() => {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
-
-  const handleLogout = () => {
-    history.push('/home');
-  };
 
   const handlePlay = (e, event) => {
     e.preventDefault();
@@ -87,10 +82,6 @@ function AdminDash({ socket }) {
                   <span className="admin-event-info">{event.location_address}</span>
                 </p>
                 <p>
-                  <span className="admin-event-label">Time:</span>{' '}
-                  <span className="admin-event-info">{event.time}</span>
-                </p>
-                <p>
                   <span className="admin-event-label">Date:</span>{' '}
                   <span className="admin-event-info">{event.event_date}</span>
                 </p>
@@ -122,10 +113,7 @@ function AdminDash({ socket }) {
           </div>
         ))}
       </section>
-
-      <div>
-      <LogOutButton className="admin-logout-btn" onLogout={handleLogout} />
-      </div>
+      <br/>
     </div>
   );
 }
@@ -175,11 +163,4 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br /> */}
-
-
-<div>
-  <LogOutButton className="btn" />
-</div>
-
-
 export default AdminDash;
