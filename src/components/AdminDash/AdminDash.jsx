@@ -12,7 +12,7 @@ function AdminDash({ socket }) {
 
   const events = useSelector((store) => store.adminDashReducer);
   const dispatch = useDispatch();
-  const [currentGame, setCurrentGame] = useState({});
+  // const [currentGame, setCurrentGame] = useState({});
 
 
   useEffect(() => {
@@ -22,10 +22,13 @@ function AdminDash({ socket }) {
   const handlePlay = (e, event) => {
     e.preventDefault();
     console.log('Game to PLAY id;', event);
-    setCurrentGame(event);
-    // dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-    window.open(`/prorules/`, "_blank");
-    history.push('/refdash');
+
+    // setCurrentGame(event);
+   dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+   window.open(`/prorules/`, "_blank");
+   history.push('/refdash');
+
+  
   }
 
   const removeEvent = (id) => {
@@ -40,9 +43,9 @@ function AdminDash({ socket }) {
   const history = useHistory();
   useEffect(() => {
     if (socket) {
-      const handleNavigation = (direction, currentGame) => {
+      const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
-        console.log(`currentGame: ${currentGame}`);
+        // console.log(`currentGame: ${currentGame}`);
         if (direction === 'next') {
           history.push('/ProRules');
         }
