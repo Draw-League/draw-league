@@ -4,6 +4,9 @@
     gap: 20px;
     margin: 0 auto;
     padding: 20px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    
 }
   
 .admin-event-box {
@@ -11,10 +14,11 @@
     flex-direction: column;
     border: 3px solid black;
     padding: 20px;
-    background-color: #ffffff;
-    max-width: 800px;
+    background-color: #4798FF;
+    max-width: 400px;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
 }
   
 .admin-event-details {
@@ -40,7 +44,8 @@
 .admin-event-label {
     font-weight: bold;
     font-size: 18px;
-    color: #0071ff;
+    color: black;
+    text-decoration: underline;
 }
   
 .admin-event-info {
@@ -60,7 +65,7 @@
     font-size: 18px;
     font-weight: bold;
     border: 3px solid black;
-    background-color: #c3dd00;
+    background-color: #EBE5E5;
     color: #000;
     cursor: pointer;
     flex: 1;
@@ -81,7 +86,7 @@
 }
   
 .admin-logout-btn {
-    background-color: #c3dd00;
+    background-color: #EBE5E5;
     border: 3px solid black;
     padding: 10px 20px;
     font-size: 20px;

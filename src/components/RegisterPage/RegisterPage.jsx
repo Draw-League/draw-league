@@ -10,8 +10,6 @@ function RegisterPage() {
   return (
     <div className='register-page'>
       <Nav /> 
-      <br/>
-      <br/>
 
       <RegisterForm />
 
