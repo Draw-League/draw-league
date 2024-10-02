@@ -12,6 +12,7 @@ We **STRONGLY** recommend following these instructions carefully. It's a lot, an
 
 Before you get started, make sure you have the following software installed on your computer:
 
+- [Virtual_Studio_Code](https://code.visualstudio.com/Download)
 - [Node.js](https://nodejs.org/en)
 - [PostgreSQL](https://www.postgresql.org)
 - [Nodemon](https://nodemon.io)
