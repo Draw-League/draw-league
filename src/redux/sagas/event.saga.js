@@ -43,17 +43,17 @@ function* createEvent(action) {
 
   // Redux Saga Update
 function* updateEvent(action) {
-  console.log('updating meal list', action);
+  console.log('updating event', action);
 
   try {
     const { eventId } = action.payload;
     const updateResponse = yield axios({method: 'PUT', url:`/api/events/${eventId}`, data: { eventId }});
-    console.log('update/put meal response', updateResponse);
+    console.log('update/put event response', updateResponse);
 
     yield put({type: 'SET_EVENTS' , payload: eventId });
   }
   catch(error) {
-    console.log('Error updating meal to the server')
+    console.log('Error updating event to the server')
   }
 }
 
