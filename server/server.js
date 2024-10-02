@@ -45,19 +45,25 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require("socket.io")(server, {});
 
-
+//socket.io 
 io.on('connection', (socket) => {
   console.log('connected', socket.id);
   
+  socket.on('getGameInfo', () => {
+    console.log('getGameInfo');
+    io.emit('sendGameInfo')
+  });
+  socket.on('sendingGameInfo', (currentGame) => {
+    console.log('sendingGameInfo');
+    console.log('currentGame', currentGame);
+    io.emit('gameInfo', currentGame);
+  })
+
   socket.on('navigate', (pageName, currentGame) => {
     console.log('navigate', pageName, currentGame)
-    io.emit('navigate', pageName, currentGame); //currently io.emit which will emit the navigate socket to anyone one on the server. was socket.emit
+    io.emit('navigate', pageName, currentGame); 
   });
 
-  // socket.on('roundChange', (newRound) => {
-  //   console.log('roundChange', newRound);
-  //   io.emit('roundChange', newRound);
-  // });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');

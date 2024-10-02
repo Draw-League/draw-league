@@ -7,8 +7,9 @@ import axios from 'axios';
 
 function ProRef({socket}) {
   const currentGame = useSelector((store) => store.currentGame)
-  // const ref = useSelector((store) => store.projectionReducer);
+
   const history = useHistory();
+  
 
   useEffect(() => {
     if (socket) {
@@ -18,6 +19,7 @@ function ProRef({socket}) {
 
         if(direction === 'next') {
           history.push('/ProJudge'); 
+          // setCurrentGame2(currentGameIn);
         }
         else if(direction === 'back') {
           console.log(`currentGame:`, currentGameIn);
@@ -33,7 +35,6 @@ function ProRef({socket}) {
     }
   }, [socket, history]);
 
-
   return (
     <div className="container-ref">
       <div className='ref-title'>
@@ -45,7 +46,7 @@ function ProRef({socket}) {
           <div className='ref-image'>
 
             <img className="ref-img" alt="placeholder image"
-              src='https://images.unsplash.com/photo-1565194637906-8f45f3351a5d?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'></img>
+              src={currentGame.ref_img}></img>
 
           </div>
 
@@ -61,7 +62,7 @@ function ProRef({socket}) {
               </p>
               <br /> 
 
-            <p className='ref-style'>@instagram handle</p> 
+           
             
           </div>
         </div>

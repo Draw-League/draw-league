@@ -49,7 +49,7 @@
   background-color: #d9e602;
 }
 
-.nav-wrapper {
+.home-nav-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,23 +58,23 @@
   position: relative;
 }
 
-.logo-container {
+.home-nav-logo-container {
   position: absolute;
   left: 20px;
 }
 
-.nav-logo {
+.home-nav-logo {
   width: 150px;
   cursor: pointer;
 }
 
-.menu-container {
+.home-nav-menu-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.nav-menu {
+.home-nav-menu {
   display: flex;
   gap: 100px;
   padding: 0;
@@ -83,12 +83,12 @@
   align-items: center;
 }
 
-.nav-menu li {
+.home-nav-menu li {
   display: flex;
   align-items: center;
 }
 
-.nav-button {
+.home-nav-button {
   padding: 15px;
   font-size: 25px;
   color: black;
@@ -104,7 +104,7 @@
 }
 
 @media (orientation: portrait) {
-  .nav-wrapper {
+  .home-nav-wrapper {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -112,33 +112,33 @@
     gap: 20px;
   }
 
-  .logo-container {
+  .home-nav-logo-container {
     position: static;
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .nav-logo {
+  .home-nav-logo {
     width: 250px;
     margin-left: 0;
     cursor: pointer;
   }
 
-  .menu-container {
+  .home-menu-container {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
   }
 
-  .nav-menu {
+  .home-nav-menu {
     flex-direction: column;
     gap: 20px;
     justify-content: center;
   }
 
-  .nav-button {
+  .home-nav-button {
     font-size: 20px;
     width: 250px;
     padding: 10px;

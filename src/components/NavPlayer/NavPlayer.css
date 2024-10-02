@@ -1,28 +1,25 @@
 .nav-player-container {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 60px;
-    display: flex;
-    align-items: center;
     margin-top: 10px;
     margin-bottom: 30px;
+    gap: 40px;
 }
 
 .nav-player-logo {
-    position: absolute;
-    left: 1px;
     width: 150px;
     cursor: pointer;
 }
 
 .hamburger-icon {
-    position: absolute;
-    right: 15px;
     font-size: 50px;
     cursor: pointer;
     color: #000;
 }
-
 
 .hamburger-menu {
     position: absolute;
@@ -42,7 +39,7 @@
 }
 
 .menu-button {
-    background-color: #c3dd00;
+    background-color: #ff734f;
     border: 3px solid black;
     color: black;
     font-weight: bold;
@@ -53,14 +50,6 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 0px;
-}
-
-.menu-button:nth-child(2) {
-    background-color: #ff6347;
-}
-
-.menu-button:nth-child(3) {
-    background-color: white;
 }
 
 .menu-button:hover {
