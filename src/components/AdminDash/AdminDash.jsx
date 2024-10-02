@@ -1,7 +1,6 @@
 import React from 'react';
 import './AdminDash.css';
 import AdminNav from '../AdminNav/AdminNav'
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -19,20 +18,13 @@ function AdminDash({ socket }) {
     dispatch({ type: 'FETCH_EVENTS' });
   }, [dispatch]);
 
-  const handleLogout = () => {
-    history.push('/home');
-  };
-
   const handlePlay = (e, event) => {
     e.preventDefault();
     console.log('Game to PLAY id;', event);
-
     // setCurrentGame(event);
    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
-   window.open(`/prorules/`, "_blank");
+   window.open(`/prorules`, "_blank");
    history.push('/refdash');
-
-  
   }
 
   const removeEvent = (id) => {
@@ -40,8 +32,11 @@ function AdminDash({ socket }) {
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
 
-  const editEvent = (id) => {
-    history.push(`/edit-event/${id}`);
+  const editEvent = (e, event) => {
+    e.preventDefault();
+
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+    history.push(`/edit-event`);
   }
 
   const history = useHistory();
@@ -114,16 +109,12 @@ function AdminDash({ socket }) {
             </div>
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
-              <button className="admin-event-button" onClick={() => editEvent(event.event_id)}>Edit</button>
+              <button className="admin-event-button" onClick={(e) => editEvent(e, event)}>Edit</button>
               <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
         ))}
       </section>
-
-      <div>
-      <LogOutButton className="admin-logout-btn" onLogout={handleLogout} />
-      </div>
       <br/>
     </div>
   );
@@ -174,11 +165,4 @@ function AdminDash({ socket }) {
       <br />
       <br />
       <br /> */}
-
-
-<div>
-  <LogOutButton className="btn" />
-</div>
-
-
 export default AdminDash;

@@ -40,8 +40,10 @@ function RefDash({socket, props}) {
   }, [socket]);
   const sendNextPage = () => {
     if(socket) {
-        socket.emit('gameInfo', 'navigate', 'next', currentGame);
+        socket.emit('navigate', 'next', currentGame);
+       
         console.log('socket.id', socket.id);
+        console.log(socket);
         console.log('current game is:', currentGame)
     }
   }
