@@ -9,13 +9,18 @@ function NavPlayer() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showHowToPlay, setShowHowToPlay] = useState(false);
     const history = useHistory();
+    const [reload, setReload] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const navigate = (path) => {
-        history.push(path);
+    const navigate = (path, state = {}) => {
+        if (history.location.pathname === path) {
+            setReload(!reload);
+        } else {
+            history.push(path, state);
+        }
         setMenuOpen(false);
     };
 
@@ -59,8 +64,6 @@ function NavPlayer() {
             <FaBars className="hamburger-icon" onClick={toggleMenu} />
             {menuOpen && (
                 <div className="hamburger-menu">
-                    <button className="menu-button" onClick={() => navigate('/drawing')}>TAKE PHOTO</button>
-                    <button className="menu-button" onClick={() => navigate('/team-gallery')}>TEAM GALLERY</button>
                     <button className="menu-button" onClick={openHowToPlayModal}>HOW TO PLAY</button>
                 </div>
             )}

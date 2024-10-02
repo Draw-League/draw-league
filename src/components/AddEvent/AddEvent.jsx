@@ -117,9 +117,9 @@ function AddEvent() {
   };
 
   // deals with select ref
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(null);
   const handleRefChange = (selectedOptions) => {
-    setNewEvent({ ...newEvent, refId: selectedOptions[0].value });
+    setNewEvent({ ...newEvent, refId: selectedOptions.value });
   };
 
   return (
@@ -127,19 +127,17 @@ function AddEvent() {
       <AdminNav />
       <br />
       <br />
-
-
       <div className="container-add-event">
 
-        <div className="new-event-form">
-          <div className='event-title'>
-            <h3 className='event-title-style'>Event Details</h3>
+        <div className="add-new-event-form">
+          <div className='add-event-title'>
+            <h3 className='new-event-title-style'>Event Details</h3>
           </div>
           <form onSubmit={createEvent}>
-            <div className="event-form-wrapper">
-              <div className='event-left'>
+            <div className="add-event-input-form">
+              <div className='new-event-details'>
                 <input
-                  className='event-input'
+                  className='new-date-box'
                   type="date"
                   placeholder="Event Date"
                   name="eventDate"
@@ -147,7 +145,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Location Name"
                   name="locationName"
@@ -155,7 +152,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, locationName: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Location Address"
                   name="locationAddress"
@@ -163,7 +159,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, locationAddress: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Theme"
                   name="theme"
@@ -171,7 +166,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, theme: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt One"
                   name="promptOne"
@@ -179,7 +173,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, promptOne: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt Two"
                   name="promptTwo"
@@ -187,7 +180,6 @@ function AddEvent() {
                   onChange={(event) => setNewEvent({ ...newEvent, promptTwo: event.target.value })}
                 />
                 <input
-                  className='event-input'
                   type="text"
                   placeholder="Prompt Three"
                   name="promptThree"
@@ -196,13 +188,12 @@ function AddEvent() {
                 />
               </div>
 
-              <div className='event-right'>
+              <div className='new-event-staff-detail'>
                 <Select
                   className='ref-select-dropdown'
                   placeholder='---SELECT REF---'
                   options={refOptions}
                   onChange={handleRefChange}
-                  isMulti={true}
                 />
                 <input
                   type="text"
@@ -262,7 +253,7 @@ function AddEvent() {
             </div>
 
             <div className='add-event-btn'>
-              <button type="submit" className="event-buttons">Add Event</button>
+              <button type="submit" className="btn_desktop">Add Event</button>
             </div>
           </form>
 

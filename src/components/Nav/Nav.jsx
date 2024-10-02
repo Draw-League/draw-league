@@ -40,20 +40,20 @@ function Nav() {
   };
 
   return (
-    <div className="nav-wrapper">
-      <div className="logo-container">
-        <img src={logo} className="nav-logo" onClick={() => navigate('/home')} />
+    <div className="home-nav-wrapper">
+      <div className="home-nav-logo-container">
+        <img src={logo} className="home-nav-logo" onClick={() => navigate('/home')} />
       </div>
-      <div className="menu-container">
-        <ul className="nav-menu">
+      <div className="home-nav-menu-container">
+        <ul className="home-nav-menu">
           <li>
-            <button className="nav-button" onClick={openHowToPlayModal}>HOW TO PLAY</button>
+            <button className="home-nav-button" onClick={openHowToPlayModal}>HOW TO PLAY</button>
           </li>
           <li>
-            <button className="nav-button" onClick={() => navigate('/join-game')}>JOIN A GAME</button>
+            <button className="home-nav-button" onClick={() => navigate('/join-game')}>JOIN A GAME</button>
           </li>
           <li>
-            <button className="nav-button" onClick={() => navigate('/contact')}>CONTACT US</button>
+            <button className="home-nav-button" onClick={() => navigate('/contact')}>CONTACT US</button>
           </li>
         </ul>
       </div>

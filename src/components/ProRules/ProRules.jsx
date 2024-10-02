@@ -16,7 +16,7 @@ const currentGame = useSelector((store) => store.currentGame);
   useEffect(() => {
     console.log('Socket:', socket);
     if (socket) {
-      console.log('Socket:', socket);
+
       socket.emit("getGameInfo");
 
       const handleNavigation = (direction, currentGame) => {
