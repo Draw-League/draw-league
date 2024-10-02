@@ -170,6 +170,28 @@ router.post('/verify-game-code', async (req, res) => {
   }
 });
 
+
+/**
+ * POST route to verify judge code
+ */
+router.post('/verify-judge-code', async (req, res) => {
+  const { judgeCode } = req.body;
+  try {
+    const queryText = `SELECT * FROM "event" WHERE judge_code = $1`;
+    const result = await pool.query(queryText, [judgeCode]);
+
+    if (result.rows.length > 0) {
+      res.status(200).json({ success: true, eventId: result.rows[0].id });
+    } else {
+      res.status(400).json({ success: false, message: 'Invalid judge code' });
+    }
+  } catch (err) {
+    console.error('Error verifying judge code:', err);
+    res.status(500).send('Server error');
+  }
+});
+
+
 /**
  * PUT route template
  */
