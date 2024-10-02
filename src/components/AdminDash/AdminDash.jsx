@@ -37,8 +37,11 @@ function AdminDash({ socket }) {
     dispatch({ type: 'REMOVE_EVENT', payload: id });
   }
 
-  const editEvent = (id) => {
-    history.push(`/edit-event/${id}`);
+  const editEvent = (e, event) => {
+    e.preventDefault();
+
+    dispatch({ type: 'UPDATE_CURRENT_GAME', payload: event });
+    history.push(`/edit-event`);
   }
 
   const history = useHistory();
@@ -115,7 +118,7 @@ function AdminDash({ socket }) {
             </div>
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
-              <button className="admin-event-button" onClick={() => editEvent(event.event_id)}>Edit</button>
+              <button className="admin-event-button" onClick={(e) => editEvent(e, event)}>Edit</button>
               <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
             </div>
           </div>
