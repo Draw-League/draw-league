@@ -14,19 +14,22 @@ const dispatch = useDispatch();
 const currentGame = useSelector((store) => store.currentGame);
 
   useEffect(() => {
-    
+    console.log('Socket:', socket);
     if (socket) {
+      console.log('Socket:', socket);
       socket.emit("getGameInfo");
 
       const handleNavigation = (direction, currentGame) => {
         console.log(`Navigating to: ${direction}`);
 
         if(direction === 'next') {
-            history.push('/proref');      
+          console.log('in next');
+            history.push('/proref'); 
+
         }
         else if(direction === 'back') {
           console.log(`currentGame:`, currentGame);
-          // history.push('/admindash');
+           history.push('/admindash');
         }
       };
 
@@ -37,7 +40,7 @@ const currentGame = useSelector((store) => store.currentGame);
       };
 
       socket.on('navigate', handleNavigation);
-      socket.on('gameInfo', saveGameInfo)
+      socket.on('gameInfo', saveGameInfo);
       console.log('socket.id', socket.id);
       return () => {
         socket.off('navigate', handleNavigation);
