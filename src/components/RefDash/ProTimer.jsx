@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProTimer.css';
 
-const Timer = () => {
-  const [time, setTime] = useState(900000);
-  const [isActive, setIsActive] = useState(false);
-  const intervalRef = useRef(null);
+const DEFAULT_CLOCK_TIME = 900000; // 900000ms = 15min
+const Timer = ({ socket }) => {
+  const [time, setTime] = useState(DEFAULT_CLOCK_TIME);
 
   // Convert milliseconds to MM:SS:ms
   const formatTime = (ms) => {
@@ -16,40 +15,24 @@ const Timer = () => {
     return `${minutes}:${seconds}:${milliseconds}`;
   };
 
-  const handleButtonClick = () => {
-    if (isActive) {
-      // Resets the Timer
-      clearInterval(intervalRef.current);
-      setIsActive(false);
-      setTime(900000); 
-    } else {
-      // Starts the Timer
-      setIsActive(true);
-      intervalRef.current = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime <= 0) {
-            clearInterval(intervalRef.current);
-            setIsActive(false);
-            setTime(900000);
-            return 0;
-          }
-          return prevTime - 10;
-        });
-      }, 10);
-    }
-  };
-
-
   useEffect(() => {
-    return () => clearInterval(intervalRef.current);
+    // Add the listener when we load the page
+    if (socket) {
+        socket.on('setTime', (timeRemaining) => {
+            console.log('setTime', timeRemaining);
+            setTime(timeRemaining);
+        });
+    } else {
+      console.error('Socket not connected!!!')
+    }
+    // Turn off the listener when we leave the page
+    return () => socket && socket.off('navigate');
+
   }, []);
 
   return (
     <div className="timer-container">
       <h1 className="timer-display">{formatTime(time)}</h1>
-      <button className="timer-button" onClick={handleButtonClick}>
-        {isActive ? 'Reset Timer' : 'START CLOCK'}
-      </button>
     </div>
   );
 };

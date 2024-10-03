@@ -55,7 +55,7 @@ function ProJudge({socket, ...props}) {
           </div>
 
           <div className='judge-name'>
-            <h3 className='question-style'>JUDGE <br />{currentGame.judge_name}</h3>
+            <h3 className='question-style'>{currentGame.judge_name}</h3>
           </div>
         </div>
 
