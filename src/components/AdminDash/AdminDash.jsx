@@ -110,7 +110,7 @@ function AdminDash({ socket }) {
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className="admin-event-button" onClick={(e) => editEvent(e, event)}>Edit</button>
-              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
+              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.event_id)}>Delete</button>
             </div>
           </div>
         ))}
