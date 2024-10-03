@@ -1,22 +1,22 @@
 import React from "react";
 import "./ProWinners_2.css";
 import logo from "../LandingPage/drawleague.png";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function ProWinners_2({socket}) {
+function ProWinners_2({ socket }) {
 
   const dispatch = useDispatch();
   const currentGame = useSelector((store) => store.currentGame)
-  const ref = useSelector((store) => store.projectionReducer);
   const history = useHistory();
 
-console.log({currentGame});
+  console.log({ currentGame });
 
   useEffect(() => {
-    if(currentGame){
-    dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
+    if (currentGame) {
+      dispatch({ type: "FETCH_REFS", payload: { currentGame } });
+    }
   }, [currentGame, dispatch]);
 
 
@@ -24,10 +24,10 @@ console.log({currentGame});
     if (socket) {
       const handleNavigation = (direction) => {
         console.log(`Navigating to: ${direction}`);
-        if(direction === 'next') {
-          history.push('/ProWinners_3'); 
+        if (direction === 'next') {
+          history.push('/ProWinners_3');
         }
-        else if(direction === 'back') {
+        else if (direction === 'back') {
           history.push('/ProWinners_1');
         }
       };
@@ -42,22 +42,22 @@ console.log({currentGame});
 
   const winners = [
     {
-      name: "team panda",
+      name: currentGame.firstPlaceName,
+      score: currentGame.firstPlaceScore,
       position: 1,
-      drawing_url:
-        "",
+      drawing_url: currentGame.firstPlaceUrl
     },
     {
-      name: "team cake",
+      name: currentGame.secondPlaceName,
+      score: currentGame.secondPlaceScore,
       position: 2,
-      drawing_url:
-        "",
+      drawing_url: currentGame.secondPlaceUrl
     },
     {
       name: "???",
+      score: currentGame.thirdPlaceScore,
       position: 3,
-      drawing_url:
-        "",
+      drawing_url: currentGame.thirdPlaceUrl
     },
   ];
   return (
@@ -85,7 +85,7 @@ export default ProWinners_2;
 function Podium({ winner }) {
   return (
     <div
-      className={`winner ${winner.position === 3 ? 'winner_3' : winner.position === 2 ? 'winner_2' : 'winner_1'}`}
+      className={`winner ${winner.position === 3 ? 'not_revealed' : winner.position === 2 ? 'winner_2' : 'winner_1'}`}
       style={{
         order: winner.position === 1 ? 2 : winner.position === 2 ? 1 : 3 // Winner 1 is centered, Winner 2 is on the left
       }}
@@ -106,7 +106,7 @@ function Podium({ winner }) {
           height: winner.position === 1 ? "150px" : winner.position === 2 ? "100px" : "50px",
         }}
       >
-        {winner.position}
+        {winner.score}
       </div>
     </div>
   );

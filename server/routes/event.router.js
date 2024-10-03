@@ -56,7 +56,7 @@ WHERE event.id = $1;
 
 
 // GET route for admin dash
-router.get('/', (req, res) =>{
+router.get('/', (req, res) => {
   const queryText = `
 SELECT art_medium, event.created_at, created_by, event_code, event_date, 
   event_id, full_name, judge_code, judge_img, judge_job, judge_know, 
@@ -252,8 +252,8 @@ router.put('/update-event/:id', rejectUnauthenticated, async (req, res) => {
 */
 router.delete('/:id', (req, res) => {
   // PUT route code here
-  console.log('req params',req.params);
-  console.log('req body',req.body);
+  console.log('req params', req.params);
+  console.log('req body', req.body);
   const id = req.params.id;
   const sqlText = `
       DELETE FROM event
@@ -269,4 +269,69 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(500);
     })
 });
+
+// GET /api/events/{event_id}/winners - will get the winners for the event.
+router.get('/:id/winners', (req, res) => {
+  const eventId = req.params.id;
+  console.log('one event GET reqparams are:', req.params);
+  const queryText = `
+    SELECT "team"."id" as "teamId", "team"."team_name" as "teamName", SUM("score") as "totalScore" FROM "drawing"
+    JOIN "team" ON  "team"."id" = "drawing"."team_id"
+    WHERE "team"."event_id" = $1
+    GROUP BY "team"."id"
+    ORDER BY "totalScore" DESC
+    LIMIT 3;
+`;
+  pool.query(queryText, [eventId])
+    .then(dbResult => {
+      console.log('Event winners from db:', dbResult.rows);
+
+      const urlQueryText = `
+        WITH RankedDrawings AS (
+          SELECT 
+              "team_id", 
+              "drawing_url", 
+              "score",
+              ROW_NUMBER() OVER (PARTITION BY "team_id" ORDER BY "score" DESC, "created_at" ASC) AS "rank"
+          FROM "drawing"
+          WHERE "team_id" IN ($1, $2, $3)
+        )
+        SELECT 
+            "team_id" as "teamId", 
+            "drawing_url" as "drawingUrl", 
+            "score"
+        FROM RankedDrawings
+        WHERE "rank" = 1;
+      `;
+
+      pool.query(urlQueryText, [dbResult.rows[0].teamId, dbResult.rows[1].teamId, dbResult.rows[2].teamId])
+        .then(dbResult2 => {
+          console.log('Event winners urls from db:', dbResult2.rows);
+
+          let merged = [];
+
+          for (let i = 0; i < dbResult.rows.length; i++) {
+            merged.push({
+              ...dbResult.rows[i],
+              ...(dbResult2.rows.find((itmInner) => itmInner.teamId === dbResult.rows[i].teamId))
+            }
+            );
+          }
+
+          console.log('merged:', merged);
+
+          res.send(merged);
+        })
+        .catch(dbErr2 => {
+          console.log(`GET EVENT WINNERS BEST DRAWING URL ERROR MESSAGE HERE:`, dbErr2);
+          res.sendStatus(500)    
+        });
+    })
+    .catch(dbErr => {
+      console.log(`GET EVENT WINNERS ERROR MESSAGE HERE:`, dbErr);
+      res.sendStatus(500)
+    })
+
+});
+
 module.exports = router;

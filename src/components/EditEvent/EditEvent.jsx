@@ -28,16 +28,16 @@ console.log('event from reducer:', event);
     promptTwo: `${event.prompt_two}`,
     promptThree: `${event.prompt_three}`,
     eventDate: `${event.event_date}`,
-    eventCode: '',
+    eventCode: `${event.event_code}`,
     locationName: `${event.location_name}`,
     locationAddress: `${event.location_address}`,
     judgeName: `${event.judge_name}`,
     judgeJob: `${event.judge_job}`,
     judgeLike: `${event.judge_like}`,
     judgeKnow: `${event.judge_know}`,
-    judgeImg: '',
-    judgeCode: '',
-    refId: '',
+    judgeImg: `${event.judge_img}`,
+    judgeCode: `${event.judge_code}`,
+    refId: `${event.user_id}`,
   });
 
   //Judge image file upload
@@ -99,7 +99,7 @@ console.log('event from reducer:', event);
     }));
 
     dispatch({
-      type: 'UPDATE_EVENT',
+      type: 'EDIT_CURRENT_GAME',
       payload: { ...newEvent, judgeImg: uploadedImgUrl || newEvent.judgeImg },
     });
 
@@ -149,7 +149,7 @@ console.log('event from reducer:', event);
                 <input
                   className='edit-date-box'
                   type="date"
-                  placeholder="Event Date"
+                  
                   name="eventDate"
                   value={newEvent.eventDate}
                   onChange={(event) => setNewEvent({ ...newEvent, eventDate: event.target.value })}
@@ -215,7 +215,7 @@ console.log('event from reducer:', event);
 
 
               <div className='edit-staff-detail'>
-                {/* currently using hard coded dummy data starting from line 8 */}
+               
                 <Select
                   className='edit-ref-select-dropdown'
                   placeholder='---SELECT REF---'
@@ -294,7 +294,7 @@ console.log('event from reducer:', event);
             </div>
             <br />
             <div className='update-event-btn'>
-              <button type="submit" className="btn_desktop">UPDATE</button>
+              <button onClick={updateEvent} type="submit" className="btn_desktop">UPDATE</button>
             </div>
           </form>
 
