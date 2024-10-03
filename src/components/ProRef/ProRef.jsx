@@ -57,7 +57,6 @@ console.log({currentGame});
 
           <div className='ref-facts'>
             <p className='ref-style'>
-              ref fact
               <br />
               {currentGame.ref_fact}
               </p>
