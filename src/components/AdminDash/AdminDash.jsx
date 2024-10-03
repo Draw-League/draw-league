@@ -110,7 +110,7 @@ function AdminDash({ socket }) {
             <div className="admin-event-buttons">
               <button className="admin-event-button" onClick={(e) => handlePlay(e, event)}>Play</button>
               <button className="admin-event-button" onClick={(e) => editEvent(e, event)}>Edit</button>
-              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.id)}>Delete</button>
+              <button className="admin-event-button admin-delete-button" onClick={() => removeEvent(event.event_id)}>Delete</button>
             </div>
           </div>
         ))}
@@ -120,49 +120,4 @@ function AdminDash({ socket }) {
   );
 }
 
-{/* <section style={{ display: 'flex', marginRight: '20px' }}>
-        {events.map((event) => (
-          <div key={event.id} >
-            <div className='event-box'>
-              <p> {event.id}</p>
-              <p> {event.location_name}</p>
-              <p> {event.location_address}</p>
-              <p> {event.event_date}</p>
-              <p> {event.judge_name}</p>
-              <p> {event.judge_code}</p>
-              <p> {event.full_name}</p>
-              <p> {event.event_code}</p>
-              <button className='event-buttons'
-                onClick={(e) => handlePlay(e, event )}>Play</button>
-              <button className='event-buttons' onClick={() => editEvent(event.id)}>Edit</button>
-              <button className='event-buttons' onClick={() => removeEvent(event.id)}>Delete</button>
-            </div>
-          </div>
-        ))
-        }
-      </section>
-
-      {/* <div >
-        <div style={{ marginRight: '20px' }}>
-          <p>Location:</p>
-          <p>Address:</p>
-          <p>Time:</p>
-          <p>Date:</p>
-        </div>
-        <div>
-          <p>Judge:</p>
-          <p>Judge Code:</p>
-          <br></br>
-          <p>Ref: </p>
-          <br></br>
-          <p>Game Code:</p>
-        </div>
-      </div> 
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> */}
 export default AdminDash;
