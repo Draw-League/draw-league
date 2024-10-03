@@ -56,8 +56,7 @@ function DrawingRound1() {
           return axios.post('/api/drawings', {
             team_id: teamId,
             drawing_url: drawing_url,
-            round: 1,
-            event_id: eventId
+            round: 1
           });
         })
         .then(() => {

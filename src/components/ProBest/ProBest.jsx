@@ -32,7 +32,7 @@ const dispatch = useDispatch();
             history.push('/ProContactUs'); 
           }
           else if(direction === 'back') {
-            history.push('/ProWinners');
+            history.push('/prowinners_1');
           }
         };
   

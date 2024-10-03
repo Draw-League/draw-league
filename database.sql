@@ -86,3 +86,4 @@ VALUES ('Pencil Pushers', 1);
 
 INSERT INTO "drawing" (team_id, drawing_url, score, round)
 VALUES (1, 'https://images.unsplash.com/photo-1724666696560-aec1b5732c92?q=80&w=1346&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',85, 1);
+
