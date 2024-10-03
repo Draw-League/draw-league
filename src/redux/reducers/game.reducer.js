@@ -4,6 +4,8 @@ const currentGame = (state = {}, action) => {
     return action.payload;
   } else if (action.type === 'ADD_WINNERS_TO_CURRENT_GAME') {
     return {...state, ...action.payload}
+  } else if (action.type === 'EDIT_CURRENT_GAME') {
+      return action.payload;
   }
   return state;
 }
