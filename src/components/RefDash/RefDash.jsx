@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Timer from './ProTimer';
+import RefTimer from './RefTimer';
 import logo from './drawleague.png';
 
 
@@ -74,7 +74,7 @@ function RefDash({socket, props}) {
      
       <div className="top-portion">
         <div className="timer-container">
-          <Timer />
+          <RefTimer socket={socket}/>
         </div>
         <button className="reveal-button" onClick={sendBackPage}>PREV SLIDE</button>
         <div className="theme-container">
