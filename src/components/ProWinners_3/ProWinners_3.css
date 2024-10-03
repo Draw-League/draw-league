@@ -49,6 +49,20 @@ height: 50px;
 border: 2px solid black;
 border-bottom: 0;
 }
+.winner_1 .winner-name {
+  background-color: #C3DD00 !important; /* Use this color for winner 1 */
+  color: black !important;
+}
+
+.winner_2 .winner-name {
+  background-color: #C3DD00 !important; /* Ensure same background color */
+  color: black !important;
+}
+
+.winner_3 .winner-name {
+  background-color: #C3DD00 !important; /* Ensure winner 3 has a distinct background */
+  color: black !important;
+}
 
 .winner-position{
 width: 100%;

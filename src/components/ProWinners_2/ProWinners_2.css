@@ -53,24 +53,6 @@
  margin: 0 auto;
  
 }
-.winner-drawing img{
- 
-}
-
-.winner_1 .winner-name {
-  background-color: #C3DD00 !important; /* Use this color for winner 1 */
-  color: black !important;
-}
-
-.winner_2 .winner-name {
-  background-color: #C3DD00 !important; /* Ensure same background color */
-  color: black !important;
-}
-
-.winner_3 .winner-name {
-  background-color: black !important; /* Ensure winner 3 has a distinct background */
-  color: white !important;
-}
 
 .winner-name {
   width: 100%;
@@ -84,6 +66,20 @@
   border-bottom: 0;
 }
 
+.winner_1 .winner-name {
+  background-color: #C3DD00 !important; /* Use this color for winner 1 */
+  color: black !important;
+}
+
+.winner_2 .winner-name {
+  background-color: #C3DD00 !important; /* Ensure same background color */
+  color: black !important;
+}
+
+.not_revealed .winner-name {
+  background-color: black !important; /* Ensure winner 3 has a distinct background */
+  color: white !important;
+}
 
 .winner-position{
 width: 100%;
