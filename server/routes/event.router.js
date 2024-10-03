@@ -198,20 +198,54 @@ router.post('/verify-judge-code', async (req, res) => {
 /**
  * PUT route template
  */
-router.put('/', (req, res) => {
-  // PUT route code here
+router.put('/update-event/:id', rejectUnauthenticated, async (req, res) => {
+  const eventId = req.params.id;
+
+
+    const eventUpdate = {
+      theme: req.body.theme,
+      promptOne: req.body.promptOne,
+      promptTwo: req.body.promptTwo,
+      promptThree: req.body.promptThree,
+      eventDate: req.body.eventDate,
+      locationName: req.body.locationName,
+      locationAddress: req.body.locationAddress,
+      judgeName: req.body.judgeName,
+      judgeJob: req.body.judgeJob,
+      judgeLike: req.body.judgeLike,
+      judgeKnow: req.body.judgeKnow,
+      judgeImg: req.body.judgeImg,
+    };
   const queryText = `
-      // querytext goes here
-      `
-  pool.query(queryText)
+      UPDATE event (theme, prompt_one, prompt_two, 
+                        prompt_three, event_date, location_name, location_address,
+                        judge_name, judge_job, judge_like, judge_know, judge_img)
+                        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) WHERE id = $13
+      `;
+  pool.query(queryText, [
+      eventUpdate.theme,
+      eventUpdate.promptOne,
+      eventUpdate.promptTwo,
+      eventUpdate.promptThree,
+      eventUpdate.eventDate,
+      eventUpdate.locationName,
+      eventUpdate.locationAddress,
+      eventUpdate.judgeName,
+      eventUpdate.judgeJob,
+      eventUpdate.judgeLike,
+      eventUpdate.judgeKnow,
+      eventUpdate.judgeImg,
+      eventId
+  ])
     .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
       console.log(`EVENT PUT ERROR MESSAGE HERE:`, err);
       res.sendStatus(500)
-    })
+    })  
 });
+
 
 /**
 * DELETE route template
