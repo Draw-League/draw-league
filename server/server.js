@@ -15,7 +15,7 @@ const teamsRouter = require('./routes/teams.router');
 const eventRouter = require('./routes/event.router');
 const adminRouter = require('./routes/admin.router');
 const drawingsRouter = require('./routes/drawings.router');
-const projectionsRouter = require ('./routes/projections.router')
+const projectionsRouter = require('./routes/projections.router')
 
 // Express Middleware
 app.use(express.json());
@@ -48,7 +48,7 @@ const io = require("socket.io")(server, {});
 //socket.io 
 io.on('connection', (socket) => {
   console.log('connected', socket.id);
-  
+
   socket.on('getGameInfo', () => {
     console.log('getGameInfo');
     io.emit('sendGameInfo')
@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
 
   socket.on('navigate', (pageName, currentGame) => {
     console.log('navigate', pageName, currentGame)
-    io.emit('navigate', pageName, currentGame); 
+    io.emit('navigate', pageName, currentGame);
   });
 
 
@@ -69,6 +69,11 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
 
+  // For the syncing the clock between RefTimer and ProTimer
+  socket.on('setTime', (timeRemaining) => {
+    console.log('setTime socket event');
+    socket.broadcast.emit('setTime', timeRemaining);
+  });
 
 
 });
