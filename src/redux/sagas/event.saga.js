@@ -45,14 +45,13 @@ function* updateEvent(action) {
   console.log('updating event', action);
 
   try {
-    const {event} = action.payload;
-    const editEventResponse = yield axios({method: 'PUT', url:`/api/events/${event.id}`, data: { event }});
+    const editEventResponse = yield axios({method: 'PUT', url:`/api/events/update-event/${action.payload.eventId}`, data:  action.payload });
     console.log('update/put meal response', editEventResponse);
 
-    yield put({type: 'EDIT_CURRENT_GAME' , payload: event });
+    yield put({type: 'SET_EVENT' , payload: action.payload });
   }
   catch(error) {
-    console.log('Error updating events to the server')
+    console.log('Error updating events to the server', error)
   }
 }
 

@@ -121,7 +121,7 @@ console.log('event from reducer:', event);
       judgeCode: '',
       refId: '',
     });
-    // history.push("/admindash");
+    history.push("/admindash");
   };
 
   // deals with select ref
