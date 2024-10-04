@@ -38,6 +38,7 @@ console.log('event from reducer:', event);
     judgeImg: `${event.judge_img}`,
     judgeCode: `${event.judge_code}`,
     refId: `${event.user_id}`,
+    eventId: `${event.event_id}`
   });
 
   //Judge image file upload

@@ -72,7 +72,7 @@ function* updateEvent(action) {
     yield takeEvery('ADD_EVENT', createEvent);
     yield takeEvery('FETCH_EVENTS', fetchEvents);
     yield takeEvery('FETCH_ONE_EVENT', fetchOneEvent);
-    yield takeEvery('UPDATE_EVENT', updateEvent);
+    yield takeEvery('EDIT_CURRENT_GAME', updateEvent);
     yield takeEvery('REMOVE_EVENT', deleteEvent);
   }
 
