@@ -4,7 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import drawingSaga from './drawing.saga';
 import addEventSaga from './event.saga';
-import projectionSaga from './projection.saga';
+// import projectionSaga from './projection.saga';
 import winnersSaga from './winners.saga'
 import refsSaga from './ref.saga';
 
@@ -22,7 +22,7 @@ export default function* rootSaga() {
     userSaga(),
     drawingSaga(),
     addEventSaga(),
-    projectionSaga(),
+    // projectionSaga(),
     winnersSaga(),
     refsSaga()
   ]);

@@ -38,6 +38,7 @@ console.log('event from reducer:', event);
     judgeImg: `${event.judge_img}`,
     judgeCode: `${event.judge_code}`,
     refId: `${event.user_id}`,
+    eventId: `${event.event_id}`
   });
 
   //Judge image file upload
@@ -142,8 +143,8 @@ console.log('event from reducer:', event);
           <div className='edit-event-title'>
             <h3 className='edit-event-title-style'>Event Details</h3>
           </div>
-        <form>
-          {/* <form onSubmit={createEvent}> */}
+        
+          <form onSubmit={updateEvent}>
             <div className='edit-event-input-form'>
               <div className='edit-event-details'>
                 <input

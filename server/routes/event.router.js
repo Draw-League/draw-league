@@ -35,7 +35,7 @@ const codeGenerator = () => {
 router.get('/:id', (req, res) => {
   // GET route code here
   const eventId = req.params.id;
-  console.log('one event GET reqparams are:', req.params);
+  // console.log('one event GET reqparams are:', req.params);
   const queryText = `
   SELECT * FROM event 
 JOIN user_event ON event.id = user_event.event_id
@@ -198,20 +198,66 @@ router.post('/verify-judge-code', async (req, res) => {
 /**
  * PUT route template
  */
-router.put('/', (req, res) => {
-  // PUT route code here
+router.put('/update-event/:id', rejectUnauthenticated, async (req, res) => {
+  const eventId = req.params.id;
+  console.log('update req params', req.params)
+  console.log('update req body', req.body)
+
+    const eventUpdate = {
+      theme: req.body.theme,
+      promptOne: req.body.promptOne,
+      promptTwo: req.body.promptTwo,
+      promptThree: req.body.promptThree,
+      eventDate: req.body.eventDate,
+      locationName: req.body.locationName,
+      locationAddress: req.body.locationAddress,
+      judgeName: req.body.judgeName,
+      judgeJob: req.body.judgeJob,
+      judgeLike: req.body.judgeLike,
+      judgeKnow: req.body.judgeKnow,
+      judgeImg: req.body.judgeImg,
+      eventId: req.body.eventId
+    };
   const queryText = `
-      // querytext goes here
-      `
-  pool.query(queryText)
+UPDATE event
+SET theme = $1, 
+    prompt_one = $2, 
+    prompt_two = $3, 
+    prompt_three = $4, 
+    event_date = $5, 
+    location_name = $6, 
+    location_address = $7, 
+    judge_name = $8, 
+    judge_job = $9, 
+    judge_like = $10, 
+    judge_know = $11, 
+    judge_img = $12
+WHERE id = $13`;
+      
+  pool.query(queryText, [
+      eventUpdate.theme,
+      eventUpdate.promptOne,
+      eventUpdate.promptTwo,
+      eventUpdate.promptThree,
+      eventUpdate.eventDate,
+      eventUpdate.locationName,
+      eventUpdate.locationAddress,
+      eventUpdate.judgeName,
+      eventUpdate.judgeJob,
+      eventUpdate.judgeLike,
+      eventUpdate.judgeKnow,
+      eventUpdate.judgeImg,
+      eventId
+  ])
     .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
       console.log(`EVENT PUT ERROR MESSAGE HERE:`, err);
       res.sendStatus(500)
-    })
+    })  
 });
+
 
 /**
 * DELETE route template

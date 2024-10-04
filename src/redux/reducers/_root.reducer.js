@@ -4,7 +4,6 @@ import user from './user.reducer';
 import drawing from './drawing.reducer';
 import createEventReducer from './event.reducer';
 import adminDashReducer from './admin.reducer';
-import projectionReducer from './projection.reducer';
 import winnersReducer from './winners.reducer';
 import getRefsReducer from './ref.reducer';
 import currentGame from './game.reducer';
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
   drawing,
   createEventReducer,
   adminDashReducer,
-  projectionReducer,
   winnersReducer,
   getRefsReducer,
   currentGame

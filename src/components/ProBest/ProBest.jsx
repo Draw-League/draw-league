@@ -22,7 +22,13 @@ const dispatch = useDispatch();
     //   if(currentGame){
     //   dispatch({ type: "FETCH_REFS", payload: {currentGame} });}
     // }, [currentGame, dispatch]);
+  const winners = useSelector((store) => store.adminDashReducer);
   
+
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_WINNERS', payload: {currentGame} });
+  }, [dispatch]);
   
     useEffect(() => {
       if (socket) {
@@ -44,13 +50,7 @@ const dispatch = useDispatch();
       }
     }, [socket, history]);
 
-  const winners = useSelector((store) => store.adminDashReducer);
   
-
-
-  useEffect(() => {
-    dispatch({ type: 'FETCH_WINNERS' });
-  }, [dispatch]);
 
   return (
     <div className="winners">
@@ -76,9 +76,9 @@ const dispatch = useDispatch();
           }}
         >
           <div className="winner-drawing">
-            <img className="best-img" src='../../documentation/images/jack.jpg' alt="" />
+            {/* <img className="best-img" src={currentGame.drawing_url}alt="" /> */}
           </div>
-          <div className="winner-name">team panda</div>
+          {/* <div className="winner-name">{currentGame.team_name}</div> */}
          
         </div>
       </div>
